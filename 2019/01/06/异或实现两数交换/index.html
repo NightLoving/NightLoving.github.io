@@ -117,7 +117,7 @@
 <meta property="og:description" content="异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-0064f110cccdf03502004c7701f6f329_hd.jpg">
-<meta property="og:updated_time" content="2019-01-06T14:48:00.249Z">
+<meta property="og:updated_time" content="2019-01-06T14:49:46.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异或实现两数交换">
 <meta name="twitter:description" content="异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节">
@@ -400,7 +400,7 @@
                 
               
 
-              <time title="创建时间：2019-01-06 21:22:30 / 修改时间：22:48:00" itemprop="dateCreated datePublished" datetime="2019-01-06T21:22:30+08:00">2019-01-06</time>
+              <time title="创建时间：2019-01-06 21:22:30 / 修改时间：22:49:46" itemprop="dateCreated datePublished" datetime="2019-01-06T21:22:30+08:00">2019-01-06</time>
             
 
             
@@ -460,8 +460,7 @@
 <h1 id="异或运用"><a href="#异或运用" class="headerlink" title="异或运用"></a>异或运用</h1><h2 id="两数交换"><a href="#两数交换" class="headerlink" title="两数交换"></a>两数交换</h2><p>1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。<br><strong>( x ^ y ) ^ y = x ^ 0 = x</strong><br>2.对于任何数x，都有x^x=0,x^0=x。<br>3.交换律。<br>4.结合律(a^b)^c == a^(b^c)。</p>
 <p>利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节约储存空间。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a,b;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = b ^ a;</span><br><span class="line">a = a ^ b;</span><br></pre></td></tr></table></figure>
-<h2 id="两数最大值或最小值"><a href="#两数最大值或最小值" class="headerlink" title="两数最大值或最小值"></a>两数最大值或最小值</h2><p><code>`</code><br>min = (y ^ (x ^ y) &amp; - (x &lt; y) )  //最小值<br>max = (x ^ (x ^ y) &amp; - (x &lt; y) )  //最大值</p>
-
+<h2 id="两数最大值或最小值"><a href="#两数最大值或最小值" class="headerlink" title="两数最大值或最小值"></a>两数最大值或最小值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">min = (y ^ (x ^ y) &amp; - (x &lt; y) )  //最小值</span><br><span class="line">max = (x ^ (x ^ y) &amp; - (x &lt; y) )  //最大值</span><br></pre></td></tr></table></figure>
       
     </div>
 
