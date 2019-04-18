@@ -116,12 +116,13 @@
 <meta property="og:site_name" content="Night Blog~">
 <meta property="og:description" content="一·Spring之旅1.1 简化Java开发Spring是一个基于IOC和AOP的结构J2EE系统的框架。Spring是一个开源框架，可以使用该框架来简化Java开发，为了降低Java开发的复杂性，Spring采取了以下四种关键策略：·基于POJO的轻量级和最小入侵性编程。·通过依赖注入和面向接口实现松耦合。·基于切面和惯例进行声明式编程。·通过切面和模板减少样板式代码。 1.1.1 激发POJO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/BeanLife.png">
-<meta property="og:updated_time" content="2019-04-18T09:45:25.300Z">
+<meta property="og:image" content="http://yoursite.com/images/Spring/BeanLife.png">
+<meta property="og:image" content="http://yoursite.com/images/Spring/Module.png">
+<meta property="og:updated_time" content="2019-04-18T12:48:39.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Spring实战》笔记">
 <meta name="twitter:description" content="一·Spring之旅1.1 简化Java开发Spring是一个基于IOC和AOP的结构J2EE系统的框架。Spring是一个开源框架，可以使用该框架来简化Java开发，为了降低Java开发的复杂性，Spring采取了以下四种关键策略：·基于POJO的轻量级和最小入侵性编程。·通过依赖注入和面向接口实现松耦合。·基于切面和惯例进行声明式编程。·通过切面和模板减少样板式代码。 1.1.1 激发POJO">
-<meta name="twitter:image" content="http://yoursite.com/images/BeanLife.png">
+<meta name="twitter:image" content="http://yoursite.com/images/Spring/BeanLife.png">
 
 
 
@@ -417,7 +418,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-18 17:45:25" itemprop="dateModified" datetime="2019-04-18T17:45:25+08:00">2019-04-18</time>
+                <time title="修改时间：2019-04-18 20:48:39" itemprop="dateModified" datetime="2019-04-18T20:48:39+08:00">2019-04-18</time>
               
             
           </span>
@@ -489,8 +490,16 @@
 <p>ClassPathXmlApplicationContext: 从类路径下的一个或多个XML配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = new</span><br><span class="line">        ClassPathXmlApplicationContext(&quot;文件路径.xml&quot;);      //文件系统路径</span><br></pre></td></tr></table></figure></p>
 <p>FileSystemXmlApplicationContext:从文件系统下的一个或多个XML配置文件中加载上下文定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = new</span><br><span class="line">        FileSystemXmlApplicationContext(&quot;文件名.xml&quot;);      //类路径下查找</span><br></pre></td></tr></table></figure></p>
 <p>应用上下文准备就绪后，可以调用上下文的getBean()方法从Spring容器中获取bean。</p>
-<h3 id="1-2-2-bean的生命周期"><a href="#1-2-2-bean的生命周期" class="headerlink" title="1.2.2 bean的生命周期"></a>1.2.2 bean的生命周期</h3><p><img src="/images/BeanLife.png" alt="bean的生命周期"></p>
-<h2 id="1-3俯瞰Spring风景线"><a href="#1-3俯瞰Spring风景线" class="headerlink" title="1.3俯瞰Spring风景线"></a>1.3俯瞰Spring风景线</h2>
+<h3 id="1-2-2-bean的生命周期"><a href="#1-2-2-bean的生命周期" class="headerlink" title="1.2.2 bean的生命周期"></a>1.2.2 bean的生命周期</h3><p><img src="/images/Spring/BeanLife.png" alt="bean的生命周期"></p>
+<h2 id="1-3俯瞰Spring风景线"><a href="#1-3俯瞰Spring风景线" class="headerlink" title="1.3俯瞰Spring风景线"></a>1.3俯瞰Spring风景线</h2><p>Spring框架之内，关注与通过DI，AOP和消除样板式代码来简化企业级Java开发。但在Spring框架之外，还存在一个构建在核心框架之上的庞大生态圈，将Spring扩展到不同领域，例如Web服务、REST（一种针对网络应用的设计和开发方式）、移动开发以及NoSQL（非关系型数据库,如MongoDB）。</p>
+<h3 id="1-3-1-Spring模块"><a href="#1-3-1-Spring模块" class="headerlink" title="1.3.1 Spring模块"></a>1.3.1 Spring模块</h3><p><img src="/images/Spring/Module.png" alt="Spring框架模块"></p>
+<h3 id="1-3-2-Spring-Portfolio"><a href="#1-3-2-Spring-Portfolio" class="headerlink" title="1.3.2 Spring Portfolio"></a>1.3.2 Spring Portfolio</h3><p>spring protfolio几乎为每一个领域的java开发提供了编程模型：<br>1.Spring Web Flow<br>2.Spring Web Service<br>3.Spring Security<br>4.Spring Integretion<br>5.Spring Batch<br>6.Spring Data<br>7.Spring Social<br>8.Spring Mobile<br>9.Spring for Android<br>10.Spring boot</p>
+<h2 id="1-4-Spring的新功能"><a href="#1-4-Spring的新功能" class="headerlink" title="1.4 Spring的新功能"></a>1.4 Spring的新功能</h2><p>不讲。</p>
+<h1 id="二·装配Bean"><a href="#二·装配Bean" class="headerlink" title="二·装配Bean"></a>二·装配Bean</h1><p>Spring中装配bean有多种方式，先介绍配置Spring容器最常见三种方法。</p>
+<h2 id="2-1-Spring配置的可选方案"><a href="#2-1-Spring配置的可选方案" class="headerlink" title="2.1 Spring配置的可选方案"></a>2.1 Spring配置的可选方案</h2><p>Spring提供了主要的装配机制：<br>·在XML中进行显示配置；<br>·在Java中进行显示配置；<br>·隐式的bean发现机制和自动装配。</p>
+<p>建议尽可能地使用自动装配机制，显示配置越少越好。其次时JavaConfig。最后考虑XML。</p>
+<h2 id="2-2-自动化装配bean"><a href="#2-2-自动化装配bean" class="headerlink" title="2.2 自动化装配bean"></a>2.2 自动化装配bean</h2><p>Spring从两个角度来实现自动化装配：<br>·组建扫描：Spring会自动发现应用上下文中所创建的bean。<br>·自动装配：Spring自动满足bean之间的依赖。</p>
+<h3 id="2-2-1-创建可被发现的bean"><a href="#2-2-1-创建可被发现的bean" class="headerlink" title="2.2.1 创建可被发现的bean"></a>2.2.1 创建可被发现的bean</h3>
       
     </div>
 
@@ -685,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一·Spring之旅"><span class="nav-number">1.</span> <span class="nav-text">一·Spring之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-简化Java开发"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简化Java开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-激发POJO的潜能"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 激发POJO的潜能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-依赖注入（DI）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 依赖注入（DI）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DI功能如何实现"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DI功能如何实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何工作"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">如何工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-应用切面（AOP）"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 应用切面（AOP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-使用模板消除样板式代码"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.1.4 使用模板消除样板式代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2容纳你的Bean"><span class="nav-number">1.2.</span> <span class="nav-text">1.2容纳你的Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-使用应用上下文"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 使用应用上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-bean的生命周期"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 bean的生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3俯瞰Spring风景线"><span class="nav-number">1.3.</span> <span class="nav-text">1.3俯瞰Spring风景线</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一·Spring之旅"><span class="nav-number">1.</span> <span class="nav-text">一·Spring之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-简化Java开发"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简化Java开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-激发POJO的潜能"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 激发POJO的潜能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-依赖注入（DI）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 依赖注入（DI）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DI功能如何实现"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DI功能如何实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何工作"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">如何工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-应用切面（AOP）"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 应用切面（AOP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-使用模板消除样板式代码"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.1.4 使用模板消除样板式代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2容纳你的Bean"><span class="nav-number">1.2.</span> <span class="nav-text">1.2容纳你的Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-使用应用上下文"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 使用应用上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-bean的生命周期"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 bean的生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3俯瞰Spring风景线"><span class="nav-number">1.3.</span> <span class="nav-text">1.3俯瞰Spring风景线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-Spring模块"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 Spring模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-Spring-Portfolio"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 Spring Portfolio</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Spring的新功能"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Spring的新功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二·装配Bean"><span class="nav-number">2.</span> <span class="nav-text">二·装配Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Spring配置的可选方案"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Spring配置的可选方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-自动化装配bean"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 自动化装配bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-创建可被发现的bean"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 创建可被发现的bean</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
