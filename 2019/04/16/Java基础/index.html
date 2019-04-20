@@ -119,7 +119,9 @@
 <meta property="og:image" content="http://yoursite.com/images/JavaSystem/KeyWords.png">
 <meta property="og:image" content="http://yoursite.com/images/JavaSystem/Operator1.png">
 <meta property="og:image" content="http://yoursite.com/images/JavaSystem/Operator2.png">
-<meta property="og:updated_time" content="2019-04-20T15:35:07.525Z">
+<meta property="og:image" content="http://yoursite.com/images/JavaSystem/Operator3.png">
+<meta property="og:image" content="http://yoursite.com/images/JavaSystem/AotoChange.png">
+<meta property="og:updated_time" content="2019-04-20T15:58:28.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础语法">
 <meta name="twitter:description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
@@ -419,7 +421,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-20 23:35:07" itemprop="dateModified" datetime="2019-04-20T23:35:07+08:00">2019-04-20</time>
+                <time title="修改时间：2019-04-20 23:58:28" itemprop="dateModified" datetime="2019-04-20T23:58:28+08:00">2019-04-20</time>
               
             
           </span>
@@ -612,50 +614,14 @@
 <h2 id="一元运算符"><a href="#一元运算符" class="headerlink" title="一元运算符"></a>一元运算符</h2><p>包含 ‘++’,’–’,用法与C相同。</p>
 <h2 id="赋值运算符和扩展赋值运算符"><a href="#赋值运算符和扩展赋值运算符" class="headerlink" title="赋值运算符和扩展赋值运算符"></a>赋值运算符和扩展赋值运算符</h2><p><img src="/images/JavaSystem/Operator1.png" alt="赋值运算符"></p>
 <h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p><img src="/images/JavaSystem/Operator2.png" alt="关系运算符"></p>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">符号</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">逻辑与</td>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">两个操作数为true，结果才是true，否则为false</td>
-</tr>
-<tr>
-<td style="text-align:center">逻辑或</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td>两个操作数有一个是true，结果是true</td>
-</tr>
-<tr>
-<td style="text-align:center">逻辑非</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">取反</td>
-</tr>
-<tr>
-<td style="text-align:center">逻辑异或</td>
-<td style="text-align:center">^</td>
-<td style="text-align:center">相同为false，不同为true</td>
-</tr>
-<tr>
-<td style="text-align:center">短路与</td>
-<td style="text-align:center">&amp;&amp;</td>
-<td style="text-align:center">只要有一个为false，直接返回false</td>
-</tr>
-<tr>
-<td style="text-align:center">短路或</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td></td>
-<td>只要有一个为true，直接返回true</td>
-</tr>
-</tbody>
-</table>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p><img src="/images/JavaSystem/Operator3.png" alt="位运算符"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a = 3 * 2 * 2;</span><br><span class="line">int b = 3 &lt;&lt; 2; //相当于3 * (2^2)</span><br><span class="line">int c = 12 / (2^2);</span><br><span class="line">int d = 12 &gt;&gt; 2;//相当于12/2/2</span><br></pre></td></tr></table></figure>
+<h2 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h2><p>语法格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x ? y : z;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a = 14;</span><br><span class="line">int b = 10;</span><br><span class="line">int max;</span><br><span class="line">max = a &gt; b ? a : b;</span><br></pre></td></tr></table></figure>
+<h1 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h1><p>自动类型转换只容量小的数据类型可以自动转换成容量打的数据类型。</p>
+<p>实线表示无数据丢失的自动类型转换，虚线表示转换时可能会有精度的损失。<br><img src="/images/JavaSystem/AotoChange.png" alt="自动类型转换"></p>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><p>在变量前用括号指定类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(type)var;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x = 3.14;</span><br><span class="line">int nx = (int)x;    //值为3</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -855,7 +821,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符使用规范"><span class="nav-number">2.</span> <span class="nav-text">标识符使用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java关键字和保留字"><span class="nav-number">3.</span> <span class="nav-text">Java关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量分类"><span class="nav-number">4.2.</span> <span class="nav-text">变量分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整型数据类型"><span class="nav-number">5.</span> <span class="nav-text">整型数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点型数据"><span class="nav-number">6.</span> <span class="nav-text">浮点型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点数和整数的比较"><span class="nav-number">7.</span> <span class="nav-text">浮点数和整数的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符型数据"><span class="nav-number">8.</span> <span class="nav-text">字符型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boolean类型数据"><span class="nav-number">9.</span> <span class="nav-text">boolean类型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">10.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二元运算符"><span class="nav-number">10.1.</span> <span class="nav-text">二元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一元运算符"><span class="nav-number">10.2.</span> <span class="nav-text">一元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符和扩展赋值运算符"><span class="nav-number">10.3.</span> <span class="nav-text">赋值运算符和扩展赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">10.4.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">10.5.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符使用规范"><span class="nav-number">2.</span> <span class="nav-text">标识符使用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java关键字和保留字"><span class="nav-number">3.</span> <span class="nav-text">Java关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量分类"><span class="nav-number">4.2.</span> <span class="nav-text">变量分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整型数据类型"><span class="nav-number">5.</span> <span class="nav-text">整型数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点型数据"><span class="nav-number">6.</span> <span class="nav-text">浮点型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点数和整数的比较"><span class="nav-number">7.</span> <span class="nav-text">浮点数和整数的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符型数据"><span class="nav-number">8.</span> <span class="nav-text">字符型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boolean类型数据"><span class="nav-number">9.</span> <span class="nav-text">boolean类型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">10.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二元运算符"><span class="nav-number">10.1.</span> <span class="nav-text">二元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一元运算符"><span class="nav-number">10.2.</span> <span class="nav-text">一元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符和扩展赋值运算符"><span class="nav-number">10.3.</span> <span class="nav-text">赋值运算符和扩展赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">10.4.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位运算符"><span class="nav-number">10.5.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件运算符"><span class="nav-number">10.6.</span> <span class="nav-text">条件运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动类型转换"><span class="nav-number">11.</span> <span class="nav-text">自动类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#强制类型转换"><span class="nav-number">12.</span> <span class="nav-text">强制类型转换</span></a></li></ol></div>
             
 
           </div>
