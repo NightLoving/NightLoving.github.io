@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="一·Java程序设计概述1.2 Java关键术语1)简单性2)面向对象3)分布式4)健壮性5)安全性6)体系结构中立7)可移植性8)解释性9)高性能10)多线程11)动态性 二·Java程序设计环境介绍几个常用的Java术语：    术语名 缩 写 解 释     Java Development Kit JDK 编写Java程序的程序员使用的程序   Java Runtime Environme">
-<meta name="keywords" content="《Java核心技术》笔记">
+  <meta name="description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
+<meta name="keywords" content="Java知识体系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础">
+<meta property="og:title" content="Java基础语法">
 <meta property="og:url" content="http://yoursite.com/2019/04/16/Java基础/index.html">
 <meta property="og:site_name" content="Night Blog~">
-<meta property="og:description" content="一·Java程序设计概述1.2 Java关键术语1)简单性2)面向对象3)分布式4)健壮性5)安全性6)体系结构中立7)可移植性8)解释性9)高性能10)多线程11)动态性 二·Java程序设计环境介绍几个常用的Java术语：    术语名 缩 写 解 释     Java Development Kit JDK 编写Java程序的程序员使用的程序   Java Runtime Environme">
+<meta property="og:description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-18T10:28:58.036Z">
+<meta property="og:updated_time" content="2019-04-20T08:04:16.362Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础">
-<meta name="twitter:description" content="一·Java程序设计概述1.2 Java关键术语1)简单性2)面向对象3)分布式4)健壮性5)安全性6)体系结构中立7)可移植性8)解释性9)高性能10)多线程11)动态性 二·Java程序设计环境介绍几个常用的Java术语：    术语名 缩 写 解 释     Java Development Kit JDK 编写Java程序的程序员使用的程序   Java Runtime Environme">
+<meta name="twitter:title" content="Java基础语法">
+<meta name="twitter:description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Java基础 | Night Blog~</title>
+  <title>Java基础语法 | Night Blog~</title>
   
 
 
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java基础
+          <h1 class="post-title" itemprop="name headline">Java基础语法
               
             
           </h1>
@@ -415,7 +415,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-18 18:28:58" itemprop="dateModified" datetime="2019-04-18T18:28:58+08:00">2019-04-18</time>
+                <time title="修改时间：2019-04-20 16:04:16" itemprop="dateModified" datetime="2019-04-20T16:04:16+08:00">2019-04-20</time>
               
             
           </span>
@@ -432,7 +432,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/《Java核心技术》笔记/" itemprop="url" rel="index"><span itemprop="name">《Java核心技术》笔记</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java知识体系/" itemprop="url" rel="index"><span itemprop="name">Java知识体系</span></a></span>
 
                 
                 
@@ -466,46 +466,97 @@
       
 
       
-        <h1 id="一·Java程序设计概述"><a href="#一·Java程序设计概述" class="headerlink" title="一·Java程序设计概述"></a>一·Java程序设计概述</h1><h2 id="1-2-Java关键术语"><a href="#1-2-Java关键术语" class="headerlink" title="1.2 Java关键术语"></a>1.2 Java关键术语</h2><p>1)简单性<br>2)面向对象<br>3)分布式<br>4)健壮性<br>5)安全性<br>6)体系结构中立<br>7)可移植性<br>8)解释性<br>9)高性能<br>10)多线程<br>11)动态性</p>
-<h1 id="二·Java程序设计环境"><a href="#二·Java程序设计环境" class="headerlink" title="二·Java程序设计环境"></a>二·Java程序设计环境</h1><p>介绍几个常用的Java术语：</p>
-<table>
+        <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>单行注释：使用 “//“ 开头，后面的单行内容为注释。</p>
+<p>多行注释：以 “/<em>“ 开头， “</em>/“ 结尾，中间内容为注释，不能嵌套使用。</p>
+<p>文档注释：以 “/*<em>“ 开头， “</em>/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。</p>
+<h1 id="标识符使用规范"><a href="#标识符使用规范" class="headerlink" title="标识符使用规范"></a>标识符使用规范</h1><p>表示类名的标识符：每个单词首字母大写，如BallGame、Player。。</p>
+<p>表示方法和变量的标识符：满足“驼峰规则”，如eat(),eatFood()。</p>
+<h1 id="Java关键字和保留字"><a href="#Java关键字和保留字" class="headerlink" title="Java关键字和保留字"></a>Java关键字和保留字</h1><p>!(Java关键字)[/images/JavaSystem/KeyWords.png]</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double salary;</span><br><span class="line">int age;</span><br></pre></td></tr></table></figure>
+<p>变量类型可以是基本类型，也可以是引用类型。</p>
+<h2 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">术语名</th>
-<th style="text-align:center">缩 写</th>
-<th style="text-align:center">解 释</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">声明位置</th>
+<th style="text-align:center">从属于</th>
+<th style="text-align:center">生命周期</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Java Development Kit</td>
-<td style="text-align:center">JDK</td>
-<td style="text-align:center">编写Java程序的程序员使用的程序</td>
+<td style="text-align:center">局部变量</td>
+<td style="text-align:center">方法或语句块内部</td>
+<td style="text-align:center">方法/语句块</td>
+<td style="text-align:center">从声明位置开始，直到方法或语句块执行完毕，局部变量消失</td>
 </tr>
 <tr>
-<td style="text-align:center">Java Runtime Environment</td>
-<td style="text-align:center">JRE</td>
-<td style="text-align:center">运行Java的用户使用的软件</td>
+<td style="text-align:center">成员变量（实例变量）</td>
+<td style="text-align:center">类内部，方法外部</td>
+<td style="text-align:center">对象</td>
+<td style="text-align:center">创建对象，成员变量也跟着创建，对象消失，成员变量也跟着消失</td>
 </tr>
 <tr>
-<td style="text-align:center">Standard Edition</td>
-<td style="text-align:center">SE</td>
-<td style="text-align:center">用于桌面或简单服务器应用的Java平台</td>
-</tr>
-<tr>
-<td style="text-align:center">Enterprise Edition</td>
-<td style="text-align:center">EE</td>
-<td style="text-align:center">用于复杂服务器应用的Java平台</td>
-</tr>
-<tr>
-<td style="text-align:center">Micro Edition</td>
-<td style="text-align:center">ME</td>
-<td style="text-align:center">用于手机和其他小型设的Java平台</td>
+<td style="text-align:center">静态变量（类变量）</td>
+<td style="text-align:center">类内部，static修饰</td>
+<td style="text-align:center">类</td>
+<td style="text-align:center">类被加载，静态变量就有效，类被卸载，静态变量就消失</td>
 </tr>
 </tbody>
 </table>
-<p>我们要使用的是JDK，请自行下载，安装，配置。</p>
-<h1 id="三·Java的基本程序设计结构"><a href="#三·Java的基本程序设计结构" class="headerlink" title="三·Java的基本程序设计结构"></a>三·Java的基本程序设计结构</h1>
+<h1 id="整型数据类型"><a href="#整型数据类型" class="headerlink" title="整型数据类型"></a>整型数据类型</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">占用存储空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">1字节</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">2字节</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4字节</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">8字节</td>
+</tr>
+</tbody>
+</table>
+<p>特殊进制表示方法：</p>
+<p>八进制整数：以0开头，如：013<br>十六进制数：以0x或0X开头，如：0x15<br>二进制数：以0b或0B开头，如0b011001011</p>
+<h1 id="浮点型数据"><a href="#浮点型数据" class="headerlink" title="浮点型数据"></a>浮点型数据</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">占用存储空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4字节</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8字节</td>
+</tr>
+</tbody>
+</table>
+<h1 id="浮点数和整数的比较"><a href="#浮点数和整数的比较" class="headerlink" title="浮点数和整数的比较"></a>浮点数和整数的比较</h1><p>java.math包下有两个类：BigInteger和BigDecimal,这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal bd = BigDecimal.valueOf(1.0);        //bd = 1.0</span><br><span class="line">bd = bd.substract(BigDecimal.valueOf(0.1));</span><br><span class="line">bd = bd.substract(BigDecimal.valueOf(0.1));</span><br><span class="line">bd = bd.substract(BigDecimal.valueOf(0.1));</span><br><span class="line">bd = bd.substract(BigDecimal.valueOf(0.1));</span><br><span class="line">bd = bd.substract(BigDecimal.valueOf(0.1));     //bd减0.1</span><br><span class="line">System.out.println(bd);</span><br><span class="line">System.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);  //0.50000000000000001 有误差</span><br><span class="line"></span><br><span class="line">BigDecimal bd1 = BigDecimal.valueOf(0.1);</span><br><span class="line">BigDecimal bd2 = BigDecimal.valueOf(1.0/10.0);</span><br><span class="line"></span><br><span class="line">System.out.println(bd1.equals(bd2));            //true</span><br></pre></td></tr></table></figure>
+<h1 id="字符型数据"><a href="#字符型数据" class="headerlink" title="字符型数据"></a>字符型数据</h1><p>char类型用来表示在<strong>Unicode的编码表中的字符</strong>。Unicode编码被设计用来处理各种语言的文字，占两个字节。</p>
+<p>Unicode具有从0到65535之间的编码，通常用从’\u0000’到’\uFFFF’之间的十六进制值来表示。</p>
+<p>转义字符：<br>转义符|含义|Unicode值<br>:-:|:-:|:-:<br>\b|退格（backspace）|\u0008<br>\n|换行|\u000a<br>\r|回车|\u000d<br>\t|制表符（tab）|\u0009<br>\”|双引号|\u0022<br>\’|单引号|\u0027<br>\|反斜杠|\u005c</p>
+<h1 id="boolean类型数据"><a href="#boolean类型数据" class="headerlink" title="boolean类型数据"></a>boolean类型数据</h1><p>boolean类型有两个常量值，true和false，在内存中占一位（不是一个字节），不可以使用0或非0的整数替代。</p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1>
       
     </div>
 
@@ -528,7 +579,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/《Java核心技术》笔记/" rel="tag"># 《Java核心技术》笔记</a>
+            <a href="/tags/Java知识体系/" rel="tag"># Java知识体系</a>
           
         </div>
       
@@ -541,8 +592,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/24/Leetcode-1/" rel="next" title="Leetcode 1">
-                <i class="fa fa-chevron-left"></i> Leetcode 1
+              <a href="/2019/04/16/Spring/" rel="next" title="《Spring实战》笔记">
+                <i class="fa fa-chevron-left"></i> 《Spring实战》笔记
               </a>
             
           </div>
@@ -550,10 +601,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/16/Spring/" rel="prev" title="《Spring实战》笔记">
-                《Spring实战》笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -704,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一·Java程序设计概述"><span class="nav-number">1.</span> <span class="nav-text">一·Java程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java关键术语"><span class="nav-number">1.1.</span> <span class="nav-text">1.2 Java关键术语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二·Java程序设计环境"><span class="nav-number">2.</span> <span class="nav-text">二·Java程序设计环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三·Java的基本程序设计结构"><span class="nav-number">3.</span> <span class="nav-text">三·Java的基本程序设计结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符使用规范"><span class="nav-number">2.</span> <span class="nav-text">标识符使用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java关键字和保留字"><span class="nav-number">3.</span> <span class="nav-text">Java关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量分类"><span class="nav-number">4.2.</span> <span class="nav-text">变量分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整型数据类型"><span class="nav-number">5.</span> <span class="nav-text">整型数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点型数据"><span class="nav-number">6.</span> <span class="nav-text">浮点型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点数和整数的比较"><span class="nav-number">7.</span> <span class="nav-text">浮点数和整数的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符型数据"><span class="nav-number">8.</span> <span class="nav-text">字符型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boolean类型数据"><span class="nav-number">9.</span> <span class="nav-text">boolean类型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">10.</span> <span class="nav-text">运算符</span></a></li></ol></div>
             
 
           </div>
