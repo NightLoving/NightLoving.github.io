@@ -117,7 +117,9 @@
 <meta property="og:description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/JavaSystem/KeyWords.png">
-<meta property="og:updated_time" content="2019-04-20T15:06:09.977Z">
+<meta property="og:image" content="http://yoursite.com/images/JavaSystem/Operator1.png">
+<meta property="og:image" content="http://yoursite.com/images/JavaSystem/Operator2.png">
+<meta property="og:updated_time" content="2019-04-20T15:35:07.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础语法">
 <meta name="twitter:description" content="注释单行注释：使用 “//“ 开头，后面的单行内容为注释。 多行注释：以 “/“ 开头， “/“ 结尾，中间内容为注释，不能嵌套使用。 文档注释：以 “/*“ 开头， “/“ 结尾，包含说明性的文字及一些JavaDoc标签，写项目时可以生成项目API。 标识符使用规范表示类名的标识符：每个单词首字母大写，如BallGame、Player。。 表示方法和变量的标识符：满足“驼峰规则”，如eat(),">
@@ -417,7 +419,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-20 23:06:09" itemprop="dateModified" datetime="2019-04-20T23:06:09+08:00">2019-04-20</time>
+                <time title="修改时间：2019-04-20 23:35:07" itemprop="dateModified" datetime="2019-04-20T23:35:07+08:00">2019-04-20</time>
               
             
           </span>
@@ -604,7 +606,57 @@
 </tbody>
 </table>
 <h1 id="boolean类型数据"><a href="#boolean类型数据" class="headerlink" title="boolean类型数据"></a>boolean类型数据</h1><p>boolean类型有两个常量值，true和false，在内存中占一位（不是一个字节），不可以使用0或非0的整数替代。</p>
-<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符"></a>二元运算符</h2><p>Java中二元运算符与C中大同小异，包含：’+’ ‘-‘ ‘*’ ‘/‘ ‘%’。</p>
+<p>运算规则：</p>
+<p>·如果两个操作数有一个为long，结果为long。<br>·没有long时，结果为int，即使操作数全为short，byte，结果也是int。<br>·如果两个操作数有double，结果为double。<br>·只有两个操作数都是float，结果才为float。<br>·求余运算，<strong>余数符号与左边操作数相同</strong>，如：7 % 3 = 1，-7 % 3 = -1，7 % (-3) = 1。</p>
+<h2 id="一元运算符"><a href="#一元运算符" class="headerlink" title="一元运算符"></a>一元运算符</h2><p>包含 ‘++’,’–’,用法与C相同。</p>
+<h2 id="赋值运算符和扩展赋值运算符"><a href="#赋值运算符和扩展赋值运算符" class="headerlink" title="赋值运算符和扩展赋值运算符"></a>赋值运算符和扩展赋值运算符</h2><p><img src="/images/JavaSystem/Operator1.png" alt="赋值运算符"></p>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p><img src="/images/JavaSystem/Operator2.png" alt="关系运算符"></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">逻辑与</td>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">两个操作数为true，结果才是true，否则为false</td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑或</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td>两个操作数有一个是true，结果是true</td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑非</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">取反</td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑异或</td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">相同为false，不同为true</td>
+</tr>
+<tr>
+<td style="text-align:center">短路与</td>
+<td style="text-align:center">&amp;&amp;</td>
+<td style="text-align:center">只要有一个为false，直接返回false</td>
+</tr>
+<tr>
+<td style="text-align:center">短路或</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td>只要有一个为true，直接返回true</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
 
@@ -803,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符使用规范"><span class="nav-number">2.</span> <span class="nav-text">标识符使用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java关键字和保留字"><span class="nav-number">3.</span> <span class="nav-text">Java关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量分类"><span class="nav-number">4.2.</span> <span class="nav-text">变量分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整型数据类型"><span class="nav-number">5.</span> <span class="nav-text">整型数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点型数据"><span class="nav-number">6.</span> <span class="nav-text">浮点型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点数和整数的比较"><span class="nav-number">7.</span> <span class="nav-text">浮点数和整数的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符型数据"><span class="nav-number">8.</span> <span class="nav-text">字符型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boolean类型数据"><span class="nav-number">9.</span> <span class="nav-text">boolean类型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">10.</span> <span class="nav-text">运算符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标识符使用规范"><span class="nav-number">2.</span> <span class="nav-text">标识符使用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java关键字和保留字"><span class="nav-number">3.</span> <span class="nav-text">Java关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量分类"><span class="nav-number">4.2.</span> <span class="nav-text">变量分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整型数据类型"><span class="nav-number">5.</span> <span class="nav-text">整型数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点型数据"><span class="nav-number">6.</span> <span class="nav-text">浮点型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浮点数和整数的比较"><span class="nav-number">7.</span> <span class="nav-text">浮点数和整数的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符型数据"><span class="nav-number">8.</span> <span class="nav-text">字符型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boolean类型数据"><span class="nav-number">9.</span> <span class="nav-text">boolean类型数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">10.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二元运算符"><span class="nav-number">10.1.</span> <span class="nav-text">二元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一元运算符"><span class="nav-number">10.2.</span> <span class="nav-text">一元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符和扩展赋值运算符"><span class="nav-number">10.3.</span> <span class="nav-text">赋值运算符和扩展赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">10.4.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">10.5.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li></ol></div>
             
 
           </div>
