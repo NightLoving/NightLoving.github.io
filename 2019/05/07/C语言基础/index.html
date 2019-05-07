@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Night Blog~">
 <meta property="og:description" content="二维数组与指针二维数组的定义类型 数组名[常量表达式1][常量表达式2]; 例如：float a[2][3]; 二维数组的引用数组名[行下标][列下标]; 二维数组的初始化1、分行初始化12345int a[3][4] = &amp;#123;    &amp;#123;1,2,3,4&amp;#125;,    &amp;#123;5,6,7,8&amp;#125;,    &amp;#123;9,10,11,12&amp;#125;&amp;#125;;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-07T08:18:17.355Z">
+<meta property="og:updated_time" content="2019-05-07T09:30:02.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言基础">
 <meta name="twitter:description" content="二维数组与指针二维数组的定义类型 数组名[常量表达式1][常量表达式2]; 例如：float a[2][3]; 二维数组的引用数组名[行下标][列下标]; 二维数组的初始化1、分行初始化12345int a[3][4] = &amp;#123;    &amp;#123;1,2,3,4&amp;#125;,    &amp;#123;5,6,7,8&amp;#125;,    &amp;#123;9,10,11,12&amp;#125;&amp;#125;;">
@@ -427,7 +427,7 @@
                 
               
 
-              <time title="创建时间：2019-05-07 00:00:00 / 修改时间：16:18:17" itemprop="dateCreated datePublished" datetime="2019-05-07T00:00:00+08:00">2019-05-07</time>
+              <time title="创建时间：2019-05-07 00:00:00 / 修改时间：17:30:02" itemprop="dateCreated datePublished" datetime="2019-05-07T00:00:00+08:00">2019-05-07</time>
             
 
             
@@ -552,7 +552,111 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Node* Add_end(Node* head)&#123;</span><br><span class="line">    Node *p;</span><br><span class="line">    Node *tail;</span><br><span class="line"></span><br><span class="line">    p = (Node*)malloc(sizeof(Node));</span><br><span class="line">    if(NULL == p)&#123;</span><br><span class="line">        printf(&quot;Wrong!&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;(p-&gt;ID) );  //一个结点创建完毕。</span><br><span class="line"></span><br><span class="line">    if(NULL == head)&#123;</span><br><span class="line">        head = p;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        tail = head;</span><br><span class="line">        while(tail-&gt;next != NULL)&#123;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">        &#125;                           //找到尾节点</span><br><span class="line"></span><br><span class="line">        tail-&gt;next = p;             //插入</span><br><span class="line">    &#125;</span><br><span class="line">    return head;                    //返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="头插法创建链表"><a href="#头插法创建链表" class="headerlink" title="头插法创建链表"></a>头插法创建链表</h3><p>基本思路：<br>1、建立空链表，但不需要定义尾指针。<br>2、生成新结点，对新结点赋值，指针域可不必赋值。<br>3、将结点插入到链表中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node* Add_head(Node* head)&#123;</span><br><span class="line">    Node* p;</span><br><span class="line"></span><br><span class="line">    p = (Node*)malloc(sizeof(Node));</span><br><span class="line">    if(NULL == p)&#123;</span><br><span class="line">        printf(&quot;Wrong!&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;(p-&gt;ID));       //单个结点创建完成</span><br><span class="line"></span><br><span class="line">    p-&gt;next = head;</span><br><span class="line">    head = p;                   //插入完成</span><br><span class="line"></span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="打开文件fopen"><a href="#打开文件fopen" class="headerlink" title="打开文件fopen"></a>打开文件fopen</h2><p>常用的打开文件方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if( (fp = fopen(&quot;文件名&quot;,&quot;操作方式&quot;)) == NULL )&#123;</span><br><span class="line">    printf(&quot;打不开文件\n&quot;);</span><br><span class="line">    exit(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>文件操作方式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件操作方式</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r(只读)</td>
+<td style="text-align:center">为输入打开一个文本文件</td>
+</tr>
+<tr>
+<td style="text-align:center">w(只写)</td>
+<td style="text-align:center">为输出打开一个文本文件</td>
+</tr>
+<tr>
+<td style="text-align:center">a(追加)</td>
+<td style="text-align:center">向文本文件尾增加数据</td>
+</tr>
+<tr>
+<td style="text-align:center">rb(只读)</td>
+<td style="text-align:center">为输入打开一个二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:center">wb(只写)</td>
+<td style="text-align:center">为输出打开一个二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:center">ab(追加)</td>
+<td style="text-align:center">向二进制文件尾增加数据</td>
+</tr>
+<tr>
+<td style="text-align:center">r+(读写)</td>
+<td style="text-align:center">为读/写打开一个文本文件</td>
+</tr>
+<tr>
+<td style="text-align:center">w+(读写)</td>
+<td style="text-align:center">为读/写建立一个新的文本文件</td>
+</tr>
+<tr>
+<td style="text-align:center">a+(读写)</td>
+<td style="text-align:center">为读/写打开一个文本文件</td>
+</tr>
+<tr>
+<td style="text-align:center">rb+(读写)</td>
+<td style="text-align:center">为读/写打开一个二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:center">wb+(读写)</td>
+<td style="text-align:center">为读/写建立一个新的二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:center">ab+(读写)</td>
+<td style="text-align:center">为读/写打开一个二进制文件</td>
+</tr>
+</tbody>
+</table>
+<p>规律：<br>1、含有”b”的为二进制文件操作。<br>2、含有”+”的可以进行读写操作，且可以新建文件。</p>
+<h2 id="文件关闭fclose"><a href="#文件关闭fclose" class="headerlink" title="文件关闭fclose"></a>文件关闭fclose</h2><p>函数原型：<code>int fclose(FILE *fp);</code></p>
+<p>功能：关闭fp所指向的文件。</p>
+<p>正常关闭返回0，出错返回非0值。</p>
+<h2 id="读-写文件中的一个字符"><a href="#读-写文件中的一个字符" class="headerlink" title="读/写文件中的一个字符"></a>读/写文件中的一个字符</h2><h3 id="写入一个字符到文件中——fputc"><a href="#写入一个字符到文件中——fputc" class="headerlink" title="写入一个字符到文件中——fputc"></a>写入一个字符到文件中——fputc</h3><p>函数原型：<code>int fputc(int c, FILE *fp);</code></p>
+<p>功能：把一字节代码c写入fp指向的文件中，同时读写位置指针指向下一个写入位置。</p>
+<p>返回值：正常，返回c（ASCLL码）；错误返回EOF。</p>
+<h3 id="从文件中读取一个字符——fgetc"><a href="#从文件中读取一个字符——fgetc" class="headerlink" title="从文件中读取一个字符——fgetc"></a>从文件中读取一个字符——fgetc</h3><p>函数原型：<code>int fgetc(FILE *fp)</code></p>
+<p>功能：从fp指向的文件中读取一字节代码。</p>
+<p>返回值：正常，返回读到的代码值；读到文件为或出错，返回EOF。</p>
+<h3 id="库函数feof"><a href="#库函数feof" class="headerlink" title="库函数feof"></a>库函数feof</h3><p>函数原型：<code>int feof(FILE *fp)</code></p>
+<p>功能：执行读文件操作时，遇到文件尾，返回逻辑真；否则返回0。</p>
+<h2 id="读-写一个字符串"><a href="#读-写一个字符串" class="headerlink" title="读/写一个字符串"></a>读/写一个字符串</h2><h3 id="读一个字符串——fgets"><a href="#读一个字符串——fgets" class="headerlink" title="读一个字符串——fgets"></a>读一个字符串——fgets</h3><p>函数原型：<code>char *fgets(char *s, int n, FILE *fp)</code></p>
+<p>功能：从fp所指向文件读<strong>n-1个字符</strong>送股s指向的内存区，<strong>并在最后加一个’\0’</strong>。</p>
+<p>返回值：正常时返回读取字符串的首地址；出错或遇文件尾返回NULL。</p>
+<h3 id="写一个字符串——fputs"><a href="#写一个字符串——fputs" class="headerlink" title="写一个字符串——fputs"></a>写一个字符串——fputs</h3><p>函数原型：<code>int fputs(char *s, FILE *fp)</code></p>
+<p>功能：把s指向的字符串写入fp指向的文件。</p>
+<p>返回值：正常时返回写入的最后一个字符；出错为EOF。</p>
+<h2 id="读-写一个数据块"><a href="#读-写一个数据块" class="headerlink" title="读/写一个数据块"></a>读/写一个数据块</h2><h3 id="读一个数据块——fread"><a href="#读一个数据块——fread" class="headerlink" title="读一个数据块——fread"></a>读一个数据块——fread</h3><p>函数原型：<code>int fread(void *buffer, int size, int count, FILE *fp)</code></p>
+<p>功能：从fp所指向的文件的<strong>当前位置开始</strong>，一次读入size个字节，重复count次，并将读入的数据存放到从buffer开始的内存中；同时，将读写位置指针移动size*count个字节。</p>
+<p>返回值：调用成功，返回count；否则为0。</p>
+<p>注意：一般用于二进制文件的处理。</p>
+<h3 id="写一个数据块——fwrite"><a href="#写一个数据块——fwrite" class="headerlink" title="写一个数据块——fwrite"></a>写一个数据块——fwrite</h3><p>函数原型：<code>int fwrite(void buffer, int size, int count, FILE *fp)</code></p>
+<p>功能：从buffer开始，一次输出size个字节，重复count次，并将输出的数据存放到fp所指向的文件中；同时将读写文件位置指针移动size*count个字节。</p>
+<p>返回值：调用成功，返回count；否则为0。</p>
+<p>注意：一般用于二进制文件的处理。</p>
+<h2 id="对文件进行格式化读写"><a href="#对文件进行格式化读写" class="headerlink" title="对文件进行格式化读写"></a>对文件进行格式化读写</h2><p>函数原型：<br>1、读入：<code>int fscanf(FILE *fp,const char*format,[argument,···])</code><br>2、写出：<code>int fprintf(FILE *fp,const char*format,[argument,···])</code></p>
+<p>功能：按格式对文件进行I/O操作。</p>
+<p>返回值：成功，返回I/O的个数；出错或文件尾，返回EOF。</p>
+<h2 id="位置指针和文件定位"><a href="#位置指针和文件定位" class="headerlink" title="位置指针和文件定位"></a>位置指针和文件定位</h2><h3 id="位置指针复位函数——rewind"><a href="#位置指针复位函数——rewind" class="headerlink" title="位置指针复位函数——rewind"></a>位置指针复位函数——rewind</h3><p>函数原型：<code>void rewind(FILE *fp)</code></p>
+<p>功能：使文件的位置指针返回到文件头。</p>
+<h3 id="移动文件位置指针函数fseek"><a href="#移动文件位置指针函数fseek" class="headerlink" title="移动文件位置指针函数fseek"></a>移动文件位置指针函数fseek</h3><p>函数原型：<code>int fseek(FILE *fp, long int offset, int whence)</code></p>
+<p>功能：将指定文件的位置指针，从参照点开始，移动指定的字节数。</p>
+<p>参照点：’0’或SEEK_SET表示文件头，’1’或SEEK_CUR表示当前位置，’2’或SEEK_END表示文件尾。</p>
+<p>返回值：成功为0；否则为非0值。</p>
+<p>注意：一般用于二进制文件处理。</p>
+<h3 id="返回文件当前位置的函数ftell"><a href="#返回文件当前位置的函数ftell" class="headerlink" title="返回文件当前位置的函数ftell"></a>返回文件当前位置的函数ftell</h3><p>函数原型：<code>long int ftell(FILE *fp)</code></p>
+<p>功能：返回文件位置指针的当前位置（用相对于文件头的位移量表示）。如果返回值为-1L表明调用出错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">offset = ftell(fp);</span><br><span class="line">if(offset == -1L)</span><br><span class="line">    printf(&quot;ftell() error\n&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="出错检测"><a href="#出错检测" class="headerlink" title="出错检测"></a>出错检测</h2><h3 id="ferror函数"><a href="#ferror函数" class="headerlink" title="ferror函数"></a>ferror函数</h3><p>函数原型：<code>int ferror(FILE *fp)</code></p>
+<p>功能：如果返回值为0，表示未出错；返回非0值，表示出错。</p>
+<p>注意：<br>(1)对同一文件，每次调用输入输出函数均产生新的ferror()函数值。因此调用的输入输出函数后，应立即检测，否则出错信息会丢失。<br>(2)在执行fopen函数时，系统将ferror的值设为0。</p>
+<h3 id="clearerr函数"><a href="#clearerr函数" class="headerlink" title="clearerr函数"></a>clearerr函数</h3><p>函数原型：<code>void clearerr(FILE *fp)</code></p>
+<p>功能：将文件错误标志（ferror的值）和文件结束标志（feof的值）置为0。</p>
+
       
     </div>
 
@@ -751,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组与指针"><span class="nav-number">1.</span> <span class="nav-text">二维数组与指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的定义"><span class="nav-number">1.1.</span> <span class="nav-text">二维数组的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的引用"><span class="nav-number">1.2.</span> <span class="nav-text">二维数组的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的初始化"><span class="nav-number">1.3.</span> <span class="nav-text">二维数组的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的输入与输出"><span class="nav-number">1.4.</span> <span class="nav-text">二维数组的输入与输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指向二维数组的指针"><span class="nav-number">1.5.</span> <span class="nav-text">指向二维数组的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的行指针与列指针"><span class="nav-number">1.6.</span> <span class="nav-text">二维数组的行指针与列指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针与二维数组"><span class="nav-number">1.7.</span> <span class="nav-text">指针与二维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊的指针：数组类型指针"><span class="nav-number">1.8.</span> <span class="nav-text">特殊的指针：数组类型指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针数组"><span class="nav-number">1.9.</span> <span class="nav-text">指针数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数"><span class="nav-number">1.10.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态分配内存"><span class="nav-number">1.11.</span> <span class="nav-text">动态分配内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构体"><span class="nav-number">2.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体的定义"><span class="nav-number">2.1.</span> <span class="nav-text">结构体的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义类型名"><span class="nav-number">2.2.</span> <span class="nav-text">定义类型名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">2.3.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尾插法创建链表"><span class="nav-number">2.3.1.</span> <span class="nav-text">尾插法创建链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头插法创建链表"><span class="nav-number">2.3.2.</span> <span class="nav-text">头插法创建链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">3.</span> <span class="nav-text">文件操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组与指针"><span class="nav-number">1.</span> <span class="nav-text">二维数组与指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的定义"><span class="nav-number">1.1.</span> <span class="nav-text">二维数组的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的引用"><span class="nav-number">1.2.</span> <span class="nav-text">二维数组的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的初始化"><span class="nav-number">1.3.</span> <span class="nav-text">二维数组的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的输入与输出"><span class="nav-number">1.4.</span> <span class="nav-text">二维数组的输入与输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指向二维数组的指针"><span class="nav-number">1.5.</span> <span class="nav-text">指向二维数组的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的行指针与列指针"><span class="nav-number">1.6.</span> <span class="nav-text">二维数组的行指针与列指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针与二维数组"><span class="nav-number">1.7.</span> <span class="nav-text">指针与二维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊的指针：数组类型指针"><span class="nav-number">1.8.</span> <span class="nav-text">特殊的指针：数组类型指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针数组"><span class="nav-number">1.9.</span> <span class="nav-text">指针数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数"><span class="nav-number">1.10.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态分配内存"><span class="nav-number">1.11.</span> <span class="nav-text">动态分配内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构体"><span class="nav-number">2.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体的定义"><span class="nav-number">2.1.</span> <span class="nav-text">结构体的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义类型名"><span class="nav-number">2.2.</span> <span class="nav-text">定义类型名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">2.3.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尾插法创建链表"><span class="nav-number">2.3.1.</span> <span class="nav-text">尾插法创建链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头插法创建链表"><span class="nav-number">2.3.2.</span> <span class="nav-text">头插法创建链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">3.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件fopen"><span class="nav-number">3.1.</span> <span class="nav-text">打开文件fopen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件关闭fclose"><span class="nav-number">3.2.</span> <span class="nav-text">文件关闭fclose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读-写文件中的一个字符"><span class="nav-number">3.3.</span> <span class="nav-text">读/写文件中的一个字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一个字符到文件中——fputc"><span class="nav-number">3.3.1.</span> <span class="nav-text">写入一个字符到文件中——fputc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从文件中读取一个字符——fgetc"><span class="nav-number">3.3.2.</span> <span class="nav-text">从文件中读取一个字符——fgetc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库函数feof"><span class="nav-number">3.3.3.</span> <span class="nav-text">库函数feof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读-写一个字符串"><span class="nav-number">3.4.</span> <span class="nav-text">读/写一个字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读一个字符串——fgets"><span class="nav-number">3.4.1.</span> <span class="nav-text">读一个字符串——fgets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个字符串——fputs"><span class="nav-number">3.4.2.</span> <span class="nav-text">写一个字符串——fputs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读-写一个数据块"><span class="nav-number">3.5.</span> <span class="nav-text">读/写一个数据块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读一个数据块——fread"><span class="nav-number">3.5.1.</span> <span class="nav-text">读一个数据块——fread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个数据块——fwrite"><span class="nav-number">3.5.2.</span> <span class="nav-text">写一个数据块——fwrite</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对文件进行格式化读写"><span class="nav-number">3.6.</span> <span class="nav-text">对文件进行格式化读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置指针和文件定位"><span class="nav-number">3.7.</span> <span class="nav-text">位置指针和文件定位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#位置指针复位函数——rewind"><span class="nav-number">3.7.1.</span> <span class="nav-text">位置指针复位函数——rewind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动文件位置指针函数fseek"><span class="nav-number">3.7.2.</span> <span class="nav-text">移动文件位置指针函数fseek</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回文件当前位置的函数ftell"><span class="nav-number">3.7.3.</span> <span class="nav-text">返回文件当前位置的函数ftell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出错检测"><span class="nav-number">3.8.</span> <span class="nav-text">出错检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ferror函数"><span class="nav-number">3.8.1.</span> <span class="nav-text">ferror函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clearerr函数"><span class="nav-number">3.8.2.</span> <span class="nav-text">clearerr函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -809,7 +913,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.5k字</span>
+  <span class="post-count">博客全站共20.8k字</span>
 </div>
         
 
