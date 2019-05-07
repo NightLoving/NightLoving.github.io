@@ -1,3 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F05%2F07%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode 1]]></title>
+    <url>%2F2019%2F02%2F24%2FLeetcode-1%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例: 给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1] C代码123456789101112131415int* twoSum(int* nums, int numsSize, int target) &#123; int i,j; static int a[2]; for(i = 0; i &lt; numsSize; i++)&#123; for(j = i +1; j &lt; numsSize; j++)&#123; if(nums[i] + nums[j] == target)&#123; a[0] = i; a[1] = j; return a; &#125; &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[创建较长的宏]]></title>
+    <url>%2F2019%2F01%2F28%2F%E5%88%9B%E5%BB%BA%E8%BE%83%E9%95%BF%E7%9A%84%E5%AE%8F%2F</url>
+    <content type="text"><![CDATA[逗号运算符C语言中，“，”是一种运算符，成为逗号运算符。可以将许多表达式连接起来组成一个表达式，一般形式：表达式1，表达式2，表达式3······其求值是分别求两个表达式的值，并以最后的表达式的值作为整个逗号表达式的值。应用举例：12345678#include&lt;stdio.h&gt;int main()&#123; int a = 2,b = 3,c = 4; int x,y; y = ( (x = a + b) , b + c ); printf(&quot;x = %d, y = %d&quot;,x,y); return 0;&#125; 运行结果：x = 5, y = 7 创建较长的宏创建较长的宏时，逗号运算符会十分有用。例如：1#define ECHO(s) (gets(s),puts(s)) 如果不想使用逗号运算符，可以将函数放在花括号中形成复合语句:1#define ECHO(s) &#123; gets(s) ; puts(s) ;&#125; 但是这样在调用时也许会发生这样的情况：1234if (flag) ECHO(s);else gets(str); 这里ECHO后面的分号会使else没有配对。解决方法是将语句放在do循环中：12345#define ECHO(s) \ do&#123; \ gets(s);\ puts(s);\ &#125;while(0) 这样，调用时就是这种情况：1ECHO(str) \*do&#123; gets(str); puts(str); &#125;while(0); *\ 参考《C语言程序设计·现代方法》]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ALL in ALL]]></title>
+    <url>%2F2019%2F01%2F17%2FALL-in-ALL%2F</url>
+    <content type="text"><![CDATA[题目描述两个字符串s和t，判断是是否为t的子序列。 输入包括若干个测试数据，结束由EOF结束。 输出对每个测试数据，是子序列输出Yes,否则输出No。 样例输入sequence subsequenceperson compressionVERDI vivaVittorioEmanueleReDiItaliacaseDoesMatter CaseDoesMatter 样例输出YesNoYesNo 代码123456789101112131415161718192021222324252627282930313233#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;int solve(char *s ,char *t);#define maxn 110000char s[maxn],t[maxn];int main(int argc, char *argv[]) &#123; while( scanf(&quot;%s%s&quot;,s,t) != EOF )/*scamf以%s格式输入时，空格、换行符、TAB等是作为两个数据的分隔符存在的，即分隔符前后是两个数据，读入时分隔符不读如。*/ printf(&quot;%s\n&quot;,solve(s,t)?&quot;Yes&quot;:&quot;No&quot;); return 0;&#125;int solve(char *s ,char *t)&#123; int i,j,slen,tlen; slen = strlen(s); tlen = strlen(t); for(i = 0,j = 0; i &lt; slen &amp;&amp; j &lt; tlen;)&#123; if(s[i] == t[j])&#123; i++; j++; &#125; else j++; &#125; return i == slen;//判断是否将s字符串判断完。&#125;]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[异或实现两数交换]]></title>
+    <url>%2F2019%2F01%2F06%2F%E5%BC%82%E6%88%96%E5%AE%9E%E7%8E%B0%E4%B8%A4%E6%95%B0%E4%BA%A4%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节约储存空间。 1234int a,b;a = a ^ b;b = b ^ a;a = a ^ b; 两数最大值或最小值12min = (y ^ (x ^ y) &amp; - (x &lt; y) ) //最小值max = (x ^ (x ^ y) &amp; - (x &lt; y) ) //最大值]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[质数判定]]></title>
+    <url>%2F2019%2F01%2F06%2F%E8%B4%A8%E6%95%B0%E5%88%A4%E5%AE%9A%2F</url>
+    <content type="text"><![CDATA[一·初等算法(试除法)用 n 除以从 2 ～ n^½ 的各个数，没有一个能够整除，即为质数。 12345678910111213141516171819202122232425#include&lt;stdio.h&gt;#include&lt;math.h&gt;int isPrime(int n)&#123; int i; int flag = 1; scanf(&quot;%d&quot;,&amp;n); for(i = 2; i &lt;= sqrt(n); i++) &#123; if( n % i == 0 ) &#123; flag = 0; break; &#125; else continue; &#125; if(flag) return 1; else return 0;&#125; 二·初等算法改进篇判断2之后，直接判断从3到n^½的各个奇数，质数是不能被2整除的（查质数表一目了然，不再赘述）。 123456789101112131415161718192021222324252627282930#include&lt;stdio.h&gt;#include&lt;math.h&gt;int isPrime(int n)&#123; int i; int flag = 1; scanf(&quot;%d&quot;,&amp;n); if( n % 2 == 0 ) return 0; else &#123; for(i = 3; i &lt;= sqrt(n); i += 2) &#123; if( n % i == 0 ) &#123; flag = 0; break; &#125; else continue; &#125; &#125; if(flag) return 1; else return 0;&#125; 三·相邻法原理：大于等于5的质数一定和6的倍数相邻。 大于5的各个数用x表示：6x-1 6x 6x+1 6x+2 6x+3 6x+4 6x+5 6(x+1)其中，除了6x-1，6x+1和6x+5以外，其余的数都能够被2或3整除。 int isPrime(int n) { int i; if(n == 2 || n == 3 || n == 5) //筛去6以下的质数 return 1; if(n % 6 != 1 &amp;&amp; n % 6 != 5) //筛去没有与6相邻的数 return 0; for(i = 5; i &lt;=sqrt(n); i += 6) { if(n % i == 0 || n % (i+2) == 0) //筛去能被小的与6相邻数整除的数。 return 0; } return 1; } 实际使用起来前两个方法更加普遍，但效率较低，可以根据实际需求自行选择。]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
 </search>
