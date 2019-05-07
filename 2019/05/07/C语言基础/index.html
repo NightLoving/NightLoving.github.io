@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节">
-<meta name="keywords" content="Algorithm">
+  <meta name="description" content="二维数组与指针二维数组的定义类型 数组名[常量表达式1][常量表达式2]; 例如：float a[2][3]; 二维数组的引用数组名[行下标][列下标]; 二维数组的初始化1、分行初始化12345int a[3][4] = &amp;#123;    &amp;#123;1,2,3,4&amp;#125;,    &amp;#123;5,6,7,8&amp;#125;,    &amp;#123;9,10,11,12&amp;#125;&amp;#125;;">
+<meta name="keywords" content="C语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异或实现两数交换">
-<meta property="og:url" content="http://yoursite.com/2019/01/06/异或实现两数交换/index.html">
+<meta property="og:title" content="C语言基础">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/C语言基础/index.html">
 <meta property="og:site_name" content="Night Blog~">
-<meta property="og:description" content="异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节">
+<meta property="og:description" content="二维数组与指针二维数组的定义类型 数组名[常量表达式1][常量表达式2]; 例如：float a[2][3]; 二维数组的引用数组名[行下标][列下标]; 二维数组的初始化1、分行初始化12345int a[3][4] = &amp;#123;    &amp;#123;1,2,3,4&amp;#125;,    &amp;#123;5,6,7,8&amp;#125;,    &amp;#123;9,10,11,12&amp;#125;&amp;#125;;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-08T15:47:32.996Z">
+<meta property="og:updated_time" content="2019-05-07T08:18:17.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异或实现两数交换">
-<meta name="twitter:description" content="异或运算的概念定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。 异或运用两数交换1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。( x ^ y ) ^ y = x ^ 0 = x2.对于任何数x，都有x^x=0,x^0=x。3.交换律。4.结合律(a^b)^c == a^(b^c)。 利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节">
+<meta name="twitter:title" content="C语言基础">
+<meta name="twitter:description" content="二维数组与指针二维数组的定义类型 数组名[常量表达式1][常量表达式2]; 例如：float a[2][3]; 二维数组的引用数组名[行下标][列下标]; 二维数组的初始化1、分行初始化12345int a[3][4] = &amp;#123;    &amp;#123;1,2,3,4&amp;#125;,    &amp;#123;5,6,7,8&amp;#125;,    &amp;#123;9,10,11,12&amp;#125;&amp;#125;;">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/06/异或实现两数交换/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/C语言基础/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>异或实现两数交换 | Night Blog~</title>
+  <title>C语言基础 | Night Blog~</title>
   
 
 
@@ -385,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/异或实现两数交换/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/C语言基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张殊阳">
@@ -402,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异或实现两数交换
+          <h1 class="post-title" itemprop="name headline">C语言基础
               
             
           </h1>
@@ -427,24 +427,12 @@
                 
               
 
-              <time title="创建时间：2019-01-06 21:22:30" itemprop="dateCreated datePublished" datetime="2019-01-06T21:22:30+08:00">2019-01-06</time>
+              <time title="创建时间：2019-05-07 00:00:00 / 修改时间：16:18:17" itemprop="dateCreated datePublished" datetime="2019-05-07T00:00:00+08:00">2019-05-07</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-08 23:47:32" itemprop="dateModified" datetime="2019-04-08T23:47:32+08:00">2019-04-08</time>
               
             
           </span>
@@ -461,7 +449,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C语言/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a></span>
 
                 
                 
@@ -495,11 +483,76 @@
       
 
       
-        <h1 id="异或运算的概念"><a href="#异或运算的概念" class="headerlink" title="异或运算的概念"></a>异或运算的概念</h1><p>定义：判断两个值是否不同，两个值相同时，返回false；两个值不同时，返回ture。</p>
-<h1 id="异或运用"><a href="#异或运用" class="headerlink" title="异或运用"></a>异或运用</h1><h2 id="两数交换"><a href="#两数交换" class="headerlink" title="两数交换"></a>两数交换</h2><p>1.异或运算有个特点：对一个值连续做两次异或运算，会返回值本身。<br><strong>( x ^ y ) ^ y = x ^ 0 = x</strong><br>2.对于任何数x，都有x^x=0,x^0=x。<br>3.交换律。<br>4.结合律(a^b)^c == a^(b^c)。</p>
-<p>利用如上性质，就可以实现不用引入中间变量而交换两个变量的值，节约储存空间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a,b;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = b ^ a;</span><br><span class="line">a = a ^ b;</span><br></pre></td></tr></table></figure>
-<h2 id="两数最大值或最小值"><a href="#两数最大值或最小值" class="headerlink" title="两数最大值或最小值"></a>两数最大值或最小值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">min = (y ^ (x ^ y) &amp; - (x &lt; y) )  //最小值</span><br><span class="line">max = (x ^ (x ^ y) &amp; - (x &lt; y) )  //最大值</span><br></pre></td></tr></table></figure>
+        <h1 id="二维数组与指针"><a href="#二维数组与指针" class="headerlink" title="二维数组与指针"></a>二维数组与指针</h1><h2 id="二维数组的定义"><a href="#二维数组的定义" class="headerlink" title="二维数组的定义"></a>二维数组的定义</h2><p><code>类型 数组名[常量表达式1][常量表达式2];</code></p>
+<p>例如：<code>float a[2][3];</code></p>
+<h2 id="二维数组的引用"><a href="#二维数组的引用" class="headerlink" title="二维数组的引用"></a>二维数组的引用</h2><p><code>数组名[行下标][列下标];</code></p>
+<h2 id="二维数组的初始化"><a href="#二维数组的初始化" class="headerlink" title="二维数组的初始化"></a>二维数组的初始化</h2><p>1、分行初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a[3][4] = &#123;</span><br><span class="line">    &#123;1,2,3,4&#125;,</span><br><span class="line">    &#123;5,6,7,8&#125;,</span><br><span class="line">    &#123;9,10,11,12&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>2、按顺序初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int a[3][4] = &#123;1,2,3,4,5,6,7,8,9,10,11,12&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>3、部分元素初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a[3][4] = &#123;</span><br><span class="line">    &#123; ,1&#125;,</span><br><span class="line">    &#123;0,6&#125;,</span><br><span class="line">    &#123;0,0,11&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0   1   0   0</span><br><span class="line">0   6   0   0</span><br><span class="line">0   0   11  0</span><br></pre></td></tr></table></figure>
+<p>4、如果对全部元素赋值，定义数组可以不指定一维长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int a[][4] = &#123;1,2,3,4,5,6,7,8,9,10,11,12&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二维数组的输入与输出"><a href="#二维数组的输入与输出" class="headerlink" title="二维数组的输入与输出"></a>二维数组的输入与输出</h2><p>二维数组的输入与输出是通过对每个元素的输入输出实现的。</p>
+<p>1、输入方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; 2; i++)</span><br><span class="line">    for(int j = 0; j &lt; 3; j++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br></pre></td></tr></table></figure></p>
+<p>2、输出方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; 2; i++)</span><br><span class="line">    for(int j = 0; j &lt; 3; j++)</span><br><span class="line">        printf(&quot;%d&quot;,a[i][j]);</span><br></pre></td></tr></table></figure></p>
+<h2 id="指向二维数组的指针"><a href="#指向二维数组的指针" class="headerlink" title="指向二维数组的指针"></a>指向二维数组的指针</h2><p>二维数组可以堪称时由多个一维数组的组合。</p>
+<p>比如：对于<code>int a[3][4];</code><br>(1)a是数组名，包含三个元素，a[0],a[1],a[2]。<br>(2)每个元素a[i]又是一个一维数组，包含4个元素。</p>
+<h2 id="二维数组的行指针与列指针"><a href="#二维数组的行指针与列指针" class="headerlink" title="二维数组的行指针与列指针"></a>二维数组的行指针与列指针</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">例子</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">行指针类型</td>
+<td style="text-align:center">二维数组的首地址，第0行的地址</td>
+</tr>
+<tr>
+<td style="text-align:center">a+i</td>
+<td style="text-align:center">行指针类型</td>
+<td style="text-align:center">第i行的地址</td>
+</tr>
+<tr>
+<td style="text-align:center">*(a+i)</td>
+<td style="text-align:center">列指针类型</td>
+<td style="text-align:center">第i行第0列的地址</td>
+</tr>
+<tr>
+<td style="text-align:center">*(a+i)+j</td>
+<td style="text-align:center">列指针类型</td>
+<td style="text-align:center">第i行第j列的地址</td>
+</tr>
+<tr>
+<td style="text-align:center"><em> (</em>(a+i)+j)</td>
+<td style="text-align:center">元素</td>
+<td style="text-align:center">第i行第j列的元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="指针与二维数组"><a href="#指针与二维数组" class="headerlink" title="指针与二维数组"></a>指针与二维数组</h2><p>1、列指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int *p;</span><br><span class="line">int a[3][4];</span><br><span class="line">p = a[0];   //用列地址初始化</span><br><span class="line">int i,j;</span><br><span class="line"></span><br><span class="line">for(i = 0; i &lt; iMAX; i++)</span><br><span class="line">    for(j = 0; j &lt; jMAX; j++)</span><br><span class="line">        printf(&quot;%d&quot;,*(p+i*n+j));    //或p[i*n+j]</span><br></pre></td></tr></table></figure></p>
+<p>2、行指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int (*p)[3];    //行指针，指向数组的一行</span><br><span class="line">p = a;          //用行指针初始化</span><br><span class="line">int i,j;</span><br><span class="line"></span><br><span class="line">for(i = 0; i &lt; iMAX; i++)</span><br><span class="line">    for(j = 0; j &lt; jMAX; j++)</span><br><span class="line">        printf(&quot;%d&quot;,*(*(p+i)+j));   //可以写成p[i][j]</span><br></pre></td></tr></table></figure></p>
+<h2 id="特殊的指针：数组类型指针"><a href="#特殊的指针：数组类型指针" class="headerlink" title="特殊的指针：数组类型指针"></a>特殊的指针：数组类型指针</h2><p>例如：<code>int (*iPtr)[3];</code></p>
+<p>类型名：”int”说明其指向的数组变量类型是整型。<br>数组类型指针变量名：”iPtr”说明要定义的变量名字。<br>整型常量表达式：”3”说明指向的数组变量元素个数为3。</p>
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><p>元素均为指针类型数据的数组，称为指针数组<br>定义形式：<code>类型关键字   *数组名[数组长度];</code><br>例如：<code>char *pStr[5];</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//二维字符数组</span><br><span class="line">void main()&#123;</span><br><span class="line">    int i;</span><br><span class="line">    char str[][10] = &#123;&quot;Pascal&quot;,&quot;Basic&quot;,&quot;Fortran&quot;,&quot;Java&quot;,&quot;VisualC&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    for(i = 0; i &lt; 5; i++)</span><br><span class="line">        printf(&quot;%s\n&quot;,str[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//字符指针数组</span><br><span class="line">void main()&#123;</span><br><span class="line">    int i;</span><br><span class="line">    char *ptr[] = &#123;&quot;Pascal&quot;,&quot;Basic&quot;,&quot;Fortran&quot;,&quot;Java&quot;,&quot;VisualC&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    for(i = 0; i &lt; 5; i++)</span><br><span class="line">        printf(&quot;%s\n&quot;,ptr[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h2><p><code>int main(int argc, char* argv[])</code></p>
+<h2 id="动态分配内存"><a href="#动态分配内存" class="headerlink" title="动态分配内存"></a>动态分配内存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void* malloc(unsigned int size);</span><br><span class="line">//向系统申请大小为size的内存块，返回首地址。申请不成功返回NULL。</span><br><span class="line"></span><br><span class="line">void* calloc(unsigned int num, unsigned int size);</span><br><span class="line">//向系统申请num个size大小的内存块，返回首地址。申请不成功返回NULL。</span><br><span class="line"></span><br><span class="line">void free(void* p);</span><br><span class="line">//释放由malloc和calloc申请的内存块。p是指针。</span><br><span class="line">//例如：if(p == NULL)&#123;free(p); p = NULL&#125;</span><br><span class="line"></span><br><span class="line">void* realloc(void* pointer, unsigned int size);</span><br><span class="line">//如果重新分配成功，返回指向被分配内存的指针，否则返回空指针NULL。</span><br></pre></td></tr></table></figure>
+<h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><h2 id="结构体的定义"><a href="#结构体的定义" class="headerlink" title="结构体的定义"></a>结构体的定义</h2><p>一般形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct 结构体名&#123;</span><br><span class="line">    类型关键字  成员名1;</span><br><span class="line">    类型关键字  成员名2;</span><br><span class="line">    类型关键字  成员名3;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">    int ID;</span><br><span class="line">    char name[20];</span><br><span class="line">    int age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>结构体只是定义了数据的形式，未生成任何变量，可以如下定义：<code>struct student stu;</code>。</p>
+<h2 id="定义类型名"><a href="#定义类型名" class="headerlink" title="定义类型名"></a>定义类型名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct student&#123;</span><br><span class="line">    int ID;</span><br><span class="line">    char name[20];</span><br><span class="line">    int age;</span><br><span class="line">&#125;STUD;</span><br></pre></td></tr></table></figure>
+<p>或直接<code>typedef struct student STUD;</code>。</p>
+<p>定义的类型名就与普通数据形式一样的使用方法。</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">    int ID;</span><br><span class="line">    struct student* next;</span><br><span class="line">&#125;;</span><br><span class="line">typedef struct student Node;</span><br></pre></td></tr></table></figure></p>
+<h3 id="尾插法创建链表"><a href="#尾插法创建链表" class="headerlink" title="尾插法创建链表"></a>尾插法创建链表</h3><p>基本思路：<br>1、申请一个节点的空间，置指针域为空。<br>2、输入结点数据域的数据。<br>3、搜索链表的最后一个结点。<br>4、将新结点插入到链表尾。<br>5、返回头指针。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Node* Add_end(Node* head)&#123;</span><br><span class="line">    Node *p;</span><br><span class="line">    Node *tail;</span><br><span class="line"></span><br><span class="line">    p = (Node*)malloc(sizeof(Node));</span><br><span class="line">    if(NULL == p)&#123;</span><br><span class="line">        printf(&quot;Wrong!&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;(p-&gt;ID) );  //一个结点创建完毕。</span><br><span class="line"></span><br><span class="line">    if(NULL == head)&#123;</span><br><span class="line">        head = p;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        tail = head;</span><br><span class="line">        while(tail-&gt;next != NULL)&#123;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">        &#125;                           //找到尾节点</span><br><span class="line"></span><br><span class="line">        tail-&gt;next = p;             //插入</span><br><span class="line">    &#125;</span><br><span class="line">    return head;                    //返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="头插法创建链表"><a href="#头插法创建链表" class="headerlink" title="头插法创建链表"></a>头插法创建链表</h3><p>基本思路：<br>1、建立空链表，但不需要定义尾指针。<br>2、生成新结点，对新结点赋值，指针域可不必赋值。<br>3、将结点插入到链表中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node* Add_head(Node* head)&#123;</span><br><span class="line">    Node* p;</span><br><span class="line"></span><br><span class="line">    p = (Node*)malloc(sizeof(Node));</span><br><span class="line">    if(NULL == p)&#123;</span><br><span class="line">        printf(&quot;Wrong!&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;(p-&gt;ID));       //单个结点创建完成</span><br><span class="line"></span><br><span class="line">    p-&gt;next = head;</span><br><span class="line">    head = p;                   //插入完成</span><br><span class="line"></span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1>
       
     </div>
 
@@ -522,7 +575,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/C语言/" rel="tag"><i class="fa fa-tag"></i> C语言</a>
           
         </div>
       
@@ -535,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/06/质数判定/" rel="next" title="质数判定">
-                <i class="fa fa-chevron-left"></i> 质数判定
+              <a href="/2019/04/30/HTML/" rel="next" title="HTML基础">
+                <i class="fa fa-chevron-left"></i> HTML基础
               </a>
             
           </div>
@@ -544,10 +597,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/17/ALL-in-ALL/" rel="prev" title="ALL in ALL">
-                ALL in ALL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -702,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异或运算的概念"><span class="nav-number">1.</span> <span class="nav-text">异或运算的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异或运用"><span class="nav-number">2.</span> <span class="nav-text">异或运用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两数交换"><span class="nav-number">2.1.</span> <span class="nav-text">两数交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两数最大值或最小值"><span class="nav-number">2.2.</span> <span class="nav-text">两数最大值或最小值</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组与指针"><span class="nav-number">1.</span> <span class="nav-text">二维数组与指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的定义"><span class="nav-number">1.1.</span> <span class="nav-text">二维数组的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的引用"><span class="nav-number">1.2.</span> <span class="nav-text">二维数组的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的初始化"><span class="nav-number">1.3.</span> <span class="nav-text">二维数组的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的输入与输出"><span class="nav-number">1.4.</span> <span class="nav-text">二维数组的输入与输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指向二维数组的指针"><span class="nav-number">1.5.</span> <span class="nav-text">指向二维数组的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组的行指针与列指针"><span class="nav-number">1.6.</span> <span class="nav-text">二维数组的行指针与列指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针与二维数组"><span class="nav-number">1.7.</span> <span class="nav-text">指针与二维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊的指针：数组类型指针"><span class="nav-number">1.8.</span> <span class="nav-text">特殊的指针：数组类型指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针数组"><span class="nav-number">1.9.</span> <span class="nav-text">指针数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数"><span class="nav-number">1.10.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态分配内存"><span class="nav-number">1.11.</span> <span class="nav-text">动态分配内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构体"><span class="nav-number">2.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体的定义"><span class="nav-number">2.1.</span> <span class="nav-text">结构体的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义类型名"><span class="nav-number">2.2.</span> <span class="nav-text">定义类型名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">2.3.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尾插法创建链表"><span class="nav-number">2.3.1.</span> <span class="nav-text">尾插法创建链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头插法创建链表"><span class="nav-number">2.3.2.</span> <span class="nav-text">头插法创建链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">3.</span> <span class="nav-text">文件操作</span></a></li></ol></div>
             
 
           </div>
