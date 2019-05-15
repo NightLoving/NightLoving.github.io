@@ -117,7 +117,7 @@
 <meta property="og:description" content="CSS样式规则CSS的一般样式：选择器 {属性:值; 属性:值;}。 1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。2、属性和属性值以“键值对”的形式出现。3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。4、属性和属性值之间用英文”:”连接。5、多个“键值对”之间用英文”;”进行区分。 123456789&amp;lt;head&amp;gt;    &amp;lt;m">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Front/UnicodeFont.png">
-<meta property="og:updated_time" content="2019-05-11T16:22:55.507Z">
+<meta property="og:updated_time" content="2019-05-13T07:11:29.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS基础">
 <meta name="twitter:description" content="CSS样式规则CSS的一般样式：选择器 {属性:值; 属性:值;}。 1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。2、属性和属性值以“键值对”的形式出现。3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。4、属性和属性值之间用英文”:”连接。5、多个“键值对”之间用英文”;”进行区分。 123456789&amp;lt;head&amp;gt;    &amp;lt;m">
@@ -446,7 +446,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-12 00:22:55" itemprop="dateModified" datetime="2019-05-12T00:22:55+08:00">2019-05-12</time>
+                <time title="修改时间：2019-05-13 15:11:29" itemprop="dateModified" datetime="2019-05-13T15:11:29+08:00">2019-05-13</time>
               
             
           </span>
@@ -562,7 +562,15 @@
 <h2 id="font综合设置字体样式（重点）"><a href="#font综合设置字体样式（重点）" class="headerlink" title="font综合设置字体样式（重点）"></a>font综合设置字体样式（重点）</h2><p>font属性用于对字体样式进行综合设置，基本语法格式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择器 &#123;font: font-style font-weight font-size/line-height font-family;&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：<br>1、使用font属性，必须按照上面语法格式的顺序书写，并以空格隔开。<br>2、其中不需要设置的属性可以忽略（或取默认值），但必须保留font-size和font-family属性（最后两个属性），否则font属性不起作用。</p>
-
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h2><p>标签选择器是指用HTML标签名称作为选择器，按标签名称分类，为页面的某一类标签统一设置CSS样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标签名 &#123;属性1：属性值1； 属性2：属性值2； ···&#125;</span><br></pre></td></tr></table></figure>
+<p>标签选择器最大的优点事能快速为页面中同类型的标签统一样式，同时也是缺点，不能差异化设置样式。</p>
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>类选择器使用“.”进行标识，后面紧跟类名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.类名&#123;属性1：属性值1； 属性2：属性值2； ···&#125;</span><br></pre></td></tr></table></figure>
+<p>标签调用的时候用<code>class = &quot;类名&quot;</code>即可。</p>
+<p>类选择器最大优势是可以为元素对象定义单独或相同的样式。</p>
+<p>注意：<br>1、长名称或字组可以使用中横线来为选择器命名。<br>2、不建议使用“_”下划线来命名CSS选择器。<br>3、不要用纯数字、中文等命名，尽量使用英文字母来表示。</p>
+<h2 id="多类名选择器"><a href="#多类名选择器" class="headerlink" title="多类名选择器"></a>多类名选择器</h2>
       
     </div>
 
@@ -765,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS样式规则"><span class="nav-number">1.</span> <span class="nav-text">CSS样式规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体样式属性"><span class="nav-number">2.</span> <span class="nav-text">字体样式属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-size字号大小"><span class="nav-number">2.1.</span> <span class="nav-text">font-size字号大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-family字体"><span class="nav-number">2.2.</span> <span class="nav-text">font-family字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Unicode字体"><span class="nav-number">2.3.</span> <span class="nav-text">CSS Unicode字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-weight设置字体粗细"><span class="nav-number">2.4.</span> <span class="nav-text">font-weight设置字体粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-style字体风格"><span class="nav-number">2.5.</span> <span class="nav-text">font-style字体风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font综合设置字体样式（重点）"><span class="nav-number">2.6.</span> <span class="nav-text">font综合设置字体样式（重点）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS样式规则"><span class="nav-number">1.</span> <span class="nav-text">CSS样式规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体样式属性"><span class="nav-number">2.</span> <span class="nav-text">字体样式属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-size字号大小"><span class="nav-number">2.1.</span> <span class="nav-text">font-size字号大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-family字体"><span class="nav-number">2.2.</span> <span class="nav-text">font-family字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Unicode字体"><span class="nav-number">2.3.</span> <span class="nav-text">CSS Unicode字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-weight设置字体粗细"><span class="nav-number">2.4.</span> <span class="nav-text">font-weight设置字体粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-style字体风格"><span class="nav-number">2.5.</span> <span class="nav-text">font-style字体风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font综合设置字体样式（重点）"><span class="nav-number">2.6.</span> <span class="nav-text">font综合设置字体样式（重点）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择器"><span class="nav-number">3.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签选择器"><span class="nav-number">3.1.</span> <span class="nav-text">标签选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类选择器"><span class="nav-number">3.2.</span> <span class="nav-text">类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多类名选择器"><span class="nav-number">3.3.</span> <span class="nav-text">多类名选择器</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -823,7 +831,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.5k字</span>
+  <span class="post-count">博客全站共26.3k字</span>
 </div>
         
 
