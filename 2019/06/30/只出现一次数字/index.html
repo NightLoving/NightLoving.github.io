@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="泛型基本概念泛型提供了编译时类型安全检测机制。该机制允许程序员在编译时检测到非法类型。泛型的本质时参数化类型，就是说操作的数据类型被指定为一个参数。 自定义泛型我们可以在类的声明出增加泛型列表，如：&amp;lt;T,E,V&amp;gt;。此处，字符可以时任何标识符，一般采用这三个字母。 12345678910111213//泛型类的声明class Mycollection&amp;lt;E&amp;gt;&amp;#123;">
-<meta name="keywords" content="Java知识体系">
+  <meta name="description" content="题目给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 输入: [2,2,1]输出: 1示例 2: 输入: [4,1,2,1,2]输出: 4  解答利用异或运算来进行判断。通过0 ^ num = num, num ^ num = 0可知，重复两次的数字异或为0。">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="容器和数据结构">
-<meta property="og:url" content="http://yoursite.com/2019/05/22/容器和数据结构/index.html">
+<meta property="og:title" content="只出现一次数字">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/只出现一次数字/index.html">
 <meta property="og:site_name" content="Night Blog~">
-<meta property="og:description" content="泛型基本概念泛型提供了编译时类型安全检测机制。该机制允许程序员在编译时检测到非法类型。泛型的本质时参数化类型，就是说操作的数据类型被指定为一个参数。 自定义泛型我们可以在类的声明出增加泛型列表，如：&amp;lt;T,E,V&amp;gt;。此处，字符可以时任何标识符，一般采用这三个字母。 12345678910111213//泛型类的声明class Mycollection&amp;lt;E&amp;gt;&amp;#123;">
+<meta property="og:description" content="题目给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 输入: [2,2,1]输出: 1示例 2: 输入: [4,1,2,1,2]输出: 4  解答利用异或运算来进行判断。通过0 ^ num = num, num ^ num = 0可知，重复两次的数字异或为0。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T01:24:06.843Z">
+<meta property="og:updated_time" content="2019-06-30T03:10:32.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="容器和数据结构">
-<meta name="twitter:description" content="泛型基本概念泛型提供了编译时类型安全检测机制。该机制允许程序员在编译时检测到非法类型。泛型的本质时参数化类型，就是说操作的数据类型被指定为一个参数。 自定义泛型我们可以在类的声明出增加泛型列表，如：&amp;lt;T,E,V&amp;gt;。此处，字符可以时任何标识符，一般采用这三个字母。 12345678910111213//泛型类的声明class Mycollection&amp;lt;E&amp;gt;&amp;#123;">
+<meta name="twitter:title" content="只出现一次数字">
+<meta name="twitter:description" content="题目给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 输入: [2,2,1]输出: 1示例 2: 输入: [4,1,2,1,2]输出: 4  解答利用异或运算来进行判断。通过0 ^ num = num, num ^ num = 0可知，重复两次的数字异或为0。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/22/容器和数据结构/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/30/只出现一次数字/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>容器和数据结构 | Night Blog~</title>
+  <title>只出现一次数字 | Night Blog~</title>
   
 
 
@@ -385,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/容器和数据结构/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/只出现一次数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张殊阳">
@@ -402,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">容器和数据结构
+          <h1 class="post-title" itemprop="name headline">只出现一次数字
               
             
           </h1>
@@ -427,24 +427,12 @@
                 
               
 
-              <time title="创建时间：2019-05-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-22T00:00:00+08:00">2019-05-22</time>
+              <time title="创建时间：2019-06-30 10:58:45 / 修改时间：11:10:32" itemprop="dateCreated datePublished" datetime="2019-06-30T10:58:45+08:00">2019-06-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-03 09:24:06" itemprop="dateModified" datetime="2019-06-03T09:24:06+08:00">2019-06-03</time>
               
             
           </span>
@@ -461,7 +449,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识体系/" itemprop="url" rel="index"><span itemprop="name">Java知识体系</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
 
                 
                 
@@ -495,56 +483,17 @@
       
 
       
-        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>泛型提供了编译时类型安全检测机制。该机制允许程序员在编译时检测到非法类型。泛型的本质时参数化类型，就是说操作的数据类型被指定为一个参数。</p>
-<h2 id="自定义泛型"><a href="#自定义泛型" class="headerlink" title="自定义泛型"></a>自定义泛型</h2><p>我们可以在类的声明出增加泛型列表，如：&lt;T,E,V&gt;。<br>此处，字符可以时任何标识符，一般采用这三个字母。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//泛型类的声明</span><br><span class="line"></span><br><span class="line">class Mycollection&lt;E&gt;&#123;</span><br><span class="line">    Object[] objs = new Object[5];</span><br><span class="line"></span><br><span class="line">    public void set(E e, int index)&#123;</span><br><span class="line">        objs[index] = e;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public E get(int index)&#123;</span><br><span class="line">        return (E) objs[index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>泛型E像一个占位符一样表示“未知的某个数据类型”，我们在调用的时候传入这个“数据类型”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//泛型类的使用</span><br><span class="line"></span><br><span class="line">public class TextGenerics&#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Mucollection&lt;String&gt; mc = new MyCollection&lt;String&gt;();</span><br><span class="line">        mc.set(&quot;aaa&quot;, 0);</span><br><span class="line">        mc.set(&quot;bbb&quot;, 1);</span><br><span class="line">        String str = mc get(1);</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h2><p>Collection表示一组对象。Collection接口的两个子接口是List、Set接口。</p>
-<p>Collection接口中定义的方法<br>方法|说明<br>:-:|:-:<br>boolean add(Object element)|增加元素到容器中<br>boolean remove(Object element)|从容器中移除元素<br>boolean contains(Object element)|容器中是否包含该元素<br>int size()|容器中元素的数量<br>boolean isEmpty()|容器是否为空<br>void clear()|清空容器中所有元素<br>Iterator iterator()|获得迭代器，用于遍历容器中所有的元素<br>boolean containsAll(Collection c)|本容器是否包含c容器的所有元素<br>boolean addAll(Collection c)|将c容器的所有元素添加到本容器中<br>boolean removeAll(Collection c)|移除本容器和c容器都包含的元素<br>boolean retainAll(Collection c)|取本容器和c容器中都包含的元素，移除非交集元素<br>Object[] toArray()|转化成Object数组</p>
-<h2 id="List特点和常用方法"><a href="#List特点和常用方法" class="headerlink" title="List特点和常用方法"></a>List特点和常用方法</h2><p>List是有序、可重复的容器。<br>有序：List中每个元素都有索引标记，可以根据元素的索引标记（在List中的位置）访问元素，从而精确控制这些元素。<br>可重复：List允许加入重复的元素。（满足equals方法）。</p>
-<p>List接口常用实现类有三个：ArrayList、LinkedList和Vector。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList底层是使用数组实现的存储，查询效率高，增删效率低，线程不安全。我们一般使用它。</p>
-<h3 id="LinkedList特点和底层实现"><a href="#LinkedList特点和底层实现" class="headerlink" title="LinkedList特点和底层实现"></a>LinkedList特点和底层实现</h3><p>LinkedList底层用双向链表实现的存储。</p>
-<p>特点：查询效率低，增删效率高，线程不安全。</p>
-<p>双向链表每个数据节点中都有两个指针，分别指向前一个和后一个节点，所以，从双向链表中的任意一个节点开始，都可以很方便地找到所有节点。</p>
-<h3 id="Vector向量"><a href="#Vector向量" class="headerlink" title="Vector向量"></a>Vector向量</h3><p>Vector底层是用数组实现地List，相关方法加了同步检查，因此线程安全，效率低。</p>
-<p>如何选用ArrayList、LinkedList、Vector?<br>1、需要线程安全时，用Vector。<br>2、不存在线程安全问题时，查找较多使用ArrayList。<br>3、不存在线程安全问题时，增加或删除元素较多，用LinkedList。</p>
-<h2 id="MAP接口"><a href="#MAP接口" class="headerlink" title="MAP接口"></a>MAP接口</h2><p>Map是用来存储键值对的，Map类中存储的键值对通过键来标识，所以键对象不能重复。</p>
-<p>Map接口的实现类有HashMap、TreeMap、HashTable、Properties等。</p>
-<p>Map接口中常用方法：<br>方法|说明<br>:-:|:-:<br>Object put(Object key, Object value)|存放键值对<br>Object get(Object key)|通过键对象查找得到值对象<br>Object remove(Object key)|删除对象对应的键值对<br>boolean containsKey(Object key)|Map容器中是否包含键对象的键值对<br>boolean containsValue(Object value)|Map容器中是否包含值对象的键值对<br>int size()|包含键值对的数量<br>boolean isEmpty()|Map是否为空<br>void putAll(Map t)|将t的所有键值对存在本Map对象<br>void clear()|清空本Map对象所有键值对</p>
-<h3 id="HashMap底层原理"><a href="#HashMap底层原理" class="headerlink" title="HashMap底层原理"></a>HashMap底层原理</h3><p>HashMap底层实现采用了哈希表。</p>
-<p>HashMap的底层结构是“数组+链表”。所以哈希表可以结合数组和链表的优点（查询快，增删效率高）。</p>
-<h2 id="set接口"><a href="#set接口" class="headerlink" title="set接口"></a>set接口</h2><p>set接口继承自Collection。set容器特点：无序、不可重复。无序指set中的元素没有索引，只能遍历查找。不能重复指不能加入重复的元素，null元素也只能放一个。</p>
-<p>set常用实现类有HashSet和TreeSet，一般使用HashSet。</p>
-<h1 id="使用Iterator迭代器遍历容器元素"><a href="#使用Iterator迭代器遍历容器元素" class="headerlink" title="使用Iterator迭代器遍历容器元素"></a>使用Iterator迭代器遍历容器元素</h1><h1 id="Collections-工具类"><a href="#Collections-工具类" class="headerlink" title="Collections 工具类"></a>Collections 工具类</h1><p>java.util.Collections提供了对Set、List、Map进行排序的辅助方法。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">方法名</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">void sort(List)</td>
-<td style="text-align:center">对List容器内的元素惊醒升序排序</td>
-</tr>
-<tr>
-<td style="text-align:center">void shuffle(List)</td>
-<td style="text-align:center">对List容器内的元素进行随机排序</td>
-</tr>
-<tr>
-<td style="text-align:center">void reverse(List)</td>
-<td style="text-align:center">对List容器内的元素进行逆序排列</td>
-</tr>
-<tr>
-<td style="text-align:center">void fill(List, Object)</td>
-<td style="text-align:center">用一个特定的对象重接整个List容器</td>
-</tr>
-</tbody>
-</table>
-<p>int binarySearch(List, Object)对于顺序的List容器，采用折半查找法查找数据</p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<p>说明：</p>
+<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
+<p>示例 1:</p>
+<p>输入: [2,2,1]<br>输出: 1<br>示例 2:</p>
+<p>输入: [4,1,2,1,2]<br>输出: 4</p>
+<hr>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>利用异或运算来进行判断。通过0 ^ num = num, num ^ num = 0可知，重复两次的数字异或为0。而剩下的就是不重复数字的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] nums) &#123;</span><br><span class="line">    int num = 0;</span><br><span class="line">    for(int i = 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        num = num ^ nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h1><p>对于一个数的每一个位上（二进制），数字相同则该位为0，不同则该位为1。</p>
+<p>运算法则：<br>1、a ^ a = 0<br>2、a ^ b = b ^ a<br>3、a ^ b ^ c = a ^ (b ^ c)</p>
 
       
     </div>
@@ -568,7 +517,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java知识体系/" rel="tag"><i class="fa fa-tag"></i> Java知识体系</a>
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
         </div>
       
@@ -581,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/12/常用类/" rel="next" title="常用类">
-                <i class="fa fa-chevron-left"></i> 常用类
+              <a href="/2019/06/30/存在重复/" rel="next" title="存在重复">
+                <i class="fa fa-chevron-left"></i> 存在重复
               </a>
             
           </div>
@@ -590,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/06/Tomcat/" rel="prev" title="Tomcat">
-                Tomcat <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型"><span class="nav-number">1.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义泛型"><span class="nav-number">1.2.</span> <span class="nav-text">自定义泛型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器"><span class="nav-number">2.</span> <span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection接口"><span class="nav-number">2.1.</span> <span class="nav-text">Collection接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List特点和常用方法"><span class="nav-number">2.2.</span> <span class="nav-text">List特点和常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.2.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList特点和底层实现"><span class="nav-number">2.2.2.</span> <span class="nav-text">LinkedList特点和底层实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector向量"><span class="nav-number">2.2.3.</span> <span class="nav-text">Vector向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAP接口"><span class="nav-number">2.3.</span> <span class="nav-text">MAP接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap底层原理"><span class="nav-number">2.3.1.</span> <span class="nav-text">HashMap底层原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set接口"><span class="nav-number">2.4.</span> <span class="nav-text">set接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Iterator迭代器遍历容器元素"><span class="nav-number">3.</span> <span class="nav-text">使用Iterator迭代器遍历容器元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collections-工具类"><span class="nav-number">4.</span> <span class="nav-text">Collections 工具类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解答"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异或"><span class="nav-number">3.</span> <span class="nav-text">异或</span></a></li></ol></div>
             
 
           </div>
