@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[是否存在相同数]]></title>
+    <url>%2F2019%2F06%2F30%2F%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%2F</url>
+    <content type="text"><![CDATA[题目来自Leecode给定一个整数数组，判断是否存在重复元素。 如果任何值在数组中出现至少两次，函数返回 true。如果数组中每个元素都不相同，则返回 false。 示例 1: 输入: [1,2,3,1]输出: true示例 2: 输入: [1,2,3,4]输出: false示例 3: 输入: [1,1,1,3,3,4,3,2,4,2]输出: true 解答一：使用两个数组下标分辨遍历比较数组。12345678910public boolean containsDuplicate(int[] nums) &#123; for(int prev = 0; prev &lt; nums.length-1; prev++)&#123; for(int last = prev + 1; last &lt; nums.length; last++)&#123; if(nums[prev] == nums[last])&#123; return true; &#125; &#125; &#125; return false;&#125; 因为双重循环，效率并不高。 解答二：使用HashMap，将数组中的数一一放入HashMap里，若无法放入，则存在重复，只需要遍历一遍数组，效率较高。123456789101112public boolean containsDuplicate(int[] nums)&#123; if(nums == null || nums.length &lt;= 1)&#123; return false; &#125; HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;(); for(int i = 0; i &lt; nums.length; i++)&#123; if(map.put(nums[i],i) != null)&#123; return true; &#125; &#125; return false;&#125;]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDBC]]></title>
+    <url>%2F2019%2F06%2F13%2FMySQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[MySQL基本使用MySQL启动启动本地MySQL：1net start mysql MySQL登录登录本机的MySQL：1mysql -u root -p 再输入MySQL的密码。 增、删、改。增加信息1insert into test values(); 删除信息1delete from test where id = 1; 修改信息 1update test set name = &apos;name1&apos; where id = 1; 查询信息1234567891011String sql = &quot;select * from hero&quot;;// 执行查询语句，并把结果集返回给ResultSetResultSet rs = s.executeQuery(sql);while (rs.next()) &#123; int id = rs.getInt(&quot;id&quot;);// 可以使用字段名 String name = rs.getString(2);// 也可以使用字段的顺序 float hp = rs.getFloat(&quot;hp&quot;); int damage = rs.getInt(4); System.out.printf(&quot;%d\t%s\t%f\t%d%n&quot;, id, name, hp, damage);&#125; JDBC初始化驱动导入相关jar包后，使用123456try &#123; Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;); System.out.println(&quot;驱动加载成功!&quot;);&#125; catch (ClassNotFoundException e) &#123; e.printStackTrace();&#125; 来加载驱动。 链接数据库123Connection c = DriverManager.getConnection( &quot;jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&quot;, &quot;root&quot;, &quot;password&quot;); 注意：1、127.0.0.1 是数据库所处的ip（本机）。2、3306 数据库端口号。（mysql专用端口号）3、test 数据库名称。4、characterEncoding 编码方式。5、serverTimezone 服务时区，必须要加。 执行SQL语句首先创建Statement对象。12Statement s = c.creatStatement();//Statement使用java.sql.Statement。 再使用s.execute执行sql语句。 123//首先准备SQL语句，再插入String sql = &quot;insert into hero values(null,&quot;+&quot;&apos;提莫&apos;&quot;+&quot;,&quot;+313.0f+&quot;,&quot;+50+&quot;)&quot;;s.execute(sql); 执行SQL语句之前要确保存在相应表。 关闭连接先关闭Statement，再关闭Connection。 123456789101112131415161718finally &#123; if(s != null) &#123; try &#123; s.close(); &#125; catch (SQLException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125; if(c != null) &#123; try &#123; c.close(); &#125; catch (SQLException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125;&#125; 使用try-with-resource的方式自动关闭连接ry-with-resource的方式自动关闭连接，因为Connection和Statement都实现了AutoCloseable接口。 代码总结12345678910111213141516171819202122232425262728293031public static void main(String[] args) &#123; Connection c = null; Statement s = null; try &#123; Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;); c = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/how2java?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&quot;,&quot;root&quot;,&quot;password&quot;); s = c.createStatement(); String sql = &quot;insert into hero values(null,&quot;+&quot;&apos;提莫&apos;&quot;+&quot;,&quot;+313.0f+&quot;,&quot;+50+&quot;)&quot;; s.execute(sql); &#125; catch (ClassNotFoundException | SQLException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125;finally &#123; if(s != null) &#123; try &#123; s.close(); &#125; catch (SQLException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125; if(c != null) &#123; try &#123; c.close(); &#125; catch (SQLException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125; &#125;&#125; 查询账号密码正确1234567String sql = &quot;select * from user where name = &apos;&quot; + &quot;dashen&quot; +&quot;&apos; and password = &apos;&quot; + &quot;123123&quot;+&quot;&apos;&quot;;ResultSet rs = sta.executeQuery(sql);if(rs.next()) &#123; System.out.println(&quot;true&quot;);&#125;else &#123; System.out.println(&quot;false&quot;);&#125; execute和executeUpdate的区别execute与executeUpdate的相同点：都可以执行增加，删除，修改。 不同1：execute可以执行查询语句然后通过getResultSet，把结果集取出来executeUpdate不能执行查询语句不同2:execute返回boolean类型，true表示执行的是查询语句，false表示执行的是insert,delete,update等等executeUpdate返回的是int，表示有多少条数据受到了影响]]></content>
+      <categories>
+        <category>Java知识体系</category>
+      </categories>
+      <tags>
+        <tag>Java知识体系</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[servlet]]></title>
+    <url>%2F2019%2F06%2F08%2FServlet%2F</url>
+    <content type="text"><![CDATA[创建一个Servlet项目步骤1、创建Java项目。2、导入servlet-api.jar包。3、编写Servlet。4、配置Web.xml。5、将指定的项目输出到classes目录中（兼容tomcat）。6、Tomcat配置与启动。 Servlet生命周期一个Servlet的生命周期由实例化、初始化、提供服务、销毁、被回收几个步骤。 跳转跳转分为服务端跳转和客户端跳转。 服务端跳转1request.getRequestDispatcher(&quot;跳转页面(XXX.html)&quot;).forward(request, response); 服务器跳转中浏览器路径并不会改变。 客户端跳转1response.sendRedirect(&quot;跳转页面&quot;); 客户端跳转浏览器地址改变为跳转页面的路径。 自启动有时候我们需要在Tomcat启动时执行一些初始化代码，但Servlet的生命周期是在用户访问浏览器对应的路径开始的，如果没有用户第一次访问，就无法执行相关代码。这个时候需要Servlet实现自启动，当Tomcat启动时，自动启动初始化，在初始化方法init()中可以进行一些业务代码。 1、在web.xml中需要初始化的Java文件中增加代码1&lt;load-on-startup&gt;10&lt;/load-on-startup&gt; 取值范围为1-99，数字越小，优先级越高表明该Servlet会随着Tomcat的启动而初始化。同时提供一个init(ServletConfig)方法，验证自启动。 request的常见方法一般方法request.getRequestURL(): 浏览器发出请求时的完整URL，包括协议 主机名 端口(如果有)”request.getRequestURI(): 浏览器发出请求的资源名部分，去掉了协议和主机名”request.getQueryString(): 请求行中的参数部分，只能显示以get方式发出的参数，post方式的看不到request.getRemoteAddr(): 浏览器所处于的客户机的IP地址request.getRemoteHost(): 浏览器所处于的客户机的主机名request.getRemotePort(): 浏览器所处于的客户机使用的网络端口request.getLocalAddr(): 服务器的IP地址request.getLocalName(): 服务器的主机名request.getMethod(): 得到客户机请求方式一般是GET或者POST 获取参数方法request.getParameter(): 是常见的方法，用于获取单值的参数request.getParameterValues(): 用于获取具有多值的参数，比如注册时候提交的 “hobits”，可以是多选的。request.getParameterMap(): 用于遍历所有的参数，并返回Map类型。 获取头信息request.getHeader() 获取浏览器传递过来的头信息。request.getHeaderNames() 获取浏览器所有的头信息名称，根据头信息名称就能遍历出所有的头信息 host: 主机地址user-agent: 浏览器基本资料accept: 表示浏览器接受的数据类型accept-language: 表示浏览器接受的语言accept-encoding: 表示浏览器接受的压缩方式，是压缩方式，并非编码connection: 是否保持连接cache-control: 缓存时限 response的用法设置响应内容response.getWriter(); 获取一个PrintWriter 对象可以使用println(),append(),write(),format()等等方法设置返回给浏览器的html内容。 12PrintWriter pw = response.getWriter();pw.println(&quot;···&quot;); 设置响应格式12response.setContentType(&quot;text/html&quot;); //浏览器打开文本response.setContentType(&quot;text/lol&quot;); //浏览器下载 设置响应编码设置响应编码有两种方式：12response.setContentType(&quot;text/html;charset=UTF-8&quot;);response.setCharacterEncoding(&quot;UTF-8&quot;); 这两种方式需要在response.getWriter调用之前执行。 设置不使用缓存123response.setDateHeader(&quot;Expires&quot;,0 );response.setHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;);response.setHeader(&quot;pragma&quot;,&quot;no-cache&quot;); 1234567891011121314151617public class HelloServlet extends HttpServlet &#123; public void doGet(HttpServletRequest request, HttpServletResponse response) &#123; try &#123; response.setDateHeader(&quot;Expires&quot;, 0); response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;); response.setHeader(&quot;pragma&quot;, &quot;no-cache&quot;); response.getWriter().println(&quot;&lt;h1&gt;Hello Servlet!&lt;/h1&gt;&quot;); response.getWriter().println(new Date().toLocaleString()); &#125; catch (IOException e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125; &#125;]]></content>
+      <categories>
+        <category>J2EE</category>
+      </categories>
+      <tags>
+        <tag>J2EE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tomcat]]></title>
     <url>%2F2019%2F06%2F06%2FTomcat%2F</url>
     <content type="text"><![CDATA[Tomcat安装部署1、在Apache官网下载Tomcat的压缩包。2、解压后在bin目录下运行批处理文件startup.bat，看到Server startup in xxx ms就表明启动成功。3、部署网页，将HTML文件复制到目录webapps\ROOT目录下就可以通过http://127.0.0.1:8080（加HTML文件名）来访问了。 更改Tomcat默认端口http协议的默认端口号为80，因此项目一般在发布的时候需要将Tomcat端口号改为80。 1、首先打开conf\server.xml文件，该文件中包含tomcat的配置信息，包括端口。2、搜索8080，可以找到相关配置信息：123&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; /&gt; 将其修改为80，保存，重启tomcat。3、之后就可以省略8080端口访问网页了。（默认接口为80，可省略） Tomcat部署（servlet程序）1、还是打开conf\server.xml文件，找到host。2、添加代码1&lt;Context path=&quot;/&quot; docBase=&quot;E:\\project\\j2ee\\web&quot; debug=&quot;0&quot; reloadable=&quot;false&quot; /&gt; 其中，docBase为项目的目录。3、重启tomcat，并打开项目。]]></content>
@@ -10,11 +43,6 @@
       <tags>
         <tag>J2EE</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2019%2F06%2F03%2FIO%E6%B5%81%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[容器和数据结构]]></title>
