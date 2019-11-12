@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CSS样式规则CSS的一般样式：选择器 {属性:值; 属性:值;}。 1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。2、属性和属性值以“键值对”的形式出现。3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。4、属性和属性值之间用英文”:”连接。5、多个“键值对”之间用英文”;”进行区分。 123456789&amp;lt;head&amp;gt;    &amp;lt;m">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS基础">
+<meta property="og:url" content="http://yoursite.com/2019/04/30/CSS基础/index.html">
+<meta property="og:site_name" content="Night Blog~">
+<meta property="og:description" content="CSS样式规则CSS的一般样式：选择器 {属性:值; 属性:值;}。 1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。2、属性和属性值以“键值对”的形式出现。3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。4、属性和属性值之间用英文”:”连接。5、多个“键值对”之间用英文”;”进行区分。 123456789&amp;lt;head&amp;gt;    &amp;lt;m">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/Front/UnicodeFont.png">
+<meta property="og:updated_time" content="2019-06-02T14:36:59.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS基础">
+<meta name="twitter:description" content="CSS样式规则CSS的一般样式：选择器 {属性:值; 属性:值;}。 1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。2、属性和属性值以“键值对”的形式出现。3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。4、属性和属性值之间用英文”:”连接。5、多个“键值对”之间用英文”;”进行区分。 123456789&amp;lt;head&amp;gt;    &amp;lt;m">
+<meta name="twitter:image" content="http://yoursite.com/images/Front/UnicodeFont.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/30/CSS基础/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CSS基础 | Night Blog~</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+      <a href="https://github.com/NightLoving" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Night Blog~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Something interesting</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/CSS基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张殊阳">
+      <meta itemprop="description" content="混饭吃都不容易">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Night Blog~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-30T00:00:00+08:00">2019-04-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-02 22:36:59" itemprop="dateModified" datetime="2019-06-02T22:36:59+08:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CSS样式规则"><a href="#CSS样式规则" class="headerlink" title="CSS样式规则"></a>CSS样式规则</h1><p>CSS的一般样式：<code>选择器 {属性:值; 属性:值;}</code>。</p>
+<p>1、选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。<br>2、属性和属性值以“键值对”的形式出现。<br>3、属性是对指定的对象设定的样式属性，例如字体大小、文本颜色等。<br>4、属性和属性值之间用英文”:”连接。<br>5、多个“键值对”之间用英文”;”进行区分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset = &quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            color: red;</span><br><span class="line">            font-size: 40px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="字体样式属性"><a href="#字体样式属性" class="headerlink" title="字体样式属性"></a>字体样式属性</h1><h2 id="font-size字号大小"><a href="#font-size字号大小" class="headerlink" title="font-size字号大小"></a>font-size字号大小</h2><p>font-size属性用于设置字号，该属性的值可以用相对长度单位，也可以使用绝对长度单位。其中，相对长度单位比较常用。推荐使用像素单位px。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">相对长度单位</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">em</td>
+<td style="text-align:center">相对于当前对象内文本的字体尺寸</td>
+</tr>
+<tr>
+<td style="text-align:center">px</td>
+<td style="text-align:center">像素，最常用</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">绝对长度单位</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">in</td>
+<td style="text-align:center">英寸</td>
+</tr>
+<tr>
+<td style="text-align:center">cm</td>
+<td style="text-align:center">厘米</td>
+</tr>
+<tr>
+<td style="text-align:center">mm</td>
+<td style="text-align:center">毫米</td>
+</tr>
+<tr>
+<td style="text-align:center">pt</td>
+<td style="text-align:center">点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="font-family字体"><a href="#font-family字体" class="headerlink" title="font-family字体"></a>font-family字体</h2><p>font-family属性用来设置字体，网页中常用的字体有：宋体、微软雅黑、黑体等，例如<code>p {font-family: &quot;微软雅黑&quot;,&quot;宋体&quot;;}</code>。</p>
+<p>可以同时指定多个字体，中间以逗号隔开表示浏览器如果不支持第一个字体，会找下一个直到兼容为止。</p>
+<p>常用技巧：<br>1、现在网页中普遍使用<strong>14px+</strong>。<br>2、尽量使用偶数数字字号，老式浏览器会有BUG。<br>3、各种字体之间必须用英文逗号隔开。<br>4、中文字体需要加英文状态下的引导，英文字体一般不需要加引号。当需要设置英文字体时，英文字体名必须位于中文字体名之前。<br>5、如果字体名中包含<strong>空格、#、$</strong>等符号，该字体必须加英文状态下的<strong>单引号或双引号</strong>。例如：<code>font-family: &quot;Times New Roman&quot;;</code>。<br>6、尽量使用系统默认字体，保证任何用户在浏览器中动能正确显示。</p>
+<h2 id="CSS-Unicode字体"><a href="#CSS-Unicode字体" class="headerlink" title="CSS Unicode字体"></a>CSS Unicode字体</h2><p>在CSS中设置字体名称，直接写中文是可以的，但是在文件编码时可能会不匹配而产生乱码错误。</p>
+<p>方案一：使用英文来替代。<code>font-family: &quot;Microsoft Yahei&quot;;</code>。</p>
+<p>方案二：在CSS中直接使用Unicode编码来写字体名称可以避免这些错误。</p>
+<p><img src="/images/Front/UnicodeFont.png" alt="Unicode字体"></p>
+<p>注意：尽量只写Unicode字体，写宋体(\5B8B\4F53)和微软雅黑(\5FAE\8F6F\96C5\9ED1)。</p>
+<h2 id="font-weight设置字体粗细"><a href="#font-weight设置字体粗细" class="headerlink" title="font-weight设置字体粗细"></a>font-weight设置字体粗细</h2><p>字体加粗除了使用<code>&lt;b&gt;&lt;/b&gt;</code>或<code>&lt;strong&gt;&lt;/strong&gt;</code>标签外，可以使用CSS来实现，但是CSS时没有语义的。</p>
+<p>font-weight属性用于定义字体的粗细，其可用属性值normal、bold、bolder、lighter、100~900（100的整数倍）。</p>
+<p>注意：数字400为normal，700为bold。我们一般使用数字表示。</p>
+<h2 id="font-style字体风格"><a href="#font-style字体风格" class="headerlink" title="font-style字体风格"></a>font-style字体风格</h2><p>字体倾斜除了用<code>&lt;i&gt;&lt;/i&gt;</code>和<code>&lt;em&gt;&lt;/em&gt;</code>标签外，可以使用CSS来实现，但CSS是没有语义的。</p>
+<p>font-style属性用于定义字体风格。其可用属性如下：<br>1、normal，浏览器显示标准字体样式。<br>2、italic，浏览器显示斜体字体样式。<br>3、oblique，浏览器显示倾斜的字体样式。</p>
+<p>注意：平时我们很少给文字加斜体，一般用将斜体标签改为普通模式。</p>
+<h2 id="font综合设置字体样式（重点）"><a href="#font综合设置字体样式（重点）" class="headerlink" title="font综合设置字体样式（重点）"></a>font综合设置字体样式（重点）</h2><p>font属性用于对字体样式进行综合设置，基本语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择器 &#123;font: font-style font-weight font-size/line-height font-family;&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：<br>1、使用font属性，必须按照上面语法格式的顺序书写，并以空格隔开。<br>2、其中不需要设置的属性可以忽略（或取默认值），但必须保留font-size和font-family属性（最后两个属性），否则font属性不起作用。</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><h2 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h2><p>标签选择器是指用HTML标签名称作为选择器，按标签名称分类，为页面的某一类标签统一设置CSS样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标签名 &#123;属性1：属性值1； 属性2：属性值2； ···&#125;</span><br></pre></td></tr></table></figure>
+<p>标签选择器最大的优点事能快速为页面中同类型的标签统一样式，同时也是缺点，不能差异化设置样式。</p>
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>类选择器使用“.”进行标识，后面紧跟类名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.类名&#123;属性1：属性值1； 属性2：属性值2； ···&#125;</span><br></pre></td></tr></table></figure>
+<p>标签调用的时候用<code>class = &quot;类名&quot;</code>即可。</p>
+<p>类选择器最大优势是可以为元素对象定义单独或相同的样式。</p>
+<p>注意：<br>1、长名称或字组可以使用中横线来为选择器命名。<br>2、不建议使用“_”下划线来命名CSS选择器。<br>3、不要用纯数字、中文等命名，尽量使用英文字母来表示。</p>
+<h2 id="多类名选择器"><a href="#多类名选择器" class="headerlink" title="多类名选择器"></a>多类名选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset = &quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;多类名选择器&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">        .font20 &#123;</span><br><span class="line">            font-size: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        .pink &#123;</span><br><span class="line">            color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class = &quot;font20 pink&quot;&gt;20px 粉色&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：样式显示效果跟HTML元素中的类名先后顺序没有关系，而<strong>与CSS样式书写的上下顺序有关</strong>。</p>
+<h2 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h2><p>id选择器使用#进行标识，后面紧跟id名，基本语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#id名&#123;属性1：属性值1； 属性2：属性值2； 属性3：属性值3；&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：<br>1、id名为HTML元素id的属性值。<br>2、元素的id是唯一的，只能对应文档的某一个具体元素。<br>3、在同一个页面，不允许有相同名字的id对象出现，但允许相同名字的class。</p>
+<h2 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h2><p>通配符选择器用*表示，他是所有选择器中作用范围最广的，能匹配页面中所有元素，语法格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;属性1：属性值1； 属性2：属性值2； 属性3：属性值3；&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*使用通配符选择器清除默认边距*/</span><br><span class="line">* &#123;</span><br><span class="line">    margin: 0;      /*定义外边距*/</span><br><span class="line">    padding: 0;     /*定义内边距*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：因为通配符选择器范围广，很少使用。</p>
+<h2 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h2><p>伪类选择器用于向某些选择器添加特殊效果。比如给连接添加特殊特殊效果。</p>
+<p>一般语法：<code>:link{}</code>。</p>
+<h3 id="链接伪类选择器"><a href="#链接伪类选择器" class="headerlink" title="链接伪类选择器"></a>链接伪类选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:link       /*未访问的链接*/</span><br><span class="line">:visited    /*已访问的连接*/</span><br><span class="line">:hover      /*鼠标移动到链接上*/</span><br><span class="line">:active     /*选定的链接(鼠标点击不松开)*/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset = &quot;UTF-8&quot;/&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        a:link&#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            color: gray;</span><br><span class="line">            font-weight: 700;</span><br><span class="line">        &#125;</span><br><span class="line">        a:visited&#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            color: orange;</span><br><span class="line">            font-weight: 700;</span><br><span class="line">        &#125;</span><br><span class="line">        a:hover&#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            color: red;</span><br><span class="line">            font-weight: 700;</span><br><span class="line">        &#125;</span><br><span class="line">        a:active&#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            color:green;</span><br><span class="line">            font-weight: 700;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;a&gt;点击链接&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：写的时候，顺序尽量不要颠倒。</p>
+<p>实际工作中，简单写链接伪类选择器就行了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#123;</span><br><span class="line">    font-weight: 700;</span><br><span class="line">    font-size: 16px;</span><br><span class="line">    color: gray;</span><br><span class="line">&#125;</span><br><span class="line">a:hover&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结构（位置）伪类选择器-CSS3"><a href="#结构（位置）伪类选择器-CSS3" class="headerlink" title="结构（位置）伪类选择器(CSS3)"></a>结构（位置）伪类选择器(CSS3)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:first-child:       /*选取其父元素首个子元素的指定选择器。*/</span><br><span class="line">:last-child:        /*选取其父元素最后一个子元素的指定选择器。*/</span><br><span class="line">:nth-child(n):      /*匹配数以其父元素的第N个子元素，n从0开始*/</span><br><span class="line">:nth-last-child(n): /*从最后一个孩子开始数*/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        li:first-child&#123;</span><br><span class="line">            color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        li:last-child&#123;</span><br><span class="line">            color: purple;</span><br><span class="line">        &#125;</span><br><span class="line">        li:nth-child(4)&#123;</span><br><span class="line">            color:skyblue;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;第一个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第二个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第三个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第四个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第五个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第六个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第七个孩子&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        li:nth-child(odd)&#123;          //选取奇数孩子也可以用2n+1</span><br><span class="line">            color:skyblue;</span><br><span class="line">        &#125;</span><br><span class="line">        li:nth-child(even)&#123;          //选取偶数孩子也可以用2n</span><br><span class="line">            color:pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;第一个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第二个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第三个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第四个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第五个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第六个孩子&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;第七个孩子&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="目标伪类选择器"><a href="#目标伪类选择器" class="headerlink" title="目标伪类选择器"></a>目标伪类选择器</h3><p><code>:target</code>目标伪类选择器，选择器可用于选取当前活动的目标元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:target&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="CSS外观属性"><a href="#CSS外观属性" class="headerlink" title="CSS外观属性"></a>CSS外观属性</h1><h2 id="color文本颜色"><a href="#color文本颜色" class="headerlink" title="color文本颜色"></a>color文本颜色</h2><p>color属性用于定义文本的颜色，其取值方式有如下三种：<br>1、预定义的颜色值，如red，green，blue等。<br>2、十六进制，如#FF0000,#FF6600,等。实际中，十六进制最常用。<br>3、RGB代码，如红色可以表示为rgb(255,0,0)或rgb(100%,0%,0%)。</p>
+<h2 id="line-height行间距"><a href="#line-height行间距" class="headerlink" title="line-height行间距"></a>line-height行间距</h2><p>line-height用于设置行间距。常用属性值有三种，分别为像素px（常用），相对值em和百分比%。一般情况下，行距比字号大7.8像素左右就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">    line-height: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="text-align水平对齐方式"><a href="#text-align水平对齐方式" class="headerlink" title="text-align水平对齐方式"></a>text-align水平对齐方式</h2><p>text-align属性用于设置文本内容的水平对齐，相当于html中的align对齐属性，其可用属性值如下：<br>1、left：左对其（默认值）<br>2、right：右对齐<br>3、center：居中对齐</p>
+<h2 id="text-indent首行缩进"><a href="#text-indent首行缩进" class="headerlink" title="text-indent首行缩进"></a>text-indent首行缩进</h2><p>text-indent属性用于设置首行文本的缩进，其属性值可为不同单位的数值、em（建议使用）字符宽度的倍数，或相对于浏览器窗口宽度的百分比%。</p>
+<p>1em是一个字的宽度，如果是汉字，就是一个汉字的宽度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">    text-indent: 2em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="letter-spacing字间距"><a href="#letter-spacing字间距" class="headerlink" title="letter-spacing字间距"></a>letter-spacing字间距</h2><p>letter-spacing属性用于定义字间距，其属性值可为不同单位的数值，默认为normal。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    letter-spacing: 2px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="word-spacing单词间距"><a href="#word-spacing单词间距" class="headerlink" title="word-spacing单词间距"></a>word-spacing单词间距</h2><p>word-spacing属性用于定义英文单词之间的间距，对中文字符无效。默认为normal。</p>
+<p>word-spacing和letter-spacing均可以设置英文，letter-spacing设置字母之间的间距。</p>
+<h2 id="颜色半透明（CSS3）"><a href="#颜色半透明（CSS3）" class="headerlink" title="颜色半透明（CSS3）"></a>颜色半透明（CSS3）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h1&#123;</span><br><span class="line">    color: rgba(0, 0, 0, 0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a是alpha，取值范围0~1之间。</p>
+<h2 id="文字阴影（CSS3）"><a href="#文字阴影（CSS3）" class="headerlink" title="文字阴影（CSS3）"></a>文字阴影（CSS3）</h2><p>语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 水平位置 垂直位置 模糊距离(模糊程度) 阴影颜色;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h1&#123;</span><br><span class="line">    text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：前两项必须写，后两项可以省略。</p>
+<h1 id="引入CSS样式表"><a href="#引入CSS样式表" class="headerlink" title="引入CSS样式表"></a>引入CSS样式表</h1><h2 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h2><p>一般语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        选择器&#123;属性1：属性值1;···&#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="行内式（内联样式）"><a href="#行内式（内联样式）" class="headerlink" title="行内式（内联样式）"></a>行内式（内联样式）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;标签名 style = &quot;属性值1; 属性值2; ···&quot;&gt;内容&lt;/标签名&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style = &quot;color = pink;&quot;&gt;粉红色&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link href = &quot;CSS文件的路径&quot; type = &quot;text/CSS&quot; rel = &quot;stylesheet&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：<br>1、href：定义所连接外部样式表的URL，可以是相对路径或绝对路径。<br>2、type：定义所链接文档的类型，需要指定为“text/CSS”，表示链接的文件是CSS样式表。<br>3、rel：定义当前文档与被链接文档之间的关系，这里需要指定为“stylesheet”表示被链接文档是一个样式表文件。</p>
+<h1 id="标签显示模式"><a href="#标签显示模式" class="headerlink" title="标签显示模式"></a>标签显示模式</h1><p>HTML标签一般分为块标签和行内标签两种类型。</p>
+<h2 id="块级元素-block"><a href="#块级元素-block" class="headerlink" title="块级元素-block"></a>块级元素-block</h2><p>每个块级元素通常会肚子占据一整行或多整行，可以对其设置高度、宽度、对齐等属性，常用于网页布局和王爷结构的搭建。</p>
+<p>div标签是最典型的块级元素。</p>
+<p>块级元素的特点：<br>1、总是从新行开始。<br>2、高度、行高、外边距以及内边距都可以控制。<br>3、宽度默认是容器的100%。<br>4、可以容纳内联元素和其他块元素。</p>
+<h2 id="行内元素-inline"><a href="#行内元素-inline" class="headerlink" title="行内元素-inline"></a>行内元素-inline</h2><p>行内元素不占有独立的区域，仅仅靠自身的字体大小和图像尺寸来支撑结构，一般不可以设置宽度、高度。常用于控制页面中文本的样式。</p>
+<p>常见行内元素：a、strong、b、em、i、del、s、ins、u、span等，span是最典型的行内元素。</p>
+<p>行内元素特点：<br>1、和相邻元素在一行上。<br>2、高、宽无效，但水平方向的padding和margin可以设置，垂直方向无效。<br>3、默认宽度是它本身内容的宽度。<br>4、行内元素只能容纳文本或其他行内元素。</p>
+<h2 id="行内块元素-inline-block"><a href="#行内块元素-inline-block" class="headerlink" title="行内块元素-inline-block"></a>行内块元素-inline-block</h2><p>在行内元素中有几个特殊的标签：img、input、td可以对它们设置宽高和对齐属性。</p>
+<p>行内块元素的特点：<br>1、和相邻元素在一行上，但之间会有空白间隙。<br>2、默认宽度为本身内容宽度。<br>3、高度，行高，外边距和内边距可控。</p>
+<h2 id="标签显示模式转换-display"><a href="#标签显示模式转换-display" class="headerlink" title="标签显示模式转换 display"></a>标签显示模式转换 display</h2><p>块转行内：display:inline;<br>行内转块：display:block;<br>块、行内元素转换为行内块：display:inline-block;</p>
+<h1 id="CSS复合选择器"><a href="#CSS复合选择器" class="headerlink" title="CSS复合选择器"></a>CSS复合选择器</h1><h2 id="交集选择器"><a href="#交集选择器" class="headerlink" title="交集选择器"></a>交集选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .red &#123;</span><br><span class="line">            color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        div.red &#123;               //交集选择器</span><br><span class="line">            font-size: 15px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p class = &quot;red&quot;&gt;字体不会变化&lt;/p&gt;</span><br><span class="line">    &lt;div class = &quot;red&quot;&gt;字体会变化&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="并集选择器"><a href="#并集选择器" class="headerlink" title="并集选择器"></a>并集选择器</h2><p>并集选择器通过逗号连接而成，任何形式选择器都可以作为并集选择器的一部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div,</span><br><span class="line">    .name,</span><br><span class="line">    #test &#123;</span><br><span class="line">        font-size: 15px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h2><p>将外层标签写在前面，内层标签卸载后面，中间用空格分隔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        div p&#123;</span><br><span class="line">            color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        .class p&#123;</span><br><span class="line">            color: blue;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;p&gt;这是红色&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class = &quot;class&quot;&gt;</span><br><span class="line">        &lt;p&gt;这是蓝色&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="子元素选择器"><a href="#子元素选择器" class="headerlink" title="子元素选择器"></a>子元素选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .nav &gt; li &#123;     //只有一级菜单为粉色</span><br><span class="line">            color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul class = &quot;nav&quot;&gt;</span><br><span class="line">        &lt;li&gt;一级菜单</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;二级菜单&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><h3 id="只存在属性类型"><a href="#只存在属性类型" class="headerlink" title="只存在属性类型"></a>只存在属性类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    a[title]&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href = &quot;#&quot; title = &quot;百度&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">&lt;a href = &quot;#&quot;&gt;新浪&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="属性和值类型"><a href="#属性和值类型" class="headerlink" title="属性和值类型"></a>属性和值类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    input[type = text]&#123;</span><br><span class="line">        color = red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type = &quot;text&quot; value = &quot;文本框&quot; /&gt;</span><br><span class="line">&lt;input type = &quot;submit&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="通配类型"><a href="#通配类型" class="headerlink" title="通配类型"></a>通配类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div[class^=font]&#123;       //font在类名前</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    div[class&amp;=footer]&#123;     //footer在类名后</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">    div[class*=news]&#123;       //包含news的所有类</span><br><span class="line">        color: yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class = &quot;font1&quot;&gt;属性选择器&lt;/div&gt;</span><br><span class="line">&lt;div class = &quot;font2&quot;&gt;属性选择器&lt;/div&gt;</span><br><span class="line">&lt;div class = &quot;font3&quot;&gt;属性选择器&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class = &quot;sub-footer&quot;&gt;属性选择器&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class = &quot;the-news-paper&quot;&gt;属性选择器&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    p::first-letter&#123;        //段落中第一个字</span><br><span class="line">        color: red;</span><br><span class="line">        font-size: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">    p::first-line&#123;          //段落中第一行</span><br><span class="line">        color: green;</span><br><span class="line">    &#125;</span><br><span class="line">    p::selection&#123;           //被选中的部分</span><br><span class="line">        color:pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        div::before&#123;</span><br><span class="line">            content: &quot;我&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        div::after&#123;</span><br><span class="line">            content: &quot;18岁&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;今年&lt;div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="CSS背景（background）"><a href="#CSS背景（background）" class="headerlink" title="CSS背景（background）"></a>CSS背景（background）</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/30/HTML/" rel="next" title="HTML基础">
+                <i class="fa fa-chevron-left"></i> HTML基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/07/C语言基础/" rel="prev" title="C语言基础">
+                C语言基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张殊阳</p>
+              <p class="site-description motion-element" itemprop="description">混饭吃都不容易</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS样式规则"><span class="nav-number">1.</span> <span class="nav-text">CSS样式规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体样式属性"><span class="nav-number">2.</span> <span class="nav-text">字体样式属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-size字号大小"><span class="nav-number">2.1.</span> <span class="nav-text">font-size字号大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-family字体"><span class="nav-number">2.2.</span> <span class="nav-text">font-family字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Unicode字体"><span class="nav-number">2.3.</span> <span class="nav-text">CSS Unicode字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-weight设置字体粗细"><span class="nav-number">2.4.</span> <span class="nav-text">font-weight设置字体粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-style字体风格"><span class="nav-number">2.5.</span> <span class="nav-text">font-style字体风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font综合设置字体样式（重点）"><span class="nav-number">2.6.</span> <span class="nav-text">font综合设置字体样式（重点）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择器"><span class="nav-number">3.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签选择器"><span class="nav-number">3.1.</span> <span class="nav-text">标签选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类选择器"><span class="nav-number">3.2.</span> <span class="nav-text">类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多类名选择器"><span class="nav-number">3.3.</span> <span class="nav-text">多类名选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#id选择器"><span class="nav-number">3.4.</span> <span class="nav-text">id选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符选择器"><span class="nav-number">3.5.</span> <span class="nav-text">通配符选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类选择器"><span class="nav-number">3.6.</span> <span class="nav-text">伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接伪类选择器"><span class="nav-number">3.6.1.</span> <span class="nav-text">链接伪类选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构（位置）伪类选择器-CSS3"><span class="nav-number">3.6.2.</span> <span class="nav-text">结构（位置）伪类选择器(CSS3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标伪类选择器"><span class="nav-number">3.6.3.</span> <span class="nav-text">目标伪类选择器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS外观属性"><span class="nav-number">4.</span> <span class="nav-text">CSS外观属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#color文本颜色"><span class="nav-number">4.1.</span> <span class="nav-text">color文本颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#line-height行间距"><span class="nav-number">4.2.</span> <span class="nav-text">line-height行间距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text-align水平对齐方式"><span class="nav-number">4.3.</span> <span class="nav-text">text-align水平对齐方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text-indent首行缩进"><span class="nav-number">4.4.</span> <span class="nav-text">text-indent首行缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#letter-spacing字间距"><span class="nav-number">4.5.</span> <span class="nav-text">letter-spacing字间距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word-spacing单词间距"><span class="nav-number">4.6.</span> <span class="nav-text">word-spacing单词间距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色半透明（CSS3）"><span class="nav-number">4.7.</span> <span class="nav-text">颜色半透明（CSS3）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字阴影（CSS3）"><span class="nav-number">4.8.</span> <span class="nav-text">文字阴影（CSS3）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引入CSS样式表"><span class="nav-number">5.</span> <span class="nav-text">引入CSS样式表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部样式表"><span class="nav-number">5.1.</span> <span class="nav-text">内部样式表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内式（内联样式）"><span class="nav-number">5.2.</span> <span class="nav-text">行内式（内联样式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部样式表"><span class="nav-number">5.3.</span> <span class="nav-text">外部样式表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标签显示模式"><span class="nav-number">6.</span> <span class="nav-text">标签显示模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#块级元素-block"><span class="nav-number">6.1.</span> <span class="nav-text">块级元素-block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内元素-inline"><span class="nav-number">6.2.</span> <span class="nav-text">行内元素-inline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内块元素-inline-block"><span class="nav-number">6.3.</span> <span class="nav-text">行内块元素-inline-block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签显示模式转换-display"><span class="nav-number">6.4.</span> <span class="nav-text">标签显示模式转换 display</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS复合选择器"><span class="nav-number">7.</span> <span class="nav-text">CSS复合选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#交集选择器"><span class="nav-number">7.1.</span> <span class="nav-text">交集选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并集选择器"><span class="nav-number">7.2.</span> <span class="nav-text">并集选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后代选择器"><span class="nav-number">7.3.</span> <span class="nav-text">后代选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子元素选择器"><span class="nav-number">7.4.</span> <span class="nav-text">子元素选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性选择器"><span class="nav-number">7.5.</span> <span class="nav-text">属性选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#只存在属性类型"><span class="nav-number">7.5.1.</span> <span class="nav-text">只存在属性类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和值类型"><span class="nav-number">7.5.2.</span> <span class="nav-text">属性和值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配类型"><span class="nav-number">7.5.3.</span> <span class="nav-text">通配类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪元素选择器"><span class="nav-number">7.6.</span> <span class="nav-text">伪元素选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS背景（background）"><span class="nav-number">8.</span> <span class="nav-text">CSS背景（background）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张殊阳</span>
+
+  
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":true},"react":{"opacity":0.7},"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"log":false});</script></body>
+</html>
+
+<!-- 页面点击 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
