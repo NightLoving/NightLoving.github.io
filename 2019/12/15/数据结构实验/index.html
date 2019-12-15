@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="顺序栈基本操作编写程序实现表达式求值从键盘输入四则运算表达式字符串（以#结束），验证算术表达式的正确性，若正确，则计算该算术表达式的值。若表达式错误，则给出相应提示。为了简化设计，现做以下规定：    1）键盘输入的表达式中的数据都只有个位，不考虑多位的情况；    2）任何运算结果都是整数，不考虑小数情况；程序主要功能描述如下：    1)    从键盘上输入表达式。    2)    分析该表">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构实验">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/数据结构实验/index.html">
+<meta property="og:site_name" content="Night Blog~">
+<meta property="og:description" content="顺序栈基本操作编写程序实现表达式求值从键盘输入四则运算表达式字符串（以#结束），验证算术表达式的正确性，若正确，则计算该算术表达式的值。若表达式错误，则给出相应提示。为了简化设计，现做以下规定：    1）键盘输入的表达式中的数据都只有个位，不考虑多位的情况；    2）任何运算结果都是整数，不考虑小数情况；程序主要功能描述如下：    1)    从键盘上输入表达式。    2)    分析该表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-15T06:07:48.856Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构实验">
+<meta name="twitter:description" content="顺序栈基本操作编写程序实现表达式求值从键盘输入四则运算表达式字符串（以#结束），验证算术表达式的正确性，若正确，则计算该算术表达式的值。若表达式错误，则给出相应提示。为了简化设计，现做以下规定：    1）键盘输入的表达式中的数据都只有个位，不考虑多位的情况；    2）任何运算结果都是整数，不考虑小数情况；程序主要功能描述如下：    1)    从键盘上输入表达式。    2)    分析该表">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/15/数据结构实验/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据结构实验 | Night Blog~</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+      <a href="https://github.com/NightLoving" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Night Blog~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Something interesting</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/数据结构实验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张殊阳">
+      <meta itemprop="description" content="混饭吃都不容易">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Night Blog~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构实验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-15 00:00:00 / 修改时间：14:07:48" itemprop="dateCreated datePublished" datetime="2019-12-15T00:00:00+08:00">2019-12-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="顺序栈基本操作"><a href="#顺序栈基本操作" class="headerlink" title="顺序栈基本操作"></a>顺序栈基本操作</h1><h2 id="编写程序实现表达式求值"><a href="#编写程序实现表达式求值" class="headerlink" title="编写程序实现表达式求值"></a>编写程序实现表达式求值</h2><p>从键盘输入四则运算表达式字符串（以#结束），验证算术表达式的正确性，若正确，则计算该算术表达式的值。若表达式错误，则给出相应提示。为了简化设计，现做以下规定：<br>    1）键盘输入的表达式中的数据都只有个位，不考虑多位的情况；<br>    2）任何运算结果都是整数，不考虑小数情况；<br>程序主要功能描述如下：<br>    1)    从键盘上输入表达式。<br>    2)    分析该表达式是否合法：<br>        ①是数字，则判断该数字的合法性。若合法，则压入数据到堆栈<br>        ②是规定的运算符，则根据规则进行处理。在处理过程中，将计算该表达式的值。<br>        ③若是其它字符，则返回错误信息。<br>    3)    若上述处理过程中没有发现错误，则认为该表达式合法，并输出处理结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">#define  True  11 </span><br><span class="line">#define  False  0</span><br><span class="line">#define  Ok  111</span><br><span class="line">#define  Error  -111</span><br><span class="line">#define  Stack_Init_Size   10</span><br><span class="line">#define  StackIncrement   10</span><br><span class="line"></span><br><span class="line">typedef  int  Status;				//状态类型</span><br><span class="line">typedef  int  SElemType;			//元素类型</span><br><span class="line">typedef  struct &#123;</span><br><span class="line">	SElemType* base;				//动态空间基址</span><br><span class="line">	int top;						//实际元素个数 </span><br><span class="line">	int stacksize;					//当前存储容量(以sizeof(ElemType)为单位)</span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status InitStack(SqStack&amp; S) &#123;</span><br><span class="line">	//分配空间</span><br><span class="line">	S.base = (SElemType*)malloc(sizeof(SElemType) * Stack_Init_Size);</span><br><span class="line">	if (S.base == NULL) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//初始化数值</span><br><span class="line">	S.top = 0;</span><br><span class="line">	S.stacksize = Stack_Init_Size;</span><br><span class="line"></span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Push(SqStack&amp; S, SElemType e) &#123;</span><br><span class="line">	//判断栈满</span><br><span class="line">	if (S.top == S.stacksize) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	//入栈</span><br><span class="line">	S.base[S.top++] = e;			//top指向下一个空位</span><br><span class="line"></span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status Pop(SqStack&amp; S, SElemType&amp; e) &#123;</span><br><span class="line">	//判断栈空</span><br><span class="line">	if (S.top == 0) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//出栈</span><br><span class="line">	e = S.base[--S.top];	//top指向下一个空位</span><br><span class="line"></span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SElemType GetTop(SqStack S) &#123;</span><br><span class="line">	if (S.top != NULL) &#123;</span><br><span class="line">		return S.base[--S.top];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Operate(int a, int Operator, int b) &#123;</span><br><span class="line">	switch (Operator)</span><br><span class="line">	&#123;</span><br><span class="line">	case 0:</span><br><span class="line">		return a + b;</span><br><span class="line">		break;</span><br><span class="line">	case 1:</span><br><span class="line">		return b - a;</span><br><span class="line">		break;</span><br><span class="line">	case 2:</span><br><span class="line">		return a * b;</span><br><span class="line">		break;</span><br><span class="line">	case 3:</span><br><span class="line">		return b / a;</span><br><span class="line">	default:</span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status IsOperator(char c, int&amp; code) &#123;</span><br><span class="line">	switch (c)</span><br><span class="line">	&#123;</span><br><span class="line">	case &apos;+&apos;:</span><br><span class="line">		code = 0;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;-&apos;:</span><br><span class="line">		code = 1;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;*&apos;:</span><br><span class="line">		code = 2;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;/&apos;:</span><br><span class="line">		code = 3;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;(&apos;:</span><br><span class="line">		code = 4;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;)&apos;:</span><br><span class="line">		code = 5;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;#&apos;:</span><br><span class="line">		code = 6;</span><br><span class="line">		return True;</span><br><span class="line">	case &apos;0&apos;:</span><br><span class="line">		code = 0;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;1&apos;:</span><br><span class="line">		code = 1;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;2&apos;:</span><br><span class="line">		code = 2;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;3&apos;:</span><br><span class="line">		code = 3;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;4&apos;:</span><br><span class="line">		code = 4;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;5&apos;:</span><br><span class="line">		code = 5;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;6&apos;:</span><br><span class="line">		code = 6;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;7&apos;:</span><br><span class="line">		code = 7;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;8&apos;:</span><br><span class="line">		code = 8;</span><br><span class="line">		return False;</span><br><span class="line">	case &apos;9&apos;:</span><br><span class="line">		code = 9;</span><br><span class="line">		return False;</span><br><span class="line">		</span><br><span class="line">	default:</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int  Precede(int precode, int nextcode) &#123;</span><br><span class="line">	int comp[7][7]&#123;</span><br><span class="line">		&#123;1,1,-1,-1,-1,1,1&#125;,</span><br><span class="line">		&#123;1,1,-1,-1,-1,1,1&#125;,</span><br><span class="line">		&#123;1,1,1,1,-1,1,1&#125;,</span><br><span class="line">		&#123;1,1,1,1,-1,1,1&#125;,</span><br><span class="line">		&#123;-1,-1,-1,-1,-1,0,2&#125;,</span><br><span class="line">		&#123;1,1,1,1,2,1,1&#125;,</span><br><span class="line">		&#123;-1,-1,-1,-1,-1,2,0&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	return comp[precode][nextcode];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int EvaluateExpression() &#123;</span><br><span class="line">	SqStack OPND, OPTR;			//OPND数字栈 OPTR运算符栈</span><br><span class="line">	char ch;					//用户输入字符</span><br><span class="line">	int opat;					//用户输入操作符转码</span><br><span class="line">	int theta;					//栈顶弹出运算符转码</span><br><span class="line">	SElemType a, b;				//操作数</span><br><span class="line"></span><br><span class="line">	//初始化栈</span><br><span class="line">	InitStack(OPND);</span><br><span class="line">	InitStack(OPTR);</span><br><span class="line"></span><br><span class="line">	printf(&quot;请输入表达式：&quot;);</span><br><span class="line">	scanf_s(&quot;%c&quot;, &amp;ch);</span><br><span class="line">	Push(OPTR,6);</span><br><span class="line">	while (ch != &apos;#&apos; || GetTop(OPTR) != 6) &#123;		//表达式没有扫描完毕或栈顶元素不为#</span><br><span class="line">		if (!IsOperator(ch, opat)) &#123;				//不是操作符，数字压入栈，读取下一个字符</span><br><span class="line">			Push(OPND, opat);</span><br><span class="line">			scanf_s(&quot;%c&quot;, &amp;ch);</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;										//是操作符,比较优先级</span><br><span class="line">			switch (Precede(GetTop(OPTR),opat))</span><br><span class="line">			&#123;</span><br><span class="line">			case 1:									//栈内优先级高，弹出两数运算，入栈</span><br><span class="line">				Pop(OPTR, theta);					//弹出运算符</span><br><span class="line">				Pop(OPND, a);						//弹出两数字</span><br><span class="line">				Pop(OPND, b);</span><br><span class="line">				Push(OPND,Operate(a, theta, b));	//运算，入栈</span><br><span class="line">				break;</span><br><span class="line">			case -1:								//栈内优先级低，入栈，读取</span><br><span class="line">				Push(OPTR, opat);</span><br><span class="line">				scanf_s(&quot;%c&quot;, &amp;ch);</span><br><span class="line">				break;</span><br><span class="line">			case 0:									//栈顶为（，opat为）</span><br><span class="line">				Pop(OPTR, a);</span><br><span class="line">				scanf_s(&quot;%c&quot;, &amp;ch);</span><br><span class="line">				break;</span><br><span class="line">			default:</span><br><span class="line">				return Error;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return GetTop(OPND);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char argv[]) &#123;</span><br><span class="line">	SqStack S;</span><br><span class="line">	SElemType e = 3;</span><br><span class="line">	/*</span><br><span class="line">	printf(&quot;%d&quot;, InitStack(S));</span><br><span class="line">	printf(&quot;%d&quot;, Push(S, e));</span><br><span class="line">	printf(&quot;%d&quot;, GetTop(S));</span><br><span class="line">	printf(&quot;%d&quot;, Pop(S, e));</span><br><span class="line">	printf(&quot;%d&quot;, Operate(2, 0, 3));</span><br><span class="line">	*/</span><br><span class="line">	printf(&quot;%d&quot;, EvaluateExpression());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="递归转栈"><a href="#递归转栈" class="headerlink" title="递归转栈"></a>递归转栈</h2><p>已知函数t(n)=2*t(n/2)+n 其中t(0)=0，n为整数。编写程序实现：<br>（1）计算t(n)的递归算法。<br>（2）用栈实现计算t(n)的非递归算法。（建议用链式栈）<br>编写主函数，输入n值，输出递归算法和非递归算法的计算结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define Ok 1</span><br><span class="line">#define Error -1</span><br><span class="line"></span><br><span class="line">typedef int Status;</span><br><span class="line">typedef int ElemType;</span><br><span class="line">typedef struct StackNode &#123;</span><br><span class="line">	ElemType data;</span><br><span class="line">	struct StackNode* next;</span><br><span class="line">&#125;StackNode,*LinkStack;</span><br><span class="line"></span><br><span class="line">int t(int n) &#123;</span><br><span class="line">	if (n == 0) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		return 2 * t(n / 2) + n;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//初始化链栈</span><br><span class="line">Status InitStack(LinkStack&amp; S) &#123;</span><br><span class="line">	//构造空栈</span><br><span class="line">	S = NULL;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//入栈</span><br><span class="line">Status Push(LinkStack&amp; S, ElemType e) &#123;</span><br><span class="line">	StackNode* p = (StackNode*)malloc(sizeof(StackNode));</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;next = S;</span><br><span class="line">	S = p;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//出栈</span><br><span class="line">Status Pop(LinkStack&amp; S, ElemType&amp; e) &#123;</span><br><span class="line">	StackNode* p;</span><br><span class="line">	if (S == NULL) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	e = S-&gt;data;</span><br><span class="line">	p = S;</span><br><span class="line">	S = S-&gt;next;</span><br><span class="line">	free(p);</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ElemType GetTop(LinkStack S) &#123;</span><br><span class="line">	if (S != NULL) &#123;</span><br><span class="line">		return S-&gt;data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Caculate(int n) &#123;</span><br><span class="line">	int e;</span><br><span class="line">	int result = 0;</span><br><span class="line">	LinkStack S;</span><br><span class="line">	InitStack(S);</span><br><span class="line"></span><br><span class="line">	for (int i = n; i &gt; 0; i = i / 2) &#123;</span><br><span class="line">		Push(S, i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	while (S) &#123;</span><br><span class="line">		result = 2 * result + GetTop(S);</span><br><span class="line">		Pop(S, e);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char argv[]) &#123;</span><br><span class="line">	int a;</span><br><span class="line">	printf(&quot;输入n：&quot;);</span><br><span class="line">	scanf_s(&quot;%d&quot;, &amp;a);</span><br><span class="line">	printf(&quot;递归结果：t(n)=%d\n&quot;, t(a));</span><br><span class="line">	printf(&quot;栈结果 ：t(n)=%d&quot;, Caculate(a));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="顺序循环队列基本操作"><a href="#顺序循环队列基本操作" class="headerlink" title="顺序循环队列基本操作"></a>顺序循环队列基本操作</h1><p>约瑟夫环问题：<br>设有n个人围坐在圆桌周围，现从某个位置 i 上的人开始报数，数到 m 的人就站出来。下一个人，即原来的第m+1个位置上的人，又从1开始报数，再是数到m的人站出来。依次重复下去，直到全部的人都站出来，按出列的先后又可得到一个新的序列。由于该问题是由古罗马著名的史学家家Josephus提出的问题演变而来，所以通常称为Josephus问题。例如：当n=8, m=4, i=1时，得到出列序列为：4，8，5，2，1，3，7，6。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define  True  11</span><br><span class="line">#define  False  0</span><br><span class="line">#define  Ok  111</span><br><span class="line">#define  Error  -111</span><br><span class="line">typedef  int  Status;					//状态类型</span><br><span class="line">typedef  int  QElemType;				//元素类型</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	QElemType* base;					//动态存储空间首址</span><br><span class="line">	int  front;							//头下标，队头元素下标</span><br><span class="line">	int  rear;							//尾下标，队尾元素的下一个位置</span><br><span class="line">	int  qsize;							//队列占用的空间（以元素为单位）</span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status InitQueue(SqQueue &amp;Q, int size) &#123;</span><br><span class="line">//	Q.base = (QElemType*)malloc(sizeof(QElemType) * (size + 1));</span><br><span class="line">	Q.base = new QElemType[size + 1];</span><br><span class="line">	if (Q.base == NULL) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	Q.front = 0;</span><br><span class="line">	Q.rear = 0;</span><br><span class="line">	Q.qsize = size + 1;		//对size+1取模;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status EnQueue(SqQueue&amp; Q, QElemType e) &#123;</span><br><span class="line">	//判断队列满</span><br><span class="line">	if ((Q.rear + 1) % Q.qsize == Q.front) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	Q.base[Q.rear] = e;</span><br><span class="line">	Q.rear = (Q.rear+1) % Q.qsize;</span><br><span class="line"></span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status DeQueue(SqQueue&amp; Q, QElemType&amp; e) &#123;</span><br><span class="line">	//判断队空</span><br><span class="line">	if (Q.front == Q.rear) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	e = Q.base[Q.front];</span><br><span class="line">	Q.front = (Q.front + 1) % Q.qsize;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status QueueEmpty(SqQueue&amp; Q) &#123;</span><br><span class="line">	if (Q.front == Q.rear) &#123;</span><br><span class="line">		return True;</span><br><span class="line">	&#125;</span><br><span class="line">	return False;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QElemType GetHead(SqQueue&amp; Q) &#123;</span><br><span class="line">	if (!QueueEmpty(Q)) &#123;</span><br><span class="line">		return Q.base[Q.front];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Circle(int n, int i, int m) &#123;</span><br><span class="line">	SqQueue Q;</span><br><span class="line">	QElemType e;</span><br><span class="line">	int cnt = 0;</span><br><span class="line">	InitQueue(Q, n);</span><br><span class="line">	for (int j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">		EnQueue(Q, j);</span><br><span class="line">	&#125;</span><br><span class="line">	for (int j = 0; j &lt; i - 1; j++) &#123;</span><br><span class="line">		DeQueue(Q, e);</span><br><span class="line">		EnQueue(Q, e);</span><br><span class="line">	&#125;</span><br><span class="line">	while (!QueueEmpty(Q)) &#123;</span><br><span class="line">		cnt++;</span><br><span class="line">		if (cnt != m) &#123;</span><br><span class="line">			DeQueue(Q, e);</span><br><span class="line">			EnQueue(Q, e);</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			DeQueue(Q, e);</span><br><span class="line">			printf(&quot;%d &quot;, e);</span><br><span class="line">			cnt = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argv, char argc[]) &#123;</span><br><span class="line"></span><br><span class="line">	SqQueue Q;</span><br><span class="line">	Q.base = NULL;</span><br><span class="line">	int size = 9;</span><br><span class="line">	QElemType e = 5;</span><br><span class="line">	/*</span><br><span class="line"></span><br><span class="line">	InitQueue(Q, size);</span><br><span class="line">	EnQueue(Q, 5);</span><br><span class="line">	EnQueue(Q, 7);</span><br><span class="line">	EnQueue(Q, 6);</span><br><span class="line">	DeQueue(Q, e);</span><br><span class="line">	printf(&quot;%d&quot;, e);</span><br><span class="line">	DeQueue(Q, e);</span><br><span class="line">	printf(&quot;%d&quot;, e);</span><br><span class="line">	DeQueue(Q, e);</span><br><span class="line">	printf(&quot;%d&quot;, e);</span><br><span class="line">	*/</span><br><span class="line"></span><br><span class="line">	Circle(8, 1, 4);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	Circle(9, 3, 4);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	Circle(19, 5, 3);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二叉树的建立及遍历"><a href="#二叉树的建立及遍历" class="headerlink" title="二叉树的建立及遍历"></a>二叉树的建立及遍历</h1><h2 id="二叉树的创建"><a href="#二叉树的创建" class="headerlink" title="二叉树的创建"></a>二叉树的创建</h2><p>编写程序任意输入二叉树的结点个数和结点值，构造一棵二叉树，采用三种递归遍历算法(前序、中序、后序)对这棵二叉树进行遍历，并计算出二叉树的高度、叶子结点数以及总结点数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">typedef char ElemType;</span><br><span class="line">typedef struct BiTNode &#123;</span><br><span class="line">	ElemType data;</span><br><span class="line">	BiTNode* lchild;</span><br><span class="line">	BiTNode* rchild;</span><br><span class="line">&#125;BiTNode, *BiTree;</span><br><span class="line"></span><br><span class="line">//创建二叉树</span><br><span class="line">void CreateBiTree(BiTree &amp;T) &#123;</span><br><span class="line">	ElemType ET;</span><br><span class="line">	ET = cin.get();</span><br><span class="line">	if (ET == &apos; &apos;) &#123;</span><br><span class="line">		T = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		//生成根节点</span><br><span class="line">		T = (BiTree)malloc(sizeof(BiTNode));</span><br><span class="line">		if (T == NULL) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;内存分配失败！&quot; &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;data = ET;</span><br><span class="line">		CreateBiTree(T-&gt;lchild);</span><br><span class="line">		CreateBiTree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//打印元素</span><br><span class="line">ElemType PrintElement(ElemType e) &#123;</span><br><span class="line">	cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//先序遍历</span><br><span class="line">void PreOrderTraverse(BiTree T) &#123;</span><br><span class="line">	if (T != NULL) &#123;</span><br><span class="line">		PrintElement(T-&gt;data);</span><br><span class="line">		PreOrderTraverse(T-&gt;lchild);</span><br><span class="line">		PreOrderTraverse(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中序遍历</span><br><span class="line">void InOrderTraverse(BiTree T) &#123;</span><br><span class="line">	if (T != NULL) &#123;</span><br><span class="line">		PreOrderTraverse(T-&gt;lchild);</span><br><span class="line">		PrintElement(T-&gt;data);</span><br><span class="line">		PreOrderTraverse(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//后序遍历</span><br><span class="line">void PostOrderTraverse(BiTree T) &#123;</span><br><span class="line">	if (T != NULL) &#123;</span><br><span class="line">		PreOrderTraverse(T-&gt;lchild);</span><br><span class="line">		PreOrderTraverse(T-&gt;rchild);</span><br><span class="line">		PrintElement(T-&gt;data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//深度</span><br><span class="line">int Depth(BiTree&amp; T) &#123;</span><br><span class="line">	if (T == NULL) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int m = Depth(T-&gt;lchild);</span><br><span class="line">	int n = Depth(T-&gt;rchild);</span><br><span class="line">	if (m &gt; n) &#123;</span><br><span class="line">		return m + 1;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		return n + 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//节点个数</span><br><span class="line">int NodeCount(BiTree&amp; T) &#123;</span><br><span class="line">	if (T == NULL) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else return NodeCount(T-&gt;lchild) + NodeCount(T-&gt;rchild) + 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//叶子节点个数</span><br><span class="line">int CountLeaf(BiTree&amp; T) &#123;</span><br><span class="line">	if (T == NULL) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	if (T-&gt;lchild == NULL &amp;&amp; T-&gt;rchild == NULL) &#123;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line">	return CountLeaf(T-&gt;rchild) + CountLeaf(T-&gt;lchild);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char argv[]) &#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	cout &lt;&lt; &quot;先序创建二叉树：&quot;;</span><br><span class="line">	CreateBiTree(T);</span><br><span class="line">	cout &lt;&lt; &quot;先序遍历：&quot;;</span><br><span class="line">	PreOrderTraverse(T);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;中序遍历：&quot;;</span><br><span class="line">	InOrderTraverse(T);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;后序遍历：&quot;;</span><br><span class="line">	PostOrderTraverse(T);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;深度：&quot;;</span><br><span class="line">	cout &lt;&lt; Depth(T) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;节点个数：&quot;;</span><br><span class="line">	cout &lt;&lt; NodeCount(T) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;叶子节点个数：&quot;;</span><br><span class="line">	cout &lt;&lt; CountLeaf(T) &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二叉树非递归遍历"><a href="#二叉树非递归遍历" class="headerlink" title="二叉树非递归遍历"></a>二叉树非递归遍历</h2><p>编写程序生成下面所示的二叉树，并采用中序遍历的非递归算法对此二叉树进行遍历。<br>二叉树：”12  346   5  “</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#define True 1</span><br><span class="line">#define False -1</span><br><span class="line">#define Ok 11</span><br><span class="line">#define Error -11</span><br><span class="line">typedef int Status;</span><br><span class="line">typedef char ElemType;</span><br><span class="line">typedef struct BiTNode &#123;</span><br><span class="line">	ElemType Data;</span><br><span class="line">	BiTNode* lchild;</span><br><span class="line">	BiTNode* rchild;</span><br><span class="line">&#125;BiTNode, * BiTree;</span><br><span class="line"></span><br><span class="line">typedef BiTNode* StackElem;</span><br><span class="line">typedef struct Stack &#123;</span><br><span class="line">	StackElem* Data;</span><br><span class="line">	int StackSize;</span><br><span class="line">	int Top;</span><br><span class="line">	int Base;</span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br><span class="line">//初始化栈</span><br><span class="line">Status InitStack(SqStack&amp; S) &#123;</span><br><span class="line">	S.Data = (StackElem*)malloc(10 * sizeof(StackElem));</span><br><span class="line">	S.StackSize = 10;</span><br><span class="line">	S.Base = 0;</span><br><span class="line">	S.Top = 0;</span><br><span class="line">	return Ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Push(SqStack&amp; S, StackElem e) &#123;</span><br><span class="line">	if (S.Top + 1 == S.StackSize) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		S.Data[S.Top] = e;</span><br><span class="line">		S.Top++;</span><br><span class="line">		return Ok;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Pop(SqStack&amp; S, StackElem&amp; e) &#123;</span><br><span class="line">	if (S.Base == S.Top) &#123;</span><br><span class="line">		return Error;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		e = S.Data[--S.Top];</span><br><span class="line">		return Ok;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool StackEmpty(SqStack S) &#123;</span><br><span class="line">	if (S.Base == S.Top) &#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建二叉树</span><br><span class="line">void CreateBiTree(BiTree&amp; T) &#123;</span><br><span class="line">	ElemType ET;</span><br><span class="line">	ET = cin.get();</span><br><span class="line">	if (ET == &apos; &apos;) &#123;</span><br><span class="line">		T = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		T = (BiTree)malloc(sizeof(BiTNode));</span><br><span class="line">		if (T == NULL) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;分配内存失败！&quot; &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;Data = ET;</span><br><span class="line">		CreateBiTree(T-&gt;lchild);</span><br><span class="line">		CreateBiTree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//打印节点元素</span><br><span class="line">ElemType PrintElement(ElemType e) &#123;</span><br><span class="line">	cout &lt;&lt; e &lt;&lt; &apos; &apos;;</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中序遍历递归算法</span><br><span class="line">void InOrderTraverse(BiTree T) &#123;</span><br><span class="line">	if (T != NULL) &#123;</span><br><span class="line">		InOrderTraverse(T-&gt;lchild);</span><br><span class="line">		PrintElement(T-&gt;Data);</span><br><span class="line">		InOrderTraverse(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中序遍历非递归算法</span><br><span class="line">void Traverse(BiTree T) &#123;</span><br><span class="line">	SqStack S;</span><br><span class="line">	InitStack(S);</span><br><span class="line">	BiTNode* p = T;</span><br><span class="line">	BiTNode* q;</span><br><span class="line">	while (p || !StackEmpty(S)) &#123;</span><br><span class="line">		if (p) &#123;</span><br><span class="line">			Push(S, p);</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			Pop(S, q);</span><br><span class="line">			cout &lt;&lt; q-&gt;Data &lt;&lt; &apos; &apos;;</span><br><span class="line">			p = q-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//12  346   5  </span><br><span class="line">int main(int argc, char argv[]) &#123;</span><br><span class="line">	BiTree T;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;创建二叉树：&quot;;</span><br><span class="line">	CreateBiTree(T);</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;中序递归算法：&quot;;</span><br><span class="line">	InOrderTraverse(T);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;中序非递归算法：&quot;;</span><br><span class="line">	Traverse(T);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><p>基于哈夫曼树的数据压缩算法<br>输入一串字符串，根据给定的字符串中字符出现的频率建立相应的哈夫曼树，构造哈夫曼编码表，在此基础上对字符串进行压缩（即编码），同时对压缩后的二进制编码文件进行解压（即译码）。为简化设计，输入字符串均为小写英文字母，要求输出:<br>①统计的字符出现频率（输出格式为 “字符:频度”）<br>②哈夫曼树构造过程，用哈夫曼树的存储结构的终态表示（参见教材p139）<br>③字符串的编码<br>④解码的字符串<br>编程提示：问题可分解为3个部分<br>（1）    读入字符串，统计每个字符出现的频度；<br>（2）    根据出现的频度利用算法5.10（参见教材p138）建立哈夫曼树<br>（3）    根据得到的哈夫曼树利用算法5.11（参见教材p141）求出每个字符的哈夫曼编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#pragma warning(disable : 4996)</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//哈夫曼树结点</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int weight;						//结点权值</span><br><span class="line">	int parent, lchild, rchild;		//结点双亲、左孩子、右孩子下标</span><br><span class="line">&#125;HTNode, *HuffmanTree;</span><br><span class="line"></span><br><span class="line">//哈夫曼编码</span><br><span class="line">typedef char* HuffmanCode;</span><br><span class="line"></span><br><span class="line">//字符串频率、编码表</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	char type;						//字符类型</span><br><span class="line">	int nums;						//个数</span><br><span class="line">	HuffmanCode HC;</span><br><span class="line">&#125;Char_Num, *Char_Num_Table;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void PrintHT(HuffmanTree HT, int n);</span><br><span class="line">void CreateHuffmanTree(HuffmanTree&amp; HT, int n, Char_Num_Table CNT);</span><br><span class="line">void Select(HuffmanTree&amp; HT, int nums, int&amp; s1, int&amp; s2);</span><br><span class="line">int CountStr(string str, int* cnt);</span><br><span class="line">void RecordCNT(int cnt[], int num, Char_Num_Table&amp; CNT);</span><br><span class="line">void CreateHuffmanCode(HuffmanTree HT, Char_Num_Table&amp; CNT, int n);</span><br><span class="line">void PrintHuffmanCode(Char_Num_Table CNT, int n);</span><br><span class="line">string PrintStrCode(string str, Char_Num_Table CNT, int n);</span><br><span class="line">string StrDecode(Char_Num_Table CNT, int n, string code);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char argv[]) &#123;</span><br><span class="line">	int cnt[28] = &#123;0&#125;;					//下标1为a，2为b类推。数值为个数。</span><br><span class="line">	string str;							//输入字符串</span><br><span class="line">	string code;						//编码</span><br><span class="line">	string destr;						//解码</span><br><span class="line">	HuffmanTree HT;</span><br><span class="line">	int num = 0;						//结点个数</span><br><span class="line">	Char_Num_Table CNT;</span><br><span class="line"></span><br><span class="line">	//构造哈夫曼树</span><br><span class="line">	cout &lt;&lt; &quot;请输入字符串（均为小写字母）&quot;;</span><br><span class="line">	getline(cin, str);</span><br><span class="line">	num = CountStr(str, cnt);</span><br><span class="line">	RecordCNT(cnt, num, CNT);</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt;&quot;哈夫曼树下标对应字符：&quot; &lt;&lt; endl;</span><br><span class="line">	for (int i = 1; i &lt;= num; i++) &#123;</span><br><span class="line">		cout&lt;&lt;&quot;node &quot;&lt;&lt;i&lt;&lt;&quot;\t=\t&quot;&lt;&lt;CNT[i].type&lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	CreateHuffmanTree(HT, num, CNT);</span><br><span class="line"></span><br><span class="line">	//哈夫曼编码</span><br><span class="line">	CreateHuffmanCode(HT, CNT, num);</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt; &quot;哈夫曼编码：&quot; &lt;&lt; endl;</span><br><span class="line">	PrintHuffmanCode(CNT, num);</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt; &quot;字符串编码：&quot; &lt;&lt; endl;</span><br><span class="line">	code = PrintStrCode(str, CNT, num);</span><br><span class="line">	cout &lt;&lt; code;</span><br><span class="line">	//哈夫曼解码</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt; &quot;哈夫曼解码：&quot; &lt;&lt; endl;</span><br><span class="line">	destr = StrDecode(CNT, num, code);</span><br><span class="line">	cout &lt;&lt; destr;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void CreateHuffmanTree(HuffmanTree&amp; HT, int n, Char_Num_Table CNT) &#123;</span><br><span class="line">	//一个叶子结点,有效性判断</span><br><span class="line">	if (n &lt;= 1) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	//哈夫曼树的结点个数</span><br><span class="line">	int m = 2 * n - 1;</span><br><span class="line">	//下标为0不用</span><br><span class="line">	HT = new HTNode[m + 1];</span><br><span class="line">	for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">		HT[i].parent = 0;</span><br><span class="line">		HT[i].lchild = 0;</span><br><span class="line">		HT[i].rchild = 0;</span><br><span class="line">		HT[i].weight = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//初始化权值</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		HT[i].weight = CNT[i].nums;</span><br><span class="line">	&#125;</span><br><span class="line">	//打印初态</span><br><span class="line">	PrintHT(HT, n);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	//贪心构造哈夫曼树</span><br><span class="line">	for (int i = n + 1; i &lt;= m; i++) &#123;</span><br><span class="line">		int s1, s2;</span><br><span class="line">		Select(HT, i - 1, s1, s2);</span><br><span class="line">		HT[s1].parent = i;</span><br><span class="line">		HT[s2].parent = i;</span><br><span class="line">		HT[i].lchild = s1;</span><br><span class="line">		HT[i].rchild = s2;</span><br><span class="line">		HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">	&#125;</span><br><span class="line">	PrintHT(HT, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//选择结点，记录最小权值的两个结点下标</span><br><span class="line">void Select(HuffmanTree&amp; HT, int nums, int&amp; s1, int&amp; s2) &#123;</span><br><span class="line">	HTNode temp;</span><br><span class="line">	int minWeight = INT_MAX;</span><br><span class="line">	for (int i = 1; i &lt;= nums; i++) &#123;</span><br><span class="line">		if (HT[i].parent != 0) &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			temp = HT[i];</span><br><span class="line">		&#125;</span><br><span class="line">		if (minWeight &gt; temp.weight) &#123;</span><br><span class="line">			minWeight = temp.weight;</span><br><span class="line">			s1 = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	minWeight = INT_MAX;</span><br><span class="line">	for (int i = 1; i &lt;= nums; i++) &#123;</span><br><span class="line">		if (HT[i].parent != 0 || i == s1) &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			temp = HT[i];</span><br><span class="line">		&#125;</span><br><span class="line">		if (minWeight &gt; temp.weight) &#123;</span><br><span class="line">			minWeight = temp.weight;</span><br><span class="line">			s2 = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int CountStr(string str, int* cnt)&#123;</span><br><span class="line">	int num = 0;</span><br><span class="line">	for (int i = 0; i &lt; str.size(); i++) &#123;</span><br><span class="line">		cnt[((int)str[i] - 96)]++;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; &quot;字符\t:\t频率&quot; &lt;&lt; endl;</span><br><span class="line">	for (int i = 1; i &lt;= 26; i++) &#123;</span><br><span class="line">		if (cnt[i] != 0) &#123;</span><br><span class="line">			cout &lt;&lt; (char)(i + 96) &lt;&lt; &quot;\t:\t&quot; &lt;&lt; cnt[i] &lt;&lt; endl;</span><br><span class="line">			num++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void RecordCNT(int cnt[], int num, Char_Num_Table&amp; CNT)&#123;</span><br><span class="line">	int insert = 1;</span><br><span class="line">	CNT = new Char_Num[num+1];</span><br><span class="line">	for (int i = 1; i &lt;= 26; i++) &#123;</span><br><span class="line">		if (cnt[i] != 0) &#123;</span><br><span class="line">			CNT[insert].type = (char)(i + 96);</span><br><span class="line">			CNT[insert].nums = cnt[i];</span><br><span class="line">			insert++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CreateHuffmanCode(HuffmanTree HT, Char_Num_Table&amp; CNT, int n)&#123;</span><br><span class="line">	char* cd = new char[n];</span><br><span class="line">	cd[n - 1] = &apos;\0&apos;;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		int start = n - 1;</span><br><span class="line">		int node = i;</span><br><span class="line">		int parent = HT[i].parent;</span><br><span class="line">		while (parent != 0) &#123;</span><br><span class="line">			--start;</span><br><span class="line">			if (node == HT[parent].lchild) &#123;</span><br><span class="line">				cd[start] = &apos;0&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				cd[start] = &apos;1&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">			node = parent;</span><br><span class="line">			parent = HT[parent].parent;</span><br><span class="line">		&#125;</span><br><span class="line">		CNT[i].HC = new char[n - start];</span><br><span class="line">		strcpy(CNT[i].HC, &amp;cd[start]);</span><br><span class="line">	&#125;</span><br><span class="line">	delete[] cd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void PrintHT(HuffmanTree HT, int n) &#123;</span><br><span class="line">	cout &lt;&lt; &quot;node\t|weight\t|parent\t|lchild\t|rchild&quot; &lt;&lt; endl;</span><br><span class="line">	for (int i = 1; i &lt; 2*n; i++) &#123;</span><br><span class="line">		cout &lt;&lt; i &lt;&lt; &quot;\t|&quot; &lt;&lt; HT[i].weight &lt;&lt; &quot;\t|&quot; &lt;&lt; HT[i].parent &lt;&lt; &quot;\t|&quot; &lt;&lt; HT[i].lchild &lt;&lt; &quot;\t|&quot; &lt;&lt; HT[i].rchild &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void PrintHuffmanCode(Char_Num_Table CNT, int num) &#123;</span><br><span class="line">	cout &lt;&lt; &quot;字符\t|\t编码&quot; &lt;&lt; endl;</span><br><span class="line">	for (int i = 1; i &lt;= num; i++) &#123;</span><br><span class="line">		cout &lt;&lt; CNT[i].type &lt;&lt; &quot;\t|\t&quot; &lt;&lt; CNT[i].HC &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string PrintStrCode(string str,Char_Num_Table CNT, int n) &#123;</span><br><span class="line">	string code = &quot;&quot;;</span><br><span class="line">	for (int i = 0; i &lt; str.size(); i++) &#123;</span><br><span class="line">		for (int j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">			if (str[i] == CNT[j].type) &#123;</span><br><span class="line">				code = code + (string)CNT[j].HC;</span><br><span class="line">//				cout &lt;&lt; CNT[j].HC;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string StrDecode(Char_Num_Table CNT, int n, string code) &#123;</span><br><span class="line">	string temp = &quot;&quot;;				//临时串</span><br><span class="line">	string str = &quot;&quot;;				//解码后的字符串</span><br><span class="line">	int c = 0;						//code下标</span><br><span class="line">	for (int i = 0; i &lt; code.size(); i++) &#123;</span><br><span class="line">		temp = temp + code[i];</span><br><span class="line">		for (int j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">			if (temp == (string)CNT[j].HC) &#123;</span><br><span class="line">				str = str + CNT[j].type;</span><br><span class="line">				temp = &quot;&quot;;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="查找算法的实现"><a href="#查找算法的实现" class="headerlink" title="查找算法的实现"></a>查找算法的实现</h1><h2 id="Hash查找算法"><a href="#Hash查找算法" class="headerlink" title="Hash查找算法"></a>Hash查找算法</h2><p>编写程序实现Hash表的建立、删除、插入以及查找操作。程序应包含的主要功能函数有：<br>Hash( )：计算哈希地址<br>InitialHash( )：初始化哈希表<br>SearchHash( )：在哈希表中查找关键字<br>InsertHash( )：向哈希表中插入关键字<br>DeleteHash( )：删除哈希表中某一关键字<br>PrintHash ( )：打印输出哈希表<br>设计函数原型，实现各函数功能，并编写main函数对函数实现情况加以测试。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/17/Mybatis-黑马/" rel="next" title="Mybatis-笔记">
+                <i class="fa fa-chevron-left"></i> Mybatis-笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张殊阳</p>
+              <p class="site-description motion-element" itemprop="description">混饭吃都不容易</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序栈基本操作"><span class="nav-number">1.</span> <span class="nav-text">顺序栈基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写程序实现表达式求值"><span class="nav-number">1.1.</span> <span class="nav-text">编写程序实现表达式求值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归转栈"><span class="nav-number">1.2.</span> <span class="nav-text">递归转栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序循环队列基本操作"><span class="nav-number">2.</span> <span class="nav-text">顺序循环队列基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的建立及遍历"><span class="nav-number">3.</span> <span class="nav-text">二叉树的建立及遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的创建"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树非递归遍历"><span class="nav-number">3.2.</span> <span class="nav-text">二叉树非递归遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈夫曼树"><span class="nav-number">3.3.</span> <span class="nav-text">哈夫曼树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找算法的实现"><span class="nav-number">4.</span> <span class="nav-text">查找算法的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash查找算法"><span class="nav-number">4.1.</span> <span class="nav-text">Hash查找算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张殊阳</span>
+
+  
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共42.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"log":false});</script></body>
+</html>
+
+<!-- 页面点击 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
