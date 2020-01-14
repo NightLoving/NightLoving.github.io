@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="程序的耦合与解耦程序的耦合耦合：程序间的依赖关系    类之间的依赖    方法间的依赖 解耦：    降低程序间的依赖关系实际开发中，做到编译期不依赖，运行时依赖。 解耦的思路：    使用反射来创建对象，而不是用new关键字。    通过读取配置文件来获取要创建的全限定类名。 123456789101112131415161718//1、注册驱动DriverManager.registerDr">
+<meta name="keywords" content="Java知识体系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/17/Spring-黑马/index.html">
+<meta property="og:site_name" content="Night Blog~">
+<meta property="og:description" content="程序的耦合与解耦程序的耦合耦合：程序间的依赖关系    类之间的依赖    方法间的依赖 解耦：    降低程序间的依赖关系实际开发中，做到编译期不依赖，运行时依赖。 解耦的思路：    使用反射来创建对象，而不是用new关键字。    通过读取配置文件来获取要创建的全限定类名。 123456789101112131415161718//1、注册驱动DriverManager.registerDr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-14T13:27:47.172Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-笔记">
+<meta name="twitter:description" content="程序的耦合与解耦程序的耦合耦合：程序间的依赖关系    类之间的依赖    方法间的依赖 解耦：    降低程序间的依赖关系实际开发中，做到编译期不依赖，运行时依赖。 解耦的思路：    使用反射来创建对象，而不是用new关键字。    通过读取配置文件来获取要创建的全限定类名。 123456789101112131415161718//1、注册驱动DriverManager.registerDr">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/17/Spring-黑马/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Spring-笔记 | Night Blog~</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+      <a href="https://github.com/NightLoving" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Night Blog~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Something interesting</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/17/Spring-黑马/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张殊阳">
+      <meta itemprop="description" content="混饭吃都不容易">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Night Blog~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring-笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-17 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-17T00:00:00+08:00">2019-11-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-14 21:27:47" itemprop="dateModified" datetime="2020-01-14T21:27:47+08:00">2020-01-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识体系/" itemprop="url" rel="index"><span itemprop="name">Java知识体系</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="程序的耦合与解耦"><a href="#程序的耦合与解耦" class="headerlink" title="程序的耦合与解耦"></a>程序的耦合与解耦</h1><h2 id="程序的耦合"><a href="#程序的耦合" class="headerlink" title="程序的耦合"></a>程序的耦合</h2><p>耦合：程序间的依赖关系<br>    类之间的依赖<br>    方法间的依赖</p>
+<p>解耦：<br>    降低程序间的依赖关系实际开发中，做到编译期不依赖，运行时依赖。</p>
+<p>解耦的思路：<br>    使用反射来创建对象，而不是用new关键字。<br>    通过读取配置文件来获取要创建的全限定类名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//1、注册驱动</span><br><span class="line">DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());（new关键字）</span><br><span class="line">Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);（反射）</span><br><span class="line">//2、获取链接</span><br><span class="line">Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://127.0.0.1:3306/spring?serverTimezone=UTC&quot;,</span><br><span class="line">        &quot;root&quot;, &quot;password&quot;);</span><br><span class="line">//3、获取预处理对象</span><br><span class="line">PreparedStatement pstm = conn.prepareStatement(&quot;select * from account&quot;);</span><br><span class="line">//4、执行SQL，得到结果集</span><br><span class="line">ResultSet rs = pstm.executeQuery();</span><br><span class="line">//5、遍历结果集</span><br><span class="line">while(rs.next())&#123;</span><br><span class="line">    System.out.println(rs.getString(&quot;name&quot;));</span><br><span class="line">&#125;</span><br><span class="line">//6、释放资源</span><br><span class="line">rs.close();</span><br><span class="line">pstm.close();</span><br><span class="line">conn.close();</span><br></pre></td></tr></table></figure>
+<h2 id="模仿工厂模式解耦"><a href="#模仿工厂模式解耦" class="headerlink" title="模仿工厂模式解耦"></a>模仿工厂模式解耦</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class BeanFactory &#123;</span><br><span class="line">    //定义一个Properties对象</span><br><span class="line">    private static Properties props;</span><br><span class="line"></span><br><span class="line">    //定义一个Map,用于存放我们要创建的对象。我们把它称之为容器</span><br><span class="line">    private static Map&lt;String,Object&gt; beans;</span><br><span class="line"></span><br><span class="line">    //使用静态代码块为Properties对象赋值</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //实例化对象</span><br><span class="line">            props = new Properties();</span><br><span class="line">            //获取properties文件的流对象</span><br><span class="line">            InputStream in = BeanFactory.class.getClassLoader().getResourceAsStream(&quot;bean.properties&quot;);</span><br><span class="line">            props.load(in);</span><br><span class="line">            //实例化容器</span><br><span class="line">            beans = new HashMap&lt;String,Object&gt;();</span><br><span class="line">            //取出配置文件中所有的Key</span><br><span class="line">            Enumeration keys = props.keys();</span><br><span class="line">            //遍历枚举</span><br><span class="line">            while (keys.hasMoreElements())&#123;</span><br><span class="line">                //取出每个Key</span><br><span class="line">                String key = keys.nextElement().toString();</span><br><span class="line">                //根据key获取value</span><br><span class="line">                String beanPath = props.getProperty(key);</span><br><span class="line">                //反射创建对象</span><br><span class="line">                Object value = Class.forName(beanPath).newInstance();</span><br><span class="line">                //把key和value存入容器中</span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line">            throw new ExceptionInInitializerError(&quot;初始化properties失败！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 根据bean的名称获取对象</span><br><span class="line">     * @param beanName</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public static Object getBean(String beanName)&#123;</span><br><span class="line">        return beans.get(beanName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="基于XML的IOC配置"><a href="#基于XML的IOC配置" class="headerlink" title="基于XML的IOC配置"></a>基于XML的IOC配置</h1><p>IOC：控制反转，将对象交给Spring来控制管理。</p>
+<p>作用：<strong>削减</strong>程序间的耦合。</p>
+<h2 id="Spring-基于-XML-的环境搭建"><a href="#Spring-基于-XML-的环境搭建" class="headerlink" title="Spring 基于 XML 的环境搭建"></a>Spring 基于 XML 的环境搭建</h2><h3 id="xml配置文件约束"><a href="#xml配置文件约束" class="headerlink" title="xml配置文件约束"></a>xml配置文件约束</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 把对象的创建交给spring来管理--&gt;</span><br><span class="line">    &lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;accountDao&quot; class=&quot;com.itheima.dao.impl.AccountDaoImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="spring容器获取对象"><a href="#spring容器获取对象" class="headerlink" title="spring容器获取对象"></a>spring容器获取对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取spring的IOC核心容器，并根据id获取对象</span><br><span class="line">     * @param args</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //1、获取核心容器对象</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        //2、根据id获取bean对象</span><br><span class="line">        //强制类型转换</span><br><span class="line">        AccountServiceImpl accountService = (AccountServiceImpl)applicationContext.getBean(&quot;accountService&quot;);</span><br><span class="line">        //转递字节码转换</span><br><span class="line">        AccountDaoImpl accountDao = applicationContext.getBean(&quot;accountDao&quot;,AccountDaoImpl.class);</span><br><span class="line">        System.out.println(accountDao);</span><br><span class="line">        System.out.println(accountService);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ApplicationContext的三个常用实现类"><a href="#ApplicationContext的三个常用实现类" class="headerlink" title="ApplicationContext的三个常用实现类"></a>ApplicationContext的三个常用实现类</h3><p>ApplicationContext的三个常用实现类：<br>    ClassPathXmlApplicationContext：加载类路径下的配置文件，要求配置文件必须在类路径下。<br>    FileSystemXmlApplicationContext：加载磁盘任意路径下的文件（必须有访问权限）。<br>    AnnotationConfigApplicationContext：用于读取注解创建容器。</p>
+<h3 id="BeanFactory和ApplicationContext的区别"><a href="#BeanFactory和ApplicationContext的区别" class="headerlink" title="BeanFactory和ApplicationContext的区别"></a>BeanFactory和ApplicationContext的区别</h3><p>核心容器两个接口引发的问题：</p>
+<pre><code>ApplicationContext：
+    在构建核心容器时，创建对象采取的策略是采用**立即加载**的方式，一读取完配置文件马上创建配置文件中的对象。
+
+BeanFactory：
+    在构建核心容器时，创建对象采取的策略是采用**延迟加载**的方式，什么时候根据id获取对象了，什么时候才真正的创建对象。
+</code></pre><h3 id="Spring中Bean的细节"><a href="#Spring中Bean的细节" class="headerlink" title="Spring中Bean的细节"></a>Spring中Bean的细节</h3><h4 id="创建Bean的三种方式"><a href="#创建Bean的三种方式" class="headerlink" title="创建Bean的三种方式"></a>创建Bean的三种方式</h4><p>创建Bean的三种方式：</p>
+<pre><code>1、使用默认构造函数创建。
+    在Spring的配置文件中使用bean标签，配以id，class属性之后，且没有其他标签时，采用默认构造函数创建bean对象，此时若类中没有默认构造函数，则无法创建对象。
+
+2、使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入Spring容器）。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;beanFactory&quot; class=&quot;com.itheima.factory.InstanceFactory&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id=&quot;accountService&quot; factory-bean=&quot;instanceFactory&quot; factory-method=&quot;getAccountService&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>3、使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入Spring）。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.factory.StaticFactory&quot; factory-method=&quot;getAccountService&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Bean的作用范围"><a href="#Bean的作用范围" class="headerlink" title="Bean的作用范围"></a>Bean的作用范围</h4><p>bean的作用范围调整：<br>    bean标签的scope属性：<br>        作用：指定bean的作用范围。<br>        取值：<br>            <strong>singleton：单例的（默认值）</strong><br>            <strong>prototype：多例的</strong><br>            request：作用于web应用的请求范围<br>            session：作用于web应用的会话范围<br>            global-session：作用于集群环境的会话范围（全局会话范围）（负载均衡）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot; scope=&quot;prototype&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h4><p>bean对象的生命周期：<br>    单例对象：<br>        出生：当对象创建时对象出生。<br>        活着：只要容器还在，对象一直或者。<br>        死亡：容器销毁，对象消亡。<br>        总结：单例对象的生命周期和容器相同。<br>    多例对象：<br>        出生：当我们使用对象时Spring为我们创建一个。（getBean方法）<br>        活着：对象只要是在使用过程中就一直活着。<br>        死亡：当对象长时间不用时，且没有别的对象引用时，由Java的垃圾回收机制回收。</p>
+<h2 id="Spring的依赖注入（DI）"><a href="#Spring的依赖注入（DI）" class="headerlink" title="Spring的依赖注入（DI）"></a>Spring的依赖注入（DI）</h2><p>依赖注入：Dependency Injection<br>    在当前类需要其他类的对象，由Spring为我们提供，我们只需要在配置文件中说明。<br>    能注入的数据：<br>        基本类型和String<br>        其他Bean类型（在配置文件中或注解配置过的Bean）。<br>        复杂类型/集合类型。<br>    注入的方式：<br>        使用构造函数提供。<br>        使用set方法提供。<br>        使用注解提供。</p>
+<h3 id="使用构造函数注入"><a href="#使用构造函数注入" class="headerlink" title="使用构造函数注入"></a>使用构造函数注入</h3><p>构造函数注入：<br>    使用的标签：constructor-arg<br>    标签出现的位置：bean标签的内部<br>    标签中的属性：<br>        type：用于指定要注入数据的数据类型，该数据类型也是构造函数中某个或某些参数的类型。<br>        index：用于指定要注入数据给构造函数中指定索引位置的参数赋值。索引位置从0开始。<br>        <strong>name：</strong>用于指定给构造函数中指定名称的参数赋值。<br>        value：用于提供基本类型和String类型的数据。<br>        ref：用于指定其他的bean类型数据，在spring的Ioc核心容器中出现过的bean对象。<br>    优势：<br>        在获取bean对象时，注入数据是必须的操作，否则对象无法创建成功。<br>    弊端：<br>        改变了bean对象的实例化方式，是我们在创建对象时，如果用不到这些数据，也必须提供。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">XML配置文件</span><br><span class="line"></span><br><span class="line">&lt;!--  --&gt;</span><br><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">    &lt;constructor-arg name=&quot;name&quot; value=&quot;张三&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;constructor-arg name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;constructor-arg name=&quot;birthday&quot; ref=&quot;birthday&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;birthday&quot; class=&quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">账户类</span><br><span class="line"></span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Date birthday;</span><br><span class="line"></span><br><span class="line">    public AccountServiceImpl(String name, Integer age, Date birthday)&#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">        this.age=age;</span><br><span class="line">        this.birthday=birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount()&#123;</span><br><span class="line">        System.out.println(name+&apos;,&apos;+age+&apos;,&apos;+birthday);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">程序入口</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    //1、获取核心容器对象</span><br><span class="line">    ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">    //2、根据id获取bean对象</span><br><span class="line">    //强制类型转换</span><br><span class="line">    AccountServiceImpl accountService = (AccountServiceImpl)applicationContext.getBean(&quot;accountService&quot;);</span><br><span class="line">    accountService.saveAccount();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用set方法注入"><a href="#使用set方法注入" class="headerlink" title="使用set方法注入"></a>使用set方法注入</h3><p>set方法注入：<br>    使用的标签：property<br>    标签出现的位置：bean标签的内部<br>    标签的属性：<br>        <strong>name：</strong>用于指定注入时所调用的set方法的名称。<br>        value：用于提供基本类型和String类型的数据。<br>        ref：用于指定其他的bean类型数据，在spring的Ioc核心容器中出现过的bean对象。<br>    优势：<br>        创建对象时没有明确的限制，可以直接使用默认构造函数。<br>    弊端：<br>        如果某个成员必须有值，则获取对象时有可能set方法没执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">XML配置文件</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;name&quot; value=&quot;张三&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;birthday&quot; ref=&quot;birthday&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;birthday&quot; class=&quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">账户类</span><br><span class="line"></span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Date birthday;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(Integer age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBirthday(Date birthday) &#123;</span><br><span class="line">        this.birthday = birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount()&#123;</span><br><span class="line">        System.out.println(name+&apos;,&apos;+age+&apos;,&apos;+birthday);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序入口同上。</p>
+<h3 id="复杂类型的注入-集合类型的注入"><a href="#复杂类型的注入-集合类型的注入" class="headerlink" title="复杂类型的注入/集合类型的注入"></a>复杂类型的注入/集合类型的注入</h3><p>用于给List结构集合注入的标签：<br>    list array set<br>用于给Map结构集合注入的标签：<br>    map props<br>结构相同，标签可以互换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">XML配置文件</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;myStrs&quot;&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">            &lt;value&gt;AAA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;BBB&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;CCC&lt;/value&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;myList&quot;&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;value&gt;AAA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;BBB&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;CCC&lt;/value&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;mySet&quot;&gt;</span><br><span class="line">        &lt;set&gt;</span><br><span class="line">            &lt;value&gt;AAA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;BBB&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;CCC&lt;/value&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;myMap&quot;&gt;</span><br><span class="line">        &lt;map&gt;</span><br><span class="line">            &lt;entry key=&quot;AAA&quot; value=&quot;AAA&quot;&gt;&lt;/entry&gt;</span><br><span class="line">            &lt;entry key=&quot;BBB&quot;&gt;</span><br><span class="line">                &lt;value&gt;BBB&lt;/value&gt;</span><br><span class="line">            &lt;/entry&gt;</span><br><span class="line">        &lt;/map&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;myProps&quot;&gt;</span><br><span class="line">        &lt;props&gt;</span><br><span class="line">            &lt;prop key=&quot;AAA&quot;&gt;AAA&lt;/prop&gt;</span><br><span class="line">            &lt;prop key=&quot;BBB&quot;&gt;BBB&lt;/prop&gt;</span><br><span class="line">        &lt;/props&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">账户类</span><br><span class="line"></span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line">    private String[] myStrs;</span><br><span class="line">    private List&lt;String&gt; myList;</span><br><span class="line">    private Set&lt;String&gt; mySet;</span><br><span class="line">    private Map&lt;String, String&gt; myMap;</span><br><span class="line">    private Properties myProps;</span><br><span class="line"></span><br><span class="line">    public void setMyStrs(String[] myStrs) &#123;</span><br><span class="line">        this.myStrs = myStrs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyList(List&lt;String&gt; myList) &#123;</span><br><span class="line">        this.myList = myList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMySet(Set&lt;String&gt; mySet) &#123;</span><br><span class="line">        this.mySet = mySet;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyMap(Map&lt;String, String&gt; myMap) &#123;</span><br><span class="line">        this.myMap = myMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyProps(Properties myProps) &#123;</span><br><span class="line">        this.myProps = myProps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount()&#123;</span><br><span class="line">        System.out.println(Arrays.toString(myStrs));</span><br><span class="line">        System.out.println(myList);</span><br><span class="line">        System.out.println(mySet);</span><br><span class="line">        System.out.println(myMap);</span><br><span class="line">        System.out.println(myProps);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="基于注解的IOC配置"><a href="#基于注解的IOC配置" class="headerlink" title="基于注解的IOC配置"></a>基于注解的IOC配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">曾经的XML配置：</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;···&quot; class=&quot;···&quot; scope=&quot;&quot; init-method=&quot;&quot; destory-method=&quot;&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;&quot; value=&quot;&quot; | ref=&quot;&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="用于创建对象的注解"><a href="#用于创建对象的注解" class="headerlink" title="用于创建对象的注解"></a>用于创建对象的注解</h2><p>用于创建对象的注解作用和在XML配置文件中编写一个bean标签实现的功能一样。<br>componen<br>Component：<br>    作用：<br>        用于把当前类对象放入Spring容器中。<br>    属性：<br>        value：用于指定bean的id。不写时默认值是当前类名首字母小写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">配置文件</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 从包中扫描bean并装配到核心容器中 --&gt;</span><br><span class="line">    &lt;context:component-scan base-package=&quot;com.itheima&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">账户类</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public AccountServiceImpl()&#123;</span><br><span class="line">        System.out.println(&quot;对象创建了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void saveAccount() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Controller：一般用于表现层。<br>Service：一般用于业务层。<br>Repository：一般用于持久层。<br>这三个注解作用和属性与Component一样，能使三层架构更加清晰。</p>
+<h2 id="用于注入数据的注解"><a href="#用于注入数据的注解" class="headerlink" title="用于注入数据的注解"></a>用于注入数据的注解</h2><p>用于注入数据的注解的作用和在XML配置文件中的Bean标签中写一个property标签是一样的。</p>
+<p>Aotowired：<br>    作用：<br>        自动按照<strong>类型</strong>注入。只要容器中有唯一的一个bean对象和要注入的bean对象类型匹配，就可以注入成功。<br>        如果IOC容器中没有任何类型和要注入的变量类型匹配，则报错。<br>        如果IOC容器中有多个类型匹配时，将注入变量的名称与容器中的id匹配。<br>    出现位置：<br>        可以是变量上，也可以是方法上。<br>    细节:<br>        在使用注解注入时，set方法就不是必须的了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">业务类</span><br><span class="line"></span><br><span class="line">@Service(&quot;accountService&quot;)</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public void saveAccount() &#123;</span><br><span class="line">        accountDao.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">持久层</span><br><span class="line"></span><br><span class="line">@Repository(&quot;accountDao&quot;)</span><br><span class="line">public class AccountDaoImpl implements IAccountDao &#123;</span><br><span class="line"></span><br><span class="line">    public void saveAccount()&#123;</span><br><span class="line">        System.out.println(&quot;保存了账户&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Qualifier：<br>    作用：<br>        在按照类中注入的基础上在按照名称注入，它在给类注入时不能单独使用，但是在给方法参数注入时可以。<br>    属性：<br>        value：用于指定注入bean的id。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">@Qualifier(&quot;accountDao&quot;)</span><br><span class="line">private IAccountDao accountDao;</span><br></pre></td></tr></table></figure>
+<p>Resource:<br>    作用：<br>        直接按照bean的id注入。它可以独立使用。<br>    属性：<br>        name：指定bean的id。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Resource(name=&quot;accountDao&quot;)</span><br><span class="line">private IAccountDao accountDao;</span><br></pre></td></tr></table></figure>
+<p>Aotowired、Qualifier、Resource都只能注入其他bean类型的数据，基本类型和String类型无法注入。</p>
+<p>Value:<br>    作用：<br>        用于注入基本类型和String类型的数据。<br>    属性：<br>        value：用于指定数据的值，它可以使用Spring中的SpEL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Value(&quot;张三&quot;)</span><br><span class="line">private String name;</span><br><span class="line">@Value(&quot;13&quot;)</span><br><span class="line">private Integer age;</span><br></pre></td></tr></table></figure>
+<h2 id="用于改变作用范围的注解"><a href="#用于改变作用范围的注解" class="headerlink" title="用于改变作用范围的注解"></a>用于改变作用范围的注解</h2><p>用于改变作用范围的注解和在bean标签中使用scope属性实现的功能时一样的。</p>
+<p>Scope：<br>    作用：<br>        用于指定bean的作用范围。<br>    属性：<br>        value：指定范围的取值，常用取值：singleton、prototype。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Service(&quot;accountService&quot;)</span><br><span class="line">@Scope(&quot;singleton&quot;)</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    @Resource(name=&quot;accountDao&quot;)</span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public void saveAccount() &#123;</span><br><span class="line">        accountDao.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="和生命周期相关的注解"><a href="#和生命周期相关的注解" class="headerlink" title="和生命周期相关的注解"></a>和生命周期相关的注解</h2><p>作用和在bean标签中使用init-method 和 destory-method 的作用时一样的。</p>
+<p>PreDestory:<br>    作用：<br>        用于指定销毁方法。<br>PostConstruct:<br>    作用：<br>        用于指定初始化方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Service(&quot;accountService&quot;)</span><br><span class="line">@Scope(&quot;singleton&quot;)</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    @Resource(name=&quot;accountDao&quot;)</span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    @PostConstruct</span><br><span class="line">    public void init()&#123;</span><br><span class="line">        System.out.println(&quot;初始化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PreDestroy</span><br><span class="line">    public void destory()&#123;</span><br><span class="line">        System.out.println(&quot;销毁&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount() &#123;</span><br><span class="line">        accountDao.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="XML-Demo"><a href="#XML-Demo" class="headerlink" title="XML Demo"></a>XML Demo</h1><p>AccountDaoImpl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import org.apache.commons.dbutils.QueryRunner;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanHandler;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanListHandler;</span><br><span class="line"></span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class AccountDaoImpl implements IAccountDao &#123;</span><br><span class="line"></span><br><span class="line">    private QueryRunner queryRunner;</span><br><span class="line"></span><br><span class="line">    public QueryRunner getQueryRunner() &#123;</span><br><span class="line">        return queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setQueryRunner(QueryRunner queryRunner) &#123;</span><br><span class="line">        this.queryRunner = queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account&quot;,new BeanListHandler&lt;Account&gt;(Account.class));</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account where id = ?&quot;,new BeanHandler&lt;Account&gt;(Account.class),id);</span><br><span class="line">        &#125;catch (SQLException e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;insert into account(name,money) values(?,?)&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;delete from account where id=?&quot;,id);</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;update account set name=?, money=?&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>AccountServiceImpl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.service.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import com.itheima.service.IAccountService;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public IAccountDao getAccountDao() &#123;</span><br><span class="line">        return accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAccountDao(IAccountDao accountDao) &#123;</span><br><span class="line">        this.accountDao = accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        return accountDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        return accountDao.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        accountDao.saveAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        accountDao.deleteAccount(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        accountDao.updateAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Account<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.domain;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line"></span><br><span class="line">public class Account implements Serializable &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Float money;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Account&#123;&quot; +</span><br><span class="line">                &quot;id=&quot; + id +</span><br><span class="line">                &quot;, name=&apos;&quot; + name + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, money=&quot; + money +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Float getMoney() &#123;</span><br><span class="line">        return money;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMoney(Float money) &#123;</span><br><span class="line">        this.money = money;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>bean.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;accountDao&quot; ref=&quot;accountDao&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;accountDao&quot; class=&quot;com.itheima.dao.impl.AccountDaoImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;queryRunner&quot; ref=&quot;queryRunner&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;queryRunner&quot; class=&quot;org.apache.commons.dbutils.QueryRunner&quot; scope=&quot;prototype&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;ds&quot; ref=&quot;dataSource&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql://localhost:3306/spring?serverTimezone=UTC&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;password&quot; value=&quot;password&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.test;</span><br><span class="line"></span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import com.itheima.service.impl.AccountServiceImpl;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class AccountServiceTest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void testFindAll()&#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        AccountServiceImpl accountService = applicationContext.getBean(&quot;accountService&quot;,AccountServiceImpl.class);</span><br><span class="line">        List&lt;Account&gt; accounts = accountService.findAll();</span><br><span class="line">        System.out.println(accounts);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void testFindOne()&#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        AccountServiceImpl accountService = applicationContext.getBean(&quot;accountService&quot;,AccountServiceImpl.class);</span><br><span class="line">        Account a = accountService.findById(2);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void testSave()&#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        AccountServiceImpl accountService = applicationContext.getBean(&quot;accountService&quot;,AccountServiceImpl.class);</span><br><span class="line">        Account account = new Account();</span><br><span class="line">        account.setMoney(new Float(4000));</span><br><span class="line">        account.setName(&quot;aw&quot;);</span><br><span class="line">        accountService.saveAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void testDelete()&#123;</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        AccountServiceImpl accountService = applicationContext.getBean(&quot;accountService&quot;,AccountServiceImpl.class);</span><br><span class="line">        accountService.deleteAccount(4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="注解-Demo"><a href="#注解-Demo" class="headerlink" title="注解 Demo"></a>注解 Demo</h1><p>AccountDaoImpl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import org.apache.commons.dbutils.QueryRunner;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanHandler;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanListHandler;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Repository(&quot;accountDao&quot;)</span><br><span class="line">public class AccountDaoImpl implements IAccountDao &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private QueryRunner queryRunner;</span><br><span class="line"></span><br><span class="line">    public QueryRunner getQueryRunner() &#123;</span><br><span class="line">        return queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setQueryRunner(QueryRunner queryRunner) &#123;</span><br><span class="line">        this.queryRunner = queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account&quot;,new BeanListHandler&lt;Account&gt;(Account.class));</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account where id = ?&quot;,new BeanHandler&lt;Account&gt;(Account.class),id);</span><br><span class="line">        &#125;catch (SQLException e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;insert into account(name,money) values(?,?)&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;delete from account where id=?&quot;,id);</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;update account set name=?, money=?&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>AccountServiceImpl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.service.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import com.itheima.service.IAccountService;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Service(&quot;accountService&quot;)</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public IAccountDao getAccountDao() &#123;</span><br><span class="line">        return accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAccountDao(IAccountDao accountDao) &#123;</span><br><span class="line">        this.accountDao = accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        return accountDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        return accountDao.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        accountDao.saveAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        accountDao.deleteAccount(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        accountDao.updateAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>bean.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;context:component-scan base-package=&quot;com.itheima&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line">    &lt;bean id=&quot;queryRunner&quot; class=&quot;org.apache.commons.dbutils.QueryRunner&quot; scope=&quot;prototype&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;ds&quot; ref=&quot;dataSource&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql://localhost:3306/spring?serverTimezone=UTC&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;password&quot; value=&quot;password&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置类除去XML文件"><a href="#配置类除去XML文件" class="headerlink" title="配置类除去XML文件"></a>配置类除去XML文件</h2><p>Configuration：<br>    作用：<br>        指定当前类是一个配置类。<br>    细节：<br>        当配置类作为AnnotationConfigApplicationContext对象创建的参数时，该注解可以不写。<br>ComponentScan：<br>    作用：<br>        用于通过注解指定Spring在创建容器时要扫描的包。<br>    属性：<br>        value：和basepackages的作用是一样的。都是用于指定创建容器时要扫描的包。<br>        等同于：<br>        <code>&lt;context:component-scan base-package=&quot;com.itheima&quot;&gt;&lt;/context:component-scan&gt;</code><br>Bean：<br>    作用：<br>        用于把当前方法的返回值作为对象存入Spring容器中。<br>    属性：<br>        name：用于指定Bean的id。<br>    细节：<br>        用注解配置方法时，如果方法有参数，Spring框架会去容器中查找有没有可用的bean对象。<br>        查找的方式和Aurowired注解作用时一样的。<br>Import：<br>    作用：<br>        用于导入其他配置类。<br>    属性：<br>        value：用于指定其他配置类的字节码。使用Import的注解之后，有Import注解的类就是父配置类，而导入的为子配置类。</p>
+<p>PropertiesSource：<br>    作用：<br>        用于指定properties文件的位置。<br>    属性：<br>        value：指定文件的名称和路径。关键字 classpath，表示类路径下。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>config包下配置类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SpringConfiguration</span><br><span class="line"></span><br><span class="line">package com.itheima.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.annotation.ComponentScan;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ComponentScan(&quot;com.itheima&quot;)</span><br><span class="line">@Import(JDBCConfiguration.class)</span><br><span class="line">public class SpringConfiguration &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">JDBCConfiguration</span><br><span class="line"></span><br><span class="line">package com.itheima.config;</span><br><span class="line"></span><br><span class="line">import com.mchange.v2.c3p0.ComboPooledDataSource;</span><br><span class="line">import org.apache.commons.dbutils.QueryRunner;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line"></span><br><span class="line">import javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line">@PropertySource(&quot;classpath:jdbc.properties&quot;)</span><br><span class="line">public class JDBCConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;jdbc.driver&#125;&quot;)</span><br><span class="line">    private String driver;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;jdbc.url&#125;&quot;)</span><br><span class="line">    private String url;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;jdbc.user&#125;&quot;)</span><br><span class="line">    private String user;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;jdbc.password&#125;&quot;)</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">    @Bean(name=&quot;queryRunner&quot;)</span><br><span class="line">    public QueryRunner createQueryRunner(DataSource dataSource)&#123;</span><br><span class="line">        return new QueryRunner(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(name=&quot;dataSource&quot;)</span><br><span class="line">    public DataSource createDataSource()&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            ComboPooledDataSource ds = new ComboPooledDataSource();</span><br><span class="line">            ds.setDriverClass(driver);</span><br><span class="line">            ds.setJdbcUrl(url);</span><br><span class="line">            ds.setUser(user);</span><br><span class="line">            ds.setPassword(password);</span><br><span class="line">            return ds;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Dao包实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">AccountDaoImpl</span><br><span class="line"></span><br><span class="line">package com.itheima.dao.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import org.apache.commons.dbutils.QueryRunner;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanHandler;</span><br><span class="line">import org.apache.commons.dbutils.handlers.BeanListHandler;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Repository(&quot;accountDao&quot;)</span><br><span class="line">public class AccountDaoImpl implements IAccountDao &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private QueryRunner queryRunner;</span><br><span class="line"></span><br><span class="line">    public QueryRunner getQueryRunner() &#123;</span><br><span class="line">        return queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setQueryRunner(QueryRunner queryRunner) &#123;</span><br><span class="line">        this.queryRunner = queryRunner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account&quot;,new BeanListHandler&lt;Account&gt;(Account.class));</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            return queryRunner.query(&quot;select * from account where id = ?&quot;,new BeanHandler&lt;Account&gt;(Account.class),id);</span><br><span class="line">        &#125;catch (SQLException e)&#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;insert into account(name,money) values(?,?)&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;delete from account where id=?&quot;,id);</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queryRunner.update(&quot;update account set name=?, money=?&quot;,account.getName(),account.getMoney());</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Service包实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">AccountServiceImpl</span><br><span class="line"></span><br><span class="line">package com.itheima.service.impl;</span><br><span class="line"></span><br><span class="line">import com.itheima.dao.IAccountDao;</span><br><span class="line">import com.itheima.domain.Account;</span><br><span class="line">import com.itheima.service.IAccountService;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Service(&quot;accountService&quot;)</span><br><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private IAccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    public IAccountDao getAccountDao() &#123;</span><br><span class="line">        return accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAccountDao(IAccountDao accountDao) &#123;</span><br><span class="line">        this.accountDao = accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Account&gt; findAll() &#123;</span><br><span class="line">        return accountDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account findById(Integer id) &#123;</span><br><span class="line">        return accountDao.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void saveAccount(Account account) &#123;</span><br><span class="line">        accountDao.saveAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void deleteAccount(Integer id) &#123;</span><br><span class="line">        accountDao.deleteAccount(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void updateAccount(Account account) &#123;</span><br><span class="line">        accountDao.updateAccount(account);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>domain包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Account</span><br><span class="line"></span><br><span class="line">package com.itheima.domain;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line"></span><br><span class="line">public class Account implements Serializable &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Float money;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Account&#123;&quot; +</span><br><span class="line">                &quot;id=&quot; + id +</span><br><span class="line">                &quot;, name=&apos;&quot; + name + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, money=&quot; + money +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Float getMoney() &#123;</span><br><span class="line">        return money;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMoney(Float money) &#123;</span><br><span class="line">        this.money = money;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>properties文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.cj.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/spring?serverTimezone=UTC</span><br><span class="line">jdbc.user=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
+<h2 id="Spring整合JUnit"><a href="#Spring整合JUnit" class="headerlink" title="Spring整合JUnit"></a>Spring整合JUnit</h2><p>1、导入Spring整合JUnit的jar（坐标）。（spring-test）<br>2、使用JUnit提供的一个注解把原有的main方法替换为Spring提供的main方法。<br>    RunWith<br>3、告知Spring的运行器，Spring的ioc创建时基于XML还是注解的，并说明位置。<br>    ContextConfiguration：<br>        属性：<br>            classes：注解<br>            locations：xml配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">@ContextConfiguration(classes = SpringConfiguration.class)</span><br><span class="line">public class AccountServiceTest &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private IAccountService accountService;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testFindAll()&#123;</span><br><span class="line">        List&lt;Account&gt; accounts = accountService.findAll();</span><br><span class="line">        System.out.println(accounts);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><h2 id="AOP相关术语"><a href="#AOP相关术语" class="headerlink" title="AOP相关术语"></a>AOP相关术语</h2><p>JoinPoint（连接点）：<br>    连接点是指那些被拦截到的点。在Spring中，这些点指的是方法，因为Spring只支持方法类型的连接点。是连接业务和增强方法的点。</p>
+<p>Pointcut（切入点）：<br>    切入点是指我们要对哪些Joinpoint进行拦截的定义。</p>
+<p>Advice（通知/增强）：<br>    通知是指拦截到Joinpoint之后所要做的事情。<br>    通知的类型：前置通知，后置通知，异常通知，最终通知，环绕通知（整个通知）。</p>
+<p>Introduction（引介）：<br>    引介是一种特殊的通知，在不修改类代码的前提下，Introduction可以在运行期为类动态的添加一些方法或Field。</p>
+<p>Target（目标对象）：<br>    被代理对象。</p>
+<p>Weaving（织入）：<br>    指把增强应用到目标对象来创建新的代理的过程。</p>
+<p>Proxy（代理）：<br>    一个类被AOP织入增强后，就产生一个结果代理类。</p>
+<p>Aspect（切面）：<br>    是切入点和通知（引介）的结合。</p>
+<h2 id="Spring中基于XML的AOP配置"><a href="#Spring中基于XML的AOP配置" class="headerlink" title="Spring中基于XML的AOP配置"></a>Spring中基于XML的AOP配置</h2><p>步骤：<br>1、把通知Bean交给Spring管理。<br>2、使用aop:config标签表明开始AOP配置。<br>3、使用aop:aspect标签表明配置切面。<br>    id属性：给切面提供唯一标识。<br>    ref属性：指定通知类Bean的id。<br>4、在aop:aspect标签的内部使用对应标签来配置通知类型。</p>
+<p>切入点表达式写法：<br>    关键字：execution(表达式)<br>    表达式：访问修饰符 返回值 包名.包名…类名.方法名(参数列表)<br>    标准的表达式写法：<code>public void com.itheima.service.impl.AccountServiceImpl.saveAccount()</code><br>    访问修饰符可以省略：<code>void com.itheima.service.impl.AccountServiceImpl.saveAccount()</code><br>    返回值可以使用通配符，表示任意返回值：<code>* com.itheima.service.impl.AccountServiceImpl.saveAccount()</code><br>    包名可以使用通配符，表示任意包。但是有几级包，就需要写几个<em>.：`</em> <em>.</em>.<em>.</em>.AccountServiceImpl.saveAccount())<code>包名可以使用..表示当前包及其子包：</code><em> </em>..AccountServiceImpl.saveAccount()<code>类名和方法名都可以使用*来实现通配：</code><em> </em>..<em>.</em>()`</p>
+<p>参数列表：<br>可以直接写数据类型：<br>    基本类型直接写名称           int<br>    引用类型写包名.类名的方式   java.lang.String</p>
+<p>可以使用通配符表示任意类型，但是必须有参数<br>可以使用..表示有无参数均可，有参数可以是任意类型<br>全通配写法：<code>* *..*.*(..)</code></p>
+<p>实际开发中切入点表达式的通常写法：<br>切到业务层实现类下的所有方法<code>* com.itheima.service.impl.*.*(..)</code></p>
+<p>四种常用通知类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置AOP--&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;!-- 配置切入点表达式 id属性用于指定表达式的唯一标识。expression属性用于指定表达式内容</span><br><span class="line">            此标签写在aop:aspect标签内部只能当前切面使用。</span><br><span class="line">            它还可以写在aop:aspect外面，此时就变成了所有切面可用</span><br><span class="line">        --&gt;</span><br><span class="line">    &lt;aop:pointcut id=&quot;pt1&quot; expression=&quot;execution(* com.itheima.service.impl.*.*(..))&quot;&gt;&lt;/aop:pointcut&gt;</span><br><span class="line">    &lt;!--配置切面 --&gt;</span><br><span class="line">    &lt;aop:aspect id=&quot;logAdvice&quot; ref=&quot;logger&quot;&gt;</span><br><span class="line">        &lt;!-- 配置前置通知：在切入点方法执行之前执行--&gt;</span><br><span class="line">        &lt;aop:before method=&quot;beforePrintLog&quot; pointcut-ref=&quot;pt1&quot; &gt;&lt;/aop:before&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 配置后置通知：在切入点方法正常执行之后值。它和异常通知永远只能执行一个--&gt;</span><br><span class="line">        &lt;aop:after-returning method=&quot;afterReturningPrintLog&quot; pointcut-ref=&quot;pt1&quot;&gt;&lt;/aop:after-returning&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 配置异常通知：在切入点方法执行产生异常之后执行。它和后置通知永远只能执行一个--&gt;</span><br><span class="line">        &lt;aop:after-throwing method=&quot;afterThrowingPrintLog&quot; pointcut-ref=&quot;pt1&quot;&gt;&lt;/aop:after-throwing&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 配置最终通知：无论切入点方法是否正常执行它都会在其后面执行--&gt;</span><br><span class="line">        &lt;aop:after method=&quot;afterPrintLog&quot; pointcut-ref=&quot;pt1&quot;&gt;&lt;/aop:after&gt;</span><br><span class="line">    &lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置AOP--&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;!--配置切面 id：切面的id ref：通知类Bean的id--&gt;</span><br><span class="line">    &lt;aop:aspect id=&quot;logAdvice&quot; ref=&quot;logger&quot;&gt;</span><br><span class="line">        &lt;!--配置前置切面 method：切入的方法 pointcut：--&gt;</span><br><span class="line">        &lt;aop:before method=&quot;beforePrint&quot;</span><br><span class="line">                    pointcut=&quot;execution(public void com.itheima.service.Impl.AccountServiceImpl.saveAccount())&quot;&gt;&lt;/aop:before&gt;</span><br><span class="line">        &lt;!--配置后置切面--&gt;</span><br><span class="line">        &lt;aop:after-returning method=&quot;afterPrint&quot;</span><br><span class="line">                            pointcut=&quot;execution(* com.itheima.service.Impl.AccountServiceImpl.*(..))&quot;&gt;&lt;/aop:after-returning&gt;</span><br><span class="line">        &lt;!--配置异常切面--&gt;</span><br><span class="line">        &lt;aop:after-throwing method=&quot;ExceptionPrint&quot;</span><br><span class="line">                            pointcut=&quot;execution(* *..*.*(..))&quot;&gt;&lt;/aop:after-throwing&gt;</span><br><span class="line">        &lt;!--配置最终切面--&gt;</span><br><span class="line">        &lt;aop:after method=&quot;LastPrint&quot;</span><br><span class="line">                    pointcut=&quot;execution(* com.itheima.service.Impl.AccountServiceImpl.saveAccount())&quot;&gt;&lt;/aop:after&gt;</span><br><span class="line">    &lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+<p>环绕通知：<br>Spring框架为我们提供了一个接口：ProceedingJoinPoint。该接口有一个方法proceed()，此方法就相当于明确调用切入点方法。该接口可以作为环绕通知的方法参数，在程序执行时，spring框架会为我们提供该接口的实现类供我们使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xml 配置文件</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.Impl.AccountServiceImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id=&quot;logger&quot; class=&quot;com.itheima.utils.Logger&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;aop:aspect id=&quot;aspect&quot; ref=&quot;logger&quot;&gt;</span><br><span class="line">        &lt;aop:around method=&quot;around&quot; pointcut=&quot;execution(* com.itheima.service.Impl.AccountServiceImpl.*(..))&quot;&gt;&lt;/aop:around&gt;</span><br><span class="line">    &lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">环绕通知方法</span><br><span class="line"></span><br><span class="line">public Object aroundPringLog(ProceedingJoinPoint pjp)&#123;</span><br><span class="line">    Object rtValue = null;</span><br><span class="line">    try&#123;</span><br><span class="line">        Object[] args = pjp.getArgs();//得到方法执行所需的参数</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Logger类中的aroundPringLog方法开始记录日志了。。。前置&quot;);</span><br><span class="line"></span><br><span class="line">        rtValue = pjp.proceed(args);//明确调用业务层方法（切入点方法）</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Logger类中的aroundPringLog方法开始记录日志了。。。后置&quot;);</span><br><span class="line"></span><br><span class="line">        return rtValue;</span><br><span class="line">    &#125;catch (Throwable t)&#123;</span><br><span class="line">        System.out.println(&quot;Logger类中的aroundPringLog方法开始记录日志了。。。异常&quot;);</span><br><span class="line">        throw new RuntimeException(t);</span><br><span class="line">    &#125;finally &#123;</span><br><span class="line">        System.out.println(&quot;Logger类中的aroundPringLog方法开始记录日志了。。。最终&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Spring中基于注解的AOP配置"><a href="#Spring中基于注解的AOP配置" class="headerlink" title="Spring中基于注解的AOP配置"></a>Spring中基于注解的AOP配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">@Component(&quot;logger&quot;)</span><br><span class="line">@Aspect//声明这是切面</span><br><span class="line">public class Logger &#123;</span><br><span class="line">    //配置切点表达式</span><br><span class="line">    @Pointcut(&quot;execution(* com.itheima.service.Impl.AccountServiceImpl.*(..))&quot;)</span><br><span class="line">    private void PointCut()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    //前置通知</span><br><span class="line">    @Before(&quot;PointCut()&quot;)</span><br><span class="line">    public void beforePrint()&#123;</span><br><span class="line">        System.out.println(&quot;前置通知：Logger类中的beforePrint方法开始记录日志了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    //后置通知</span><br><span class="line">    @AfterReturning</span><br><span class="line">    public void afterPrint()&#123;</span><br><span class="line">        System.out.println(&quot;后置通知：Logger类中的afterPrint方法开始记录日志了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //异常通知</span><br><span class="line">    @AfterThrowing</span><br><span class="line">    public void ExceptionPrint()&#123;</span><br><span class="line">        System.out.println(&quot;异常通知：Logger类中的ExceptionPrint方法开始记录日志了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //最终通知</span><br><span class="line">    @After(&quot;PointCut()&quot;)</span><br><span class="line">    public void LastPrint()&#123;</span><br><span class="line">        System.out.println(&quot;最终通知：Logger类中的LastPrint方法开始记录日志了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //环绕通知</span><br><span class="line">    @Around(&quot;execution(* com.itheima.service.Impl.AccountServiceImpl.*(..))&quot;)</span><br><span class="line">    public Object around(ProceedingJoinPoint proceedingJoinPoint)&#123;</span><br><span class="line">        Object returnValue = null;</span><br><span class="line">        try&#123;</span><br><span class="line">            Object[] args = proceedingJoinPoint.getArgs();</span><br><span class="line">            System.out.println(&quot;Before&quot;);</span><br><span class="line">            returnValue = proceedingJoinPoint.proceed(args);</span><br><span class="line">            System.out.println(&quot;After-return&quot;);</span><br><span class="line">        &#125;catch (Throwable t)&#123;</span><br><span class="line">            System.out.println(&quot;After-throwing&quot;);</span><br><span class="line">            throw new RuntimeException(t);</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;After&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return returnValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">xml 配置</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/aop</span><br><span class="line">        http://www.springframework.org/schema/aop/spring-aop.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;context:component-scan base-package=&quot;com.itheima&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line">    &lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java知识体系/" rel="tag"><i class="fa fa-tag"></i> Java知识体系</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/06/背景图片/" rel="next" title="网页添加背景图片">
+                <i class="fa fa-chevron-left"></i> 网页添加背景图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/17/Mybatis-黑马/" rel="prev" title="Mybatis-笔记">
+                Mybatis-笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张殊阳</p>
+              <p class="site-description motion-element" itemprop="description">混饭吃都不容易</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序的耦合与解耦"><span class="nav-number">1.</span> <span class="nav-text">程序的耦合与解耦</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序的耦合"><span class="nav-number">1.1.</span> <span class="nav-text">程序的耦合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模仿工厂模式解耦"><span class="nav-number">1.2.</span> <span class="nav-text">模仿工厂模式解耦</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于XML的IOC配置"><span class="nav-number">2.</span> <span class="nav-text">基于XML的IOC配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-基于-XML-的环境搭建"><span class="nav-number">2.1.</span> <span class="nav-text">Spring 基于 XML 的环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml配置文件约束"><span class="nav-number">2.1.1.</span> <span class="nav-text">xml配置文件约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring容器获取对象"><span class="nav-number">2.1.2.</span> <span class="nav-text">spring容器获取对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContext的三个常用实现类"><span class="nav-number">2.1.3.</span> <span class="nav-text">ApplicationContext的三个常用实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactory和ApplicationContext的区别"><span class="nav-number">2.1.4.</span> <span class="nav-text">BeanFactory和ApplicationContext的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring中Bean的细节"><span class="nav-number">2.1.5.</span> <span class="nav-text">Spring中Bean的细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Bean的三种方式"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">创建Bean的三种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用范围"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">Bean的作用范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">2.1.5.3.</span> <span class="nav-text">Bean的生命周期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring的依赖注入（DI）"><span class="nav-number">2.2.</span> <span class="nav-text">Spring的依赖注入（DI）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用构造函数注入"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用构造函数注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用set方法注入"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用set方法注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂类型的注入-集合类型的注入"><span class="nav-number">2.2.3.</span> <span class="nav-text">复杂类型的注入/集合类型的注入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于注解的IOC配置"><span class="nav-number">3.</span> <span class="nav-text">基于注解的IOC配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用于创建对象的注解"><span class="nav-number">3.1.</span> <span class="nav-text">用于创建对象的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于注入数据的注解"><span class="nav-number">3.2.</span> <span class="nav-text">用于注入数据的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于改变作用范围的注解"><span class="nav-number">3.3.</span> <span class="nav-text">用于改变作用范围的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和生命周期相关的注解"><span class="nav-number">3.4.</span> <span class="nav-text">和生命周期相关的注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XML-Demo"><span class="nav-number">4.</span> <span class="nav-text">XML Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解-Demo"><span class="nav-number">5.</span> <span class="nav-text">注解 Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置类除去XML文件"><span class="nav-number">5.1.</span> <span class="nav-text">配置类除去XML文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring整合JUnit"><span class="nav-number">5.2.</span> <span class="nav-text">Spring整合JUnit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">6.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP相关术语"><span class="nav-number">6.1.</span> <span class="nav-text">AOP相关术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring中基于XML的AOP配置"><span class="nav-number">6.2.</span> <span class="nav-text">Spring中基于XML的AOP配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring中基于注解的AOP配置"><span class="nav-number">6.3.</span> <span class="nav-text">Spring中基于注解的AOP配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张殊阳</span>
+
+  
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共51.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"react":{"opacity":0.7},"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"log":false});</script></body>
+</html>
+
+<!-- 页面点击 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
